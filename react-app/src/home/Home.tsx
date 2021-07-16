@@ -104,7 +104,7 @@ const Home = () => {
       <section className="section artist-section py-1">
         <div className="section-header mb-2">
           <h4 className="head-4 med sub-head">Top Artists</h4>
-          <h2>Songs by top artists</h2>
+          <h2>Worlds top artists</h2>
         </div>
         <div className="top-ten-songs songs-contain">
           <div className="song-card">
