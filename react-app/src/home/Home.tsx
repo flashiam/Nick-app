@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 import havana from "../img/havana.png";
 import shape from "../img/shape.png";
@@ -7,7 +7,101 @@ import artist1 from "../img/shawn-mendes.jpg";
 import artist2 from "../img/charlie-puth.png";
 import artist3 from "../img/drake.jpg";
 
+import { TopTen } from "../types";
+
 const Home = () => {
+  const [topTenSongs] = useState<TopTen[]>([
+    {
+      id: 1,
+      songImg: havana,
+      songName: "Havana",
+      singer: "Camillo Caballo",
+      likes: 599,
+      trend: 4.5,
+      trendPercent: 75,
+    },
+    {
+      id: 2,
+      songImg: attention,
+      songName: "Attention",
+      singer: "Charlie Puth",
+      likes: 1599,
+      trend: 5.0,
+      trendPercent: 95,
+    },
+    {
+      id: 3,
+      songImg: shape,
+      songName: "Shape of you",
+      singer: "Ed Sheeren",
+      likes: 899,
+      trend: 4.0,
+      trendPercent: 85,
+    },
+    {
+      id: 4,
+      songImg: havana,
+      songName: "Havana",
+      singer: "Camillo Caballo",
+      likes: 599,
+      trend: 4.5,
+      trendPercent: 75,
+    },
+    {
+      id: 5,
+      songImg: attention,
+      songName: "Attention",
+      singer: "Charlie Puth",
+      likes: 1599,
+      trend: 5.0,
+      trendPercent: 95,
+    },
+    {
+      id: 6,
+      songImg: shape,
+      songName: "Shape of you",
+      singer: "Ed Sheeren",
+      likes: 899,
+      trend: 4.0,
+      trendPercent: 85,
+    },
+    {
+      id: 7,
+      songImg: shape,
+      songName: "Shape of you",
+      singer: "Ed Sheeren",
+      likes: 899,
+      trend: 4.0,
+      trendPercent: 85,
+    },
+    {
+      id: 8,
+      songImg: havana,
+      songName: "Havana",
+      singer: "Camillo Caballo",
+      likes: 599,
+      trend: 4.5,
+      trendPercent: 75,
+    },
+    {
+      id: 9,
+      songImg: attention,
+      songName: "Attention",
+      singer: "Charlie Puth",
+      likes: 1599,
+      trend: 5.0,
+      trendPercent: 95,
+    },
+    {
+      id: 10,
+      songImg: shape,
+      songName: "Shape of you",
+      singer: "Ed Sheeren",
+      likes: 899,
+      trend: 4.0,
+      trendPercent: 85,
+    },
+  ]);
   return (
     <main className="home-page py-2">
       <section className="section landing-section">
@@ -38,25 +132,45 @@ const Home = () => {
           <h4 className="head-4 med sub-head">Week's Top 10</h4>
           <h2>Top 10 songs being discovered this week</h2>
         </div>
+
         <div className="top-ten-songs songs-contain">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-            <div key={num} className="song-card">
-              <img src={attention} alt="song-img" className="song-img" />
-              <div className="song-content">
-                <div className="top-content">
-                  <h3 className="semi-med">Attention</h3>
-                  <p className="lead-3 med">Charlie Puth</p>
+          {topTenSongs.map(song => (
+            <div key={song.id} className="music-item">
+              <div className="progress-contain">
+                <div className="song-progress">
+                  <svg>
+                    <circle cx="70" cy="70" r="70"></circle>
+                    <circle
+                      cx="70"
+                      cy="70"
+                      r="70"
+                      style={{
+                        strokeDashoffset: `calc(440 - (440 * ${song.trendPercent}) / 100)`,
+                      }}
+                    ></circle>
+                  </svg>
+                  <div className="song-img">
+                    <img
+                      src={song.songImg}
+                      alt="song img"
+                      // className="song-img"
+                    />
+                    <div className="song-desc">
+                      <div className="likes stat">
+                        <i className="material-icons">favorite</i>
+                        <span className="fav-count count">{song.likes}</span>
+                      </div>
+                      <div className="trend stat">
+                        <i className="material-icons">trending_up</i>
+                        <span className="trend-count count">{song.trend}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="stat-contain">
-                <div className="favorites song-stat">
-                  <i className="material-icons purple stat-icon">favorite</i>
-                  <span className="semi-med count">1.2k</span>
-                </div>
-                <div className="trending song-stat">
-                  <i className="material-icons purple stat-icon">trending_up</i>
-                  <span className="semi-med count">980</span>
-                </div>
+              <div className="song-desc">
+                <h4 className="head-4">{song.songName}</h4>
+                <p className="lead-2">{song.singer}</p>
               </div>
             </div>
           ))}
