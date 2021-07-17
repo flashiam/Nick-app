@@ -1,0 +1,23 @@
+@import "variables";
+
+@media screen and (max-width: 768px) {
+  .nav-mobo {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
+
+  //   .navbar
+  .home-page {
+    .landing-section {
+      .typo-contain {
+        display: none;
+      }
+    }
+
+    .top-ten-section {
+      display: none;
+    }
+  }
+}

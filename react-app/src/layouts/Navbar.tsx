@@ -33,7 +33,7 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="nav-btn-grp">
-          <Link to="#" className="btn btn-light">
+          <Link to="#" className="btn btn-secondary-stroked">
             Register
           </Link>
           <Link to="#" className="btn btn-transparent">

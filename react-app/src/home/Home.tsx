@@ -6,6 +6,7 @@ import attention from "../img/attention.png";
 import artist1 from "../img/shawn-mendes.jpg";
 import artist2 from "../img/charlie-puth.png";
 import artist3 from "../img/drake.jpg";
+import landingArt from "../img/landing-img.svg";
 
 import { TopTen } from "../types";
 
@@ -105,26 +106,23 @@ const Home = () => {
   return (
     <main className="home-page py-2">
       <section className="section landing-section">
-        <div className="albums-contain">
-          <div className="album-card">
-            <img src={havana} alt="album img" className="album-img" />
-          </div>
-          <div></div>
-          <div></div>
-          <div className="album-card">
-            <img src={shape} alt="album img" className="album-img" />
-          </div>
-        </div>
         <div className="typo-contain">
-          <h1 className="head-1 typo pb-1">Listening is everything</h1>
+          <h1 className="head-1 typo pb-1">When words fail music speaks</h1>
           <p className="lead-2">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem ut
-            odio optio.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+            sapien in turpis eu non tempus, sed.
           </p>
-          <a href="#" className="btn btn-purple">
+          <a href="#" className="btn btn-secondary">
             <i className="material-icons pr-0">play_circle_filled</i>
             Explore
           </a>
+        </div>
+        <div className="landing-showcase">
+          <img
+            src={landingArt}
+            alt="landing illustration"
+            className="landing-art"
+          />
         </div>
       </section>
       <section className="section top-ten-section py-1">
