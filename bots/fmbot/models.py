@@ -1,27 +1,11 @@
-
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
-
-from .usertype import *
+from django.db.models.signals import post_save
 from .definations import *
-# from .analytics import *
-
+from fernet import Fernet
+from .mainuser import MainUser
+from .config import graphconnector
 
 # Create your models here.
-
-def token_creator():
-    return "Hello"
-
-
-class MainUser(AbstractBaseUser):
-    TYPES = (
-        ("Influencer", "Influencer"),
-        ("General", "General"),
-        ("SuperAdmin", "SuperAdmin")
-    )
-    userType = models.CharField(choices=TYPES, null=False, max_length=100)
-    email = models.EmailField()
-    timestamp = models.DateTimeField(auto_now=True, auto_created=True)
 
 
 class Influence(models.Model):
@@ -43,7 +27,7 @@ class General(models.Model):
 
 class Songs(models.Model):
     user = models.ForeignKey(to=Influence, on_delete=models.CASCADE)
-    tagToken = token_creator()
+    tagToken = models.CharField(max_length=200, auto_created=True)
     title = models.CharField(max_length=200, null=False, unique=True)
     description = models.TextField(max_length=1000, null=True, unique=False)
     artist = models.ManyToManyField(to=PlaybackSinger)
@@ -55,3 +39,24 @@ class Songs(models.Model):
     genre = models.ManyToManyField(to=MusicalGenre)
     mix = models.ManyToManyField(to=SongMix)
     createdOn = models.DateTimeField(auto_created=True, auto_now=True)
+
+
+    @classmethod
+    def on_create(cls, created, instance, *args, **kwargs):
+        if not created:
+            return
+        else:
+
+
+
+
+
+class SuperAdmin(models.Model):
+    user = models.ForeignKey(to=MainUser, on_delete=models.CASCADE)
+    updatedOn = models.DateTimeField(auto_now=True, auto_created=True)
+
+
+class KeyVault(models.Model):
+    user = models.ForeignKey(to=Influence or SuperAdmin or General, on_delete=models.CASCADE)
+    key = models.CharField(max_length=1000, null=False, unique=True)
+    updated_at = models.DateTimeField(auto_created=True, auto_now=True)

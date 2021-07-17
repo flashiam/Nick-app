@@ -1,8 +1,4 @@
-from flask import Flask
+from bot.discorder import fmbot
 
-
-import os
-
-app = Flask(__name__)
-
-
+if __name__ == "__main__":
+    fmbot()
