@@ -332,6 +332,13 @@
 
 .influencer-page {
   min-height: 90vh;
+
+  .top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .current-stats {
     margin-bottom: 10rem;
     .stat-contain {
@@ -395,6 +402,60 @@
           align-items: center;
           justify-content: center;
           margin-top: 0.6rem;
+        }
+      }
+    }
+  }
+}
+
+// Influencer
+.influencer-page {
+  .promoted-album-contain {
+    .promote-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .promote-btn {
+        margin: 0;
+      }
+    }
+  }
+
+  .total-albums-contain {
+    .platform-albums {
+      .platform-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .platform-logo {
+          height: 3rem;
+          width: 8rem;
+        }
+      }
+
+      .albums-contain {
+        .album-item {
+          margin-top: 1rem;
+          margin-right: 1rem;
+          width: 15rem;
+          .item-img {
+            height: 16rem;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            // width: 2rem;
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        .platform-header {
+          .platform-logo {
+            height: 3rem;
+            width: 3rem;
+          }
         }
       }
     }

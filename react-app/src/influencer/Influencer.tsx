@@ -1,70 +1,141 @@
 import React from "react";
-import attention from "../img/attention.png";
+import albumArt from "../img/recom_song_2.jpg";
+import spotifyLogo from "../img/Spotify_Logo_Green.png";
+import appleMusic from "../img/apple-music.png";
+
+import Carousel from "react-multi-carousel";
 
 const Influencer = () => {
   const history = window.history;
+
+  // Carousel responsiveness
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5,
+    },
+    mobile: {
+      breakpoint: { max: 768, min: 0 },
+      items: 2,
+    },
+  };
+
+  // Custom carousel button
+
   return (
-    <main className="influencer-page">
+    <main className="influencer-page container">
       <div className="top-header">
         <div className="back-btn semi-med">
-          <a
-            href="#!"
-            className="btn btn-transparent back-btn"
-            onClick={() => history.go(-1)}
-          >
+          <a href="#!" className="back-btn" onClick={() => history.go(-1)}>
             <i className="material-icons semi-med">chevron_left</i>
           </a>
           Back
         </div>
       </div>
-      <section className="section recommended-songs">
-        <div className="section-header mb-2">
-          <h4 className="head-4 med sub-head">Hits By Album</h4>
-          <h2>Your super hit albums</h2>
+
+      {/* Highly promoted albums */}
+      <section className="promoted-album-contain mb-6">
+        <div className="promote-header">
+          <h2 className="head-2 pb-1">Highly promoted albums</h2>
+          <button className="btn btn-secondary promote-btn">
+            <p className="lead-2">Create a promotion</p>
+          </button>
         </div>
-        <div className="top-ten-songs songs-contain">
-          {[1, 2, 3, 4].map(num => (
-            <div key={num} className="song-card">
-              <img src={attention} alt="song-img" className="song-img" />
-              <div className="song-content">
-                <div className="top-content">
-                  <h3 className="semi-med">Attention</h3>
-                  <p className="lead-3 med">Charlie Puth</p>
+        <div className="albums-contain">
+          <div className="album-item">
+            <div className="item-img">
+              <img src={albumArt} alt="" className="album-img" />
+              <div className="item-stats">
+                <div className="stat-contain">
+                  <div className="stat listen-stat">Total listens</div>
+                  <div className="stat-count listen-count">1.2k</div>
                 </div>
-              </div>
-              <div className="stat-contain">
-                <div className="favorites song-stat">
-                  <i className="material-icons purple stat-icon">favorite</i>
-                  <span className="semi-med count">1.2k</span>
-                </div>
-                <div className="trending song-stat">
-                  <i className="material-icons purple stat-icon">trending_up</i>
-                  <span className="semi-med count">980</span>
+                <div className="stat-contain">
+                  <div className="stat listen-stat">Total listen time</div>
+                  <div className="stat-count listen-count">23:05:34</div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-      <section className="section current-stats">
-        <div className="section-header mb-2">
-          <h4 className="head-4 med sub-head">Current Stats</h4>
-          <h2>Your activity track</h2>
-        </div>
-        <div className="stat-contain">
-          <div className="stat">
-            <i className="material-icons">music_note</i>
-            <div className="stat-desc">
-              <h4 className="semi-med stat-head">Total Songs</h4>
-              <h3 className="stat-num">900</h3>
+            <div className="item-desc">
+              <h4 className="head-4 song-name">Pain</h4>
+              <p className="lead-2 med promoted-on">11th July 2021</p>
             </div>
           </div>
-          <div className="stat">
-            <i className="material-icons">album</i>
-            <div className="stat-desc">
-              <h4 className="semi-med stat-head">Total Albums</h4>
-              <h3 className="stat-num">560</h3>
-            </div>
+        </div>
+      </section>
+
+      {/* Section showing albums promoted on various platforms */}
+      <section className="total-albums-contain">
+        <h2 className="head-2 pb-1">
+          Your albums blasting on various platforms
+        </h2>
+        {/* Albums on platform */}
+        <div className="platform-albums spotify-albums mb-4">
+          <div className="platform-header">
+            <p className="lead-1">Spotify</p>
+            <img src={spotifyLogo} alt="" className="platform-logo pb-0" />
+          </div>
+          <div className="albums-contain">
+            <Carousel responsive={responsive} swipeable draggable>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                <div key={num} className="album-item">
+                  <div className="item-img">
+                    <img src={albumArt} alt="" className="album-img" />
+                    <div className="item-stats">
+                      <div className="stat-contain">
+                        <div className="stat listen-stat">Total listens</div>
+                        <div className="stat-count listen-count">1.2k</div>
+                      </div>
+                      <div className="stat-contain">
+                        <div className="stat listen-stat">
+                          Total listen time
+                        </div>
+                        <div className="stat-count listen-count">23:05:34</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="item-desc">
+                    <h4 className="head-4 song-name">Pain</h4>
+                    <p className="lead-2 med promoted-on">11th July 2021</p>
+                  </div>
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        </div>
+
+        {/* Albums on platform */}
+        <div className="platform-albums apple-music-albums mb-4">
+          <div className="platform-header">
+            <p className="lead-1">Apple Music</p>
+            <img src={appleMusic} alt="" className="platform-logo pb-0" />
+          </div>
+          <div className="albums-contain">
+            <Carousel responsive={responsive} swipeable draggable>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                <div key={num} className="album-item">
+                  <div className="item-img">
+                    <img src={albumArt} alt="" className="album-img" />
+                    <div className="item-stats">
+                      <div className="stat-contain">
+                        <div className="stat listen-stat">Total listens</div>
+                        <div className="stat-count listen-count">1.2k</div>
+                      </div>
+                      <div className="stat-contain">
+                        <div className="stat listen-stat">
+                          Total listen time
+                        </div>
+                        <div className="stat-count listen-count">23:05:34</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="item-desc">
+                    <h4 className="head-4 song-name">Pain</h4>
+                    <p className="lead-2 med promoted-on">11th July 2021</p>
+                  </div>
+                </div>
+              ))}
+            </Carousel>
           </div>
         </div>
       </section>
