@@ -7,3 +7,8 @@ export interface TopTen {
   trend: number;
   trendPercent: number;
 }
+
+export interface Trending {
+  id: number;
+  songImg: string;
+}

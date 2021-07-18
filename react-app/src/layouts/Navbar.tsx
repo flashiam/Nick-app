@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="navbar py-1">
+    <nav className="navbar py-1 container">
       <div className="logo-contain">
         <img src={musicLogo} alt="logo" className="logo-img" />
         <h3 className="head-3 pl-0">Musix</h3>

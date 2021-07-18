@@ -50,8 +50,14 @@ img {
 .semi-med {
   color: $semi-med-color;
 }
+.med {
+  color: $med-color;
+}
 .secondary {
   color: $secondary-color;
+}
+.purple {
+  color: $purple-color;
 }
 
 // Background colors
@@ -440,6 +446,18 @@ img {
   &-6 {
     margin-bottom: 3.5rem;
   }
+  &-7 {
+    margin-bottom: 5rem;
+  }
+  &-8 {
+    margin-bottom: 6rem;
+  }
+  &-9 {
+    margin-bottom: 7rem;
+  }
+  &-10 {
+    margin-bottom: 8rem;
+  }
 }
 
 // margin on left
@@ -633,6 +651,66 @@ img {
     .lead-2 {
       font-weight: 400;
       color: $med-color;
+    }
+  }
+}
+
+.song-progress-item {
+  position: relative;
+  background: $purple-color;
+  border-radius: 8px;
+  // padding: 1.5rem 0;
+
+  .song-img-contain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    .song-img {
+      width: 7rem;
+    }
+  }
+
+  .song-desc-contain {
+    position: relative;
+    margin-left: 8rem;
+    display: flex;
+    padding: 1rem 0;
+
+    .song-stat {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+
+      .lead-2 {
+        font-size: 0.9rem;
+      }
+
+      .stat-badge {
+        background: lighten($purple-color, 15%);
+        padding: 0.2rem 0.4rem;
+        border-radius: 8px;
+        margin-left: 1rem;
+
+        i {
+          padding-right: 0.4rem;
+          font-size: 0.9rem;
+        }
+
+        .stat-count {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .trend-progress {
+      position: absolute;
+      height: 2px;
+      width: 80%;
+      bottom: 0;
+      left: -1rem;
     }
   }
 }

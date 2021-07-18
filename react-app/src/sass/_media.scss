@@ -4,6 +4,7 @@
   .nav-mobo {
     display: flex;
   }
+
   .navbar {
     display: none;
   }
@@ -12,12 +13,12 @@
   .home-page {
     .landing-section {
       .typo-contain {
-        display: none;
+        // display: none;
       }
     }
 
     .top-ten-section {
-      display: none;
+      //   display: none;
     }
   }
 }
