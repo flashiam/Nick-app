@@ -1,7 +1,7 @@
 import { useState } from "react";
 import albumArt from "../img/recom_song_2.jpg";
 import spotifyLogo from "../img/Spotify_Logo_Green.png";
-import appleMusic from "../img/apple-music.png";
+import appleMusic from "../img/apple-music-2.png";
 
 import Carousel from "react-multi-carousel";
 
