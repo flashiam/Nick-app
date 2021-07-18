@@ -330,40 +330,40 @@
   }
 }
 
-.influencer-page {
-  min-height: 90vh;
+// .influencer-page {
+//   min-height: 90vh;
 
-  .top-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+//   .top-header {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//   }
 
-  .current-stats {
-    margin-bottom: 10rem;
-    .stat-contain {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      grid-gap: 8rem;
+//   .current-stats {
+//     margin-bottom: 10rem;
+//     .stat-contain {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       grid-gap: 8rem;
 
-      .stat {
-        display: flex;
-        align-items: center;
-        .stat-head {
-          font-weight: 400;
-        }
-        .stat-num {
-          font-weight: 400;
-          font-size: 3rem;
-        }
-        i {
-          font-size: 8rem;
-        }
-      }
-    }
-  }
-}
+//       .stat {
+//         display: flex;
+//         align-items: center;
+//         .stat-head {
+//           font-weight: 400;
+//         }
+//         .stat-num {
+//           font-weight: 400;
+//           font-size: 3rem;
+//         }
+//         i {
+//           font-size: 8rem;
+//         }
+//       }
+//     }
+//   }
+// }
 .nav-mobo {
   display: none;
 }
@@ -410,6 +410,24 @@
 
 // Influencer
 .influencer-page {
+  .top-header {
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+
+    .landing-section {
+      padding: 1rem 0;
+      background: url("../img/general_landing.jpg") no-repeat center
+        center/cover;
+      height: 50vh;
+      // height: 100%;
+      .typo-contain {
+        padding-top: 2rem;
+        width: 30%;
+      }
+    }
+  }
+
   .promoted-album-contain {
     .promote-header {
       display: flex;
@@ -457,6 +475,134 @@
             width: 3rem;
           }
         }
+      }
+    }
+  }
+
+  // Modal
+  .promote-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    // background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    .modal-content {
+      position: absolute;
+      background: $dark-color;
+      width: 60%;
+      height: 70%;
+      z-index: 3;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+
+      .modal-form {
+        position: relative;
+        width: 60%;
+      }
+
+      .modal-showcase {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $secondary-color;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        i {
+          font-size: 5rem;
+        }
+      }
+
+      .form-contain {
+        margin-top: 2rem;
+
+        .points-contain {
+          display: flex;
+          align-items: center;
+
+          .lead-2 {
+            color: $secondary-color;
+            // padding-bottom: 0.6rem;
+          }
+          .points {
+            padding-left: 0.6rem;
+            font-weight: bold;
+          }
+        }
+
+        .form-grp {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 1rem;
+
+          label {
+            padding-bottom: 0.6rem;
+            color: $secondary-color;
+          }
+
+          .server-select-box {
+            padding: 0.6rem;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            background: darken($dark-color, 5%);
+            color: $semi-med-color;
+            font-family: $primary-font;
+
+            option {
+              padding: 0.8rem;
+            }
+          }
+
+          .listen-input {
+            padding: 0.6rem 0.3rem;
+            background: darken($dark-color, 5%);
+            color: $semi-med-color;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      .btn-grp {
+        position: absolute;
+        bottom: 1rem;
+        width: 100%;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .btn {
+          font-family: $primary-font;
+        }
+
+        .btn-transparent {
+          padding: 0;
+          margin: 0;
+        }
+      }
+
+      &.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+
+      &.inactive {
+        opacity: 0;
+        transform: translateY(50px);
+        pointer-events: none;
       }
     }
   }
