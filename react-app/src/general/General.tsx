@@ -1,12 +1,20 @@
-import React from "react";
+import Carousel from "react-multi-carousel";
+
 import attention from "../img/attention.png";
 import artist1 from "../img/shawn-mendes.jpg";
 import artist2 from "../img/charlie-puth.png";
 import artist3 from "../img/drake.jpg";
 import generalLanding from "../img/general_landing.jpg";
+import recomSong1 from "../img/recom_song_1.jpg";
+import recomSong2 from "../img/recom_song_2.jpg";
 
 const General = () => {
   const history = window.history;
+
+  // const responsive = {
+
+  // }
+
   return (
     <main className="general-page">
       <section className="general-landing mb-7">
@@ -33,20 +41,20 @@ const General = () => {
       </section>
 
       <div className="container">
-        <section className="section recommended-songs">
+        <section className="section recommended-songs mb-10">
           <div className="section-header mb-2">
             <h4 className="head-4 med sub-head">Recommended Songs</h4>
             <h2>Handpicked songs for you</h2>
           </div>
           <div className="songs-contain">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+            {[1, 2, 3, 4, 5].map(num => (
               <div key={num} className="song-card">
-                <img src={attention} alt="song-img" className="song-img" />
+                <div className="img-contain">
+                  <img src={recomSong1} alt="" className="recom-img" />
+                </div>
                 <div className="song-content">
-                  <div className="top-content">
-                    <h3 className="semi-med">Attention</h3>
-                    <p className="lead-3 med">Charlie Puth</p>
-                  </div>
+                  <h4 className="head-4">Xscape</h4>
+                  <p className="lead-2 med">Xscape</p>
                 </div>
               </div>
             ))}

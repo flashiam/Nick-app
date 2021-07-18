@@ -11,8 +11,10 @@ import Influencer from "./influencer/Influencer";
 function App() {
   return (
     <Router>
-      <Navbar />
-      <NavbarMobo />
+      <div className="container">
+        <Navbar />
+        <NavbarMobo />
+      </div>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/influencer" component={Influencer} />

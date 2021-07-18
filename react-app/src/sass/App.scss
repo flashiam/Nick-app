@@ -115,6 +115,7 @@
 .nav-mobo {
   position: relative;
   display: flex;
+  width: 100%;
   justify-content: space-between;
 
   .logo-contain {
@@ -128,7 +129,7 @@
     position: relative;
     user-select: none;
     .toggler {
-      position: absolute;
+      position: relative;
       top: 0;
       height: 2rem;
       width: 2rem;
@@ -377,6 +378,25 @@
 
   .recommended-songs {
     .songs-contain {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+      grid-gap: 2rem;
+      .song-card {
+        .img-contain {
+          height: 15rem;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        .song-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: 0.6rem;
+        }
+      }
     }
   }
 }

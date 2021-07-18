@@ -1,8 +1,27 @@
-import React from "react";
+import { useState, useRef, useEffect, MutableRefObject } from "react";
 import { Link } from "react-router-dom";
 import musicLogo from "../img/music-logo.png";
 
 const NavbarMobo = () => {
+  const [navOpen, setNav] = useState<boolean>(false);
+
+  const navToggler = useRef<HTMLInputElement>(null);
+
+  const ctrlOverflow = () => {
+    if (navOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  };
+
+  // Function to close nav
+  const closeNav = () => setNav(false);
+
+  useEffect(() => {
+    ctrlOverflow();
+  }, [navOpen]);
+
   return (
     <nav className="nav-mobo py-1">
       <div className="logo-contain">
@@ -10,7 +29,13 @@ const NavbarMobo = () => {
         <h3 className="head-3 pl-0">Musix</h3>
       </div>
       <div className="nav-btn-contain">
-        <input type="checkbox" className="toggler" />
+        <input
+          ref={navToggler}
+          type="checkbox"
+          className="toggler"
+          onClick={() => setNav(prevNav => !prevNav)}
+          checked={navOpen}
+        />
         <div className="hamburger">
           <div className="menu-line"></div>
         </div>
@@ -18,12 +43,12 @@ const NavbarMobo = () => {
           <div className="menu-links-contain">
             <ul className="menu-links">
               <li className="link">
-                <Link to="/general" className="light">
+                <Link to="/general" className="light" onClick={closeNav}>
                   General
                 </Link>
               </li>
               <li className="link">
-                <Link to="/general" className="light">
+                <Link to="/general" className="light" onClick={closeNav}>
                   Influencer
                 </Link>
               </li>
