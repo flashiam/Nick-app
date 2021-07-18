@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from .definations import *
 from fernet import Fernet
 from .mainuser import MainUser
-from .config import graphconnector
+from .config import graphical
 
 # Create your models here.
 
@@ -46,6 +46,7 @@ class Songs(models.Model):
         if not created:
             return
         else:
+            return
 
 
 
