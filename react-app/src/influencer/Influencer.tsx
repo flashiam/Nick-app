@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import albumArt from "../img/recom_song_2.jpg";
 import spotifyLogo from "../img/Spotify_Logo_Green.png";
 import appleMusic from "../img/apple-music-2.png";
@@ -17,12 +17,23 @@ const Influencer = () => {
     mobile: {
       breakpoint: { max: 768, min: 0 },
       items: 2,
+      partialVisibilityGutter: 15,
     },
   };
 
   const [modalOpen, setModal] = useState<boolean>(false);
 
-  // Custom carousel button
+  const ctrlOverflow = () => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  };
+
+  useEffect(() => {
+    ctrlOverflow();
+  }, [modalOpen]);
 
   return (
     <main className="influencer-page">
@@ -44,7 +55,7 @@ const Influencer = () => {
                 className="btn btn-secondary promote-btn"
                 onClick={() => setModal(true)}
               >
-                <p className="lead-2">Create a promotion</p>
+                <p className="lead-2">Lets Promote</p>
               </button>
             </div>
           </div>
@@ -152,7 +163,10 @@ const Influencer = () => {
           </div>
         </div>
       </section>
-      <div className="promote-modal">
+      <div
+        className={`promote-modal ${modalOpen ? "active" : "inactive"}`}
+        onClick={() => modalOpen && setModal(false)}
+      >
         <div className={`modal-content ${modalOpen ? "active" : "inactive"}`}>
           <div className="modal-form p-1">
             <h3 className="head-3">Promote your album</h3>

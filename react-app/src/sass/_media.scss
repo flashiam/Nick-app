@@ -1,7 +1,10 @@
 @import "variables";
-@import "utils";
 
 @media screen and (max-width: 768px) {
+  .head-2 {
+    font-size: 1.2rem;
+  }
+
   .nav-mobo {
     display: flex;
   }
@@ -223,6 +226,76 @@
         width: 80%;
         bottom: 0;
         left: -1rem;
+      }
+    }
+  }
+
+  // Influencer
+  .influencer-page {
+    .top-header {
+      .landing-section {
+        .typo-contain {
+          width: 50%;
+          .typo {
+            font-size: 1.5rem;
+          }
+
+          .btn {
+            padding: 0.6rem;
+
+            .lead-2 {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+
+    .promote-modal {
+      .modal-content {
+        width: 80%;
+        height: 50%;
+        .modal-form {
+          width: 100%;
+        }
+        .modal-showcase {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .album-item {
+    width: 10rem;
+    .item-img {
+      height: 11rem;
+      width: 10rem;
+
+      .item-stats {
+        .stat-contain {
+          .stat-count {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+
+    .item-desc {
+      .promoted-on {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .promoted-album-contain {
+    .total-albums-contain {
+      .platform-albums {
+        .albums-contain {
+          .album-item {
+            width: 10rem;
+            margin-right: 1.5rem;
+          }
+        }
       }
     }
   }
