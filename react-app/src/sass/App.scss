@@ -406,6 +406,43 @@
       }
     }
   }
+
+  .album-item {
+    .item-desc {
+      display: flex;
+      align-items: center;
+      .play-btn {
+        margin: 0;
+        padding: 0;
+        position: relative;
+
+        .listen-platform-contain {
+          position: absolute;
+          background: $purple-color;
+          padding: 0.6rem;
+          border-radius: 20px;
+          top: 0;
+          left: 0;
+
+          .listen-options {
+            display: flex;
+            align-items: center;
+
+            .platform-img {
+              height: 2rem;
+              width: 2rem;
+              margin-right: 1rem;
+            }
+
+            .btn {
+              margin: 0;
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // Influencer
@@ -456,15 +493,6 @@
       .albums-contain {
         .album-item {
           margin-top: 1rem;
-          // margin-right: 1rem;
-          // width: 15rem;
-          // .item-img {
-          //   height: 16rem;
-          //   width: 100%;
-          //   margin-bottom: 1rem;
-          //   border-radius: 8px;
-          //   // width: 2rem;
-          // }
         }
       }
 
@@ -578,8 +606,9 @@
       .btn-grp {
         position: absolute;
         bottom: 1rem;
-        width: 100%;
-        padding: 0 2rem;
+        right: 1rem;
+        left: 1rem;
+        width: 90%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -616,6 +645,15 @@
       pointer-events: none;
       opacity: 0;
     }
+  }
+}
+
+// Songs section
+.songs-section {
+  .songs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 

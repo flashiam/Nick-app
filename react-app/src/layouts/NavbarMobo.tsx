@@ -48,7 +48,7 @@ const NavbarMobo = () => {
                 </Link>
               </li>
               <li className="link">
-                <Link to="/general" className="light" onClick={closeNav}>
+                <Link to="/influencer" className="light" onClick={closeNav}>
                   Influencer
                 </Link>
               </li>

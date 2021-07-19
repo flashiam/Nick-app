@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import albumArt from "../img/recom_song_2.jpg";
 import spotifyLogo from "../img/Spotify_Logo_Green.png";
 import appleMusic from "../img/apple-music-2.png";
@@ -21,6 +21,8 @@ const Influencer = () => {
     },
   };
 
+  const modalBackdrop = useRef<HTMLDivElement>(null);
+
   const [modalOpen, setModal] = useState<boolean>(false);
 
   const ctrlOverflow = () => {
@@ -28,6 +30,15 @@ const Influencer = () => {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
+    }
+  };
+
+  // Function to close the modal on backdrop press
+  const backdropClose = (e: any) => {
+    if (modalOpen) {
+      if (e.target.classList.contains("promote-modal")) {
+        setModal(false);
+      }
     }
   };
 
@@ -163,9 +174,46 @@ const Influencer = () => {
           </div>
         </div>
       </section>
+
+      {/* Songs section */}
+      <section className="songs-section container">
+        <div className="songs-header">
+          <h2 className="head-2 pb-1">Your curated lists of songs</h2>
+          <a href="#" className="more-btn secondary">
+            More
+          </a>
+        </div>
+        <div className="songs-contain">
+          <Carousel responsive={responsive} swipeable draggable>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+              <div key={num} className="album-item mt-1">
+                <div className="item-img">
+                  <img src={albumArt} alt="" className="album-img" />
+                  <div className="item-stats">
+                    <div className="stat-contain">
+                      <div className="stat listen-stat">Total listens</div>
+                      <div className="stat-count listen-count">1.2k</div>
+                    </div>
+                    <div className="stat-contain">
+                      <div className="stat listen-stat">Total listen time</div>
+                      <div className="stat-count listen-count">23:05:34</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="item-desc">
+                  <h4 className="head-4 song-name">Pain</h4>
+                  <p className="lead-2 med promoted-on">11th July 2021</p>
+                </div>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      </section>
+      {/* Promote modal */}
       <div
+        ref={modalBackdrop}
         className={`promote-modal ${modalOpen ? "active" : "inactive"}`}
-        onClick={() => modalOpen && setModal(false)}
+        onClick={backdropClose}
       >
         <div className={`modal-content ${modalOpen ? "active" : "inactive"}`}>
           <div className="modal-form p-1">

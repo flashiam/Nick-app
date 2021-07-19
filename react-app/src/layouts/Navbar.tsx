@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="navbar py-1 container">
-      <div className="logo-contain">
+      <Link to="/" className="logo-contain">
         <img src={musicLogo} alt="logo" className="logo-img" />
-        <h3 className="head-3 pl-0">Musix</h3>
-      </div>
+        <h3 className="head-3 pl-0 semi-med">Musix</h3>
+      </Link>
       <div className="right-nav-content">
         <ul className="nav-links">
           <li className="link">

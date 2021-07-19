@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import anime from "animejs";
 
 import havana from "../img/havana.png";
 import shape from "../img/shape.png";
@@ -103,6 +104,78 @@ const Home = () => {
       trendPercent: 85,
     },
   ]);
+
+  // Function to animate equalizer bar
+  const animateEqualizer = () => {};
+
+  // Function to trigger SVG animation
+  const triggerSVG = () => {
+    const equalizerTime = anime.timeline({
+      easing: "linear",
+      duration: 250,
+    });
+
+    // anime({
+    //   targets: "#progress-line",
+    //   d: [
+    //     {
+    //       value:
+    //         "M787 156C787 148.33 786.009 140.692 784.05 133.277L698 156H787Z",
+    //     },
+    //     {
+    //       value:
+    //         "M787 156C787 140.252 782.821 124.786 774.891 111.18C766.96 97.5749 755.562 86.3173 741.858 78.5568C728.155 70.7963 712.638 66.8107 696.891 67.0069C681.144 67.2031 665.731 71.574 652.226 79.6735C638.72 87.773 627.606 99.3111 620.016 113.11C612.427 126.909 608.635 142.474 609.028 158.217C609.42 173.961 613.983 189.318 622.25 202.721C630.517 216.125 642.192 227.095 656.085 234.512L698 156H787Z",
+    //     },
+    //   ],
+    //   duration: 300,
+    //   easing: "linear",
+    // });
+
+    equalizerTime
+      .add({
+        targets: "#ctrl-range-1",
+        translateY: 50,
+      })
+      .add({
+        targets: "#ctrl-range-1",
+        translateY: 25,
+      })
+      .add(
+        {
+          targets: "#ctrl-range-2",
+          translateY: -25,
+        },
+        "-=200"
+      )
+      .add(
+        {
+          targets: "#ctrl-range-3",
+          translateY: 55,
+        },
+        "-=100"
+      )
+      .add({
+        targets: "#ctrl-range-3",
+        translateY: -15,
+      })
+      .add(
+        {
+          targets: "#ctrl-range-4",
+          translateY: -35,
+        },
+        "-=100"
+      )
+      .add({
+        targets: "#ctrl-range-3",
+        translateY: 35,
+      })
+      .add({});
+  };
+
+  useEffect(() => {
+    triggerSVG();
+  }, []);
+
   return (
     <div className="container">
       <main className="home-page py-2">
@@ -119,11 +192,638 @@ const Home = () => {
             </a>
           </div>
           <div className="landing-showcase">
-            <img
-              src={landingArt}
-              alt="landing illustration"
+            <svg
               className="landing-art"
-            />
+              viewBox="0 0 830 647"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Frame 1">
+                <g id="equalizer card">
+                  <rect
+                    id="Rectangle 6"
+                    x="4"
+                    width="241"
+                    height="214"
+                    rx="12"
+                    fill="#3E2782"
+                    fill-opacity="0.73"
+                  />
+                  <g id="Equalizer bar">
+                    <g id="Group 2">
+                      <line
+                        id="Line 1"
+                        x1="64"
+                        y1="41"
+                        x2="64"
+                        y2="173"
+                        stroke="#6B58C2"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        id="ctrl-range-1"
+                        x1="64"
+                        y1="63"
+                        x2="64"
+                        y2="95"
+                        stroke="#FFA665"
+                        stroke-width="8"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                    <g id="Group 3">
+                      <line
+                        id="Line 1_2"
+                        x1="106"
+                        y1="41"
+                        x2="106"
+                        y2="173"
+                        stroke="#6B58C2"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        id="ctrl-range-2"
+                        x1="106"
+                        y1="103"
+                        x2="106"
+                        y2="135"
+                        stroke="#FFA665"
+                        stroke-width="8"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                    <g id="Group 4">
+                      <line
+                        id="Line 1_3"
+                        x1="148"
+                        y1="41"
+                        x2="148"
+                        y2="173"
+                        stroke="#6B58C2"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        id="ctrl-range-3"
+                        x1="148"
+                        y1="78"
+                        x2="148"
+                        y2="110"
+                        stroke="#FFA665"
+                        stroke-width="8"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                    <g id="Group 5">
+                      <line
+                        id="Line 1_4"
+                        x1="190"
+                        y1="41"
+                        x2="190"
+                        y2="173"
+                        stroke="#6B58C2"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        id="ctrl-range-4"
+                        x1="190"
+                        y1="132"
+                        x2="190"
+                        y2="164"
+                        stroke="#FFA665"
+                        stroke-width="8"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                  </g>
+                </g>
+                <g id="music player">
+                  <path
+                    id="Rectangle 4"
+                    d="M54 276C54 269.373 59.3726 264 66 264H514C520.627 264 526 269.373 526 276V602C526 608.627 520.627 614 514 614H66C59.3726 614 54 608.627 54 602V276Z"
+                    fill="#3E2782"
+                    fill-opacity="0.73"
+                  />
+                  <g id="lyrics">
+                    <line
+                      id="wave-line-1"
+                      x1="124.868"
+                      y1="356.677"
+                      x2="124.868"
+                      y2="387.313"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-2"
+                      x1="136.291"
+                      y1="351.781"
+                      x2="136.291"
+                      y2="392.209"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-3"
+                      x1="147.422"
+                      y1="360.315"
+                      x2="147.422"
+                      y2="383.689"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-4"
+                      x1="158.7"
+                      y1="357.496"
+                      x2="158.7"
+                      y2="386.508"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-5"
+                      x1="169.977"
+                      y1="353.267"
+                      x2="169.977"
+                      y2="390.737"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-6"
+                      x1="181.983"
+                      y1="343.622"
+                      x2="181.983"
+                      y2="400.368"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-7"
+                      x1="193.94"
+                      y1="351.858"
+                      x2="193.94"
+                      y2="392.147"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-8"
+                      x1="205.217"
+                      y1="358.906"
+                      x2="205.217"
+                      y2="385.098"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-9"
+                      x1="216.494"
+                      y1="353.267"
+                      x2="216.494"
+                      y2="390.737"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-10"
+                      x1="227.674"
+                      y1="356.677"
+                      x2="227.674"
+                      y2="387.313"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-11"
+                      x1="239.048"
+                      y1="353.267"
+                      x2="239.048"
+                      y2="390.737"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-12"
+                      x1="250.52"
+                      y1="341.99"
+                      x2="250.52"
+                      y2="402"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-13"
+                      x1="261.943"
+                      y1="348.518"
+                      x2="261.943"
+                      y2="395.473"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-14"
+                      x1="273.366"
+                      y1="355.045"
+                      x2="273.366"
+                      y2="388.945"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-15"
+                      x1="284.157"
+                      y1="361.725"
+                      x2="284.157"
+                      y2="382.279"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-16"
+                      x1="296.843"
+                      y1="354.677"
+                      x2="296.843"
+                      y2="389.327"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-17"
+                      x1="308.12"
+                      y1="357.496"
+                      x2="308.12"
+                      y2="386.508"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-18"
+                      x1="319.057"
+                      y1="345.254"
+                      x2="319.057"
+                      y2="398.736"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-19"
+                      x1="330.48"
+                      y1="350.149"
+                      x2="330.48"
+                      y2="393.841"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-20"
+                      x1="341.903"
+                      y1="355.045"
+                      x2="341.903"
+                      y2="388.945"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-21"
+                      x1="353.326"
+                      y1="350.149"
+                      x2="353.326"
+                      y2="393.841"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-22"
+                      x1="364.506"
+                      y1="353.267"
+                      x2="364.506"
+                      y2="390.737"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-23"
+                      x1="375.783"
+                      y1="356.086"
+                      x2="375.783"
+                      y2="387.918"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-24"
+                      x1="387.06"
+                      y1="361.725"
+                      x2="387.06"
+                      y2="382.279"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-25"
+                      x1="398.337"
+                      y1="360.315"
+                      x2="398.337"
+                      y2="383.689"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-26"
+                      x1="410.44"
+                      y1="355.045"
+                      x2="410.44"
+                      y2="388.945"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-27"
+                      x1="421.863"
+                      y1="348.518"
+                      x2="421.863"
+                      y2="395.473"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-28"
+                      x1="433.286"
+                      y1="350.149"
+                      x2="433.286"
+                      y2="393.841"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-29"
+                      x1="444.709"
+                      y1="355.045"
+                      x2="444.709"
+                      y2="388.945"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      id="wave-line-30"
+                      x1="456.132"
+                      y1="361.725"
+                      x2="456.132"
+                      y2="382.279"
+                      stroke="#6B58C2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </g>
+                  <g id="player controls">
+                    <g id="Group 7">
+                      <circle
+                        id="Ellipse 1"
+                        cx="285"
+                        cy="498.632"
+                        r="34"
+                        transform="rotate(-31 285 498.632)"
+                        fill="#FFA665"
+                      />
+                      <path
+                        id="play-btn"
+                        d="M276.304 487.524C276.278 485.985 277.927 484.994 279.274 485.74L298.967 496.656C300.314 497.403 300.347 499.327 299.028 500.12L279.727 511.717C278.407 512.51 276.724 511.577 276.697 510.037L276.304 487.524Z"
+                        fill="#130C28"
+                      />
+                    </g>
+                    <g id="Group 8">
+                      <path
+                        id="Polygon 2"
+                        d="M173.328 500.732C171.994 499.962 171.994 498.038 173.328 497.268L192.828 486.01C194.161 485.24 195.828 486.202 195.828 487.742V510.258C195.828 511.798 194.161 512.76 192.828 511.99L173.328 500.732Z"
+                        fill="#FFA665"
+                        fill-opacity="0.72"
+                      />
+                      <rect
+                        id="Rectangle 12"
+                        x="168"
+                        y="486"
+                        width="4"
+                        height="25"
+                        rx="1"
+                        fill="#FFA665"
+                        fill-opacity="0.72"
+                      />
+                    </g>
+                    <g id="Group 9">
+                      <path
+                        id="Polygon 2_2"
+                        d="M397 500.732C398.333 499.962 398.333 498.038 397 497.268L377.5 486.01C376.167 485.24 374.5 486.202 374.5 487.742V510.258C374.5 511.798 376.167 512.76 377.5 511.99L397 500.732Z"
+                        fill="#FFA665"
+                        fill-opacity="0.72"
+                      />
+                      <rect
+                        id="Rectangle 12_2"
+                        width="4"
+                        height="25"
+                        rx="1"
+                        transform="matrix(-1 0 0 1 402.328 486)"
+                        fill="#FFA665"
+                        fill-opacity="0.72"
+                      />
+                    </g>
+                  </g>
+                </g>
+                <g id="progress card">
+                  <rect
+                    id="Rectangle 2"
+                    x="566"
+                    y="13"
+                    width="264"
+                    height="402"
+                    rx="12"
+                    fill="#3E2782"
+                    fill-opacity="0.73"
+                  />
+                  <g id="progress-bar">
+                    <circle
+                      id="Ellipse 2"
+                      cx="698"
+                      cy="156"
+                      r="89"
+                      fill="#6B58C2"
+                    />
+                    <circle
+                      id="progress-line"
+                      strokeDashoffset="67"
+                      cx="698"
+                      cy="156"
+                      r="81"
+                      stroke="#FFA665"
+                      stroke-width="16"
+                    />
+                    <circle
+                      id="Ellipse 3"
+                      cx="698"
+                      cy="156"
+                      r="73"
+                      fill="#32206A"
+                    />
+                  </g>
+                  <g id="stats contain">
+                    <g id="Group 11">
+                      <circle
+                        id="album-1"
+                        cx="616"
+                        cy="304"
+                        r="7"
+                        fill="#6B58C2"
+                      />
+                      <rect
+                        id="status-1"
+                        x="630"
+                        y="301"
+                        width="157"
+                        height="6"
+                        rx="3"
+                        fill="#FFA665"
+                      />
+                    </g>
+                    <g id="Group 12">
+                      <circle
+                        id="album-2"
+                        cx="616"
+                        cy="324"
+                        r="7"
+                        fill="#6B58C2"
+                      />
+                      <rect
+                        id="status-2"
+                        x="630"
+                        y="321"
+                        width="126"
+                        height="6"
+                        rx="3"
+                        fill="#FFA665"
+                      />
+                    </g>
+                    <g id="Group 13">
+                      <circle
+                        id="album-3"
+                        cx="616"
+                        cy="344"
+                        r="7"
+                        fill="#6B58C2"
+                      />
+                      <rect
+                        id="status-3"
+                        x="630"
+                        y="341"
+                        width="115"
+                        height="6"
+                        rx="3"
+                        fill="#FFA665"
+                      />
+                    </g>
+                    <g id="Group 14">
+                      <ellipse
+                        id="album-4"
+                        cx="615.371"
+                        cy="364"
+                        rx="6.37079"
+                        ry="7"
+                        fill="#6B58C2"
+                      />
+                      <rect
+                        id="status-4"
+                        x="628"
+                        y="361"
+                        width="143"
+                        height="6"
+                        rx="3"
+                        fill="#FFA665"
+                      />
+                    </g>
+                  </g>
+                </g>
+                <g id="music card">
+                  <rect
+                    id="Rectangle 1"
+                    x="285"
+                    y="43"
+                    width="241"
+                    height="171"
+                    rx="12"
+                    fill="#3E2782"
+                    fill-opacity="0.73"
+                  />
+                  <g id="music" clip-path="url(#clip0)">
+                    <path
+                      id="Vector"
+                      d="M432.716 96.1923L392.095 108.188C391.27 108.447 390.55 108.962 390.038 109.659C389.527 110.356 389.251 111.197 389.25 112.061V145.248C387.92 144.925 386.556 144.758 385.188 144.751C378.459 144.751 373 148.389 373 152.876C373 157.362 378.459 161.001 385.188 161.001C391.916 161.001 397.375 157.362 397.375 152.876V123.209L429.875 113.688V137.125C428.545 136.801 427.181 136.633 425.812 136.626C419.084 136.626 413.625 140.264 413.625 144.751C413.625 149.237 419.084 152.876 425.812 152.876C432.541 152.876 438 149.238 438 144.751V100.063C437.999 99.4254 437.849 98.7967 437.56 98.228C437.271 97.6594 436.853 97.1666 436.338 96.7897C435.824 96.4128 435.228 96.1624 434.599 96.0586C433.969 95.9548 433.324 96.0006 432.716 96.1923Z"
+                      fill="#FFA665"
+                    />
+                  </g>
+                </g>
+                <g id="headphone card">
+                  <rect
+                    id="Rectangle 5"
+                    x="566"
+                    y="465"
+                    width="264"
+                    height="182"
+                    rx="12"
+                    fill="#3E2782"
+                    fill-opacity="0.73"
+                  />
+                  <g id="headphones-alt">
+                    <path
+                      id="Vector_2"
+                      d="M683.688 561.438H681.219C675.764 561.438 671.344 565.866 671.344 571.331V581.169C671.344 586.633 675.764 591.062 681.219 591.062H683.688C686.414 591.062 688.625 588.847 688.625 586.116V566.384C688.625 563.652 686.414 561.438 683.688 561.438ZM715.781 561.438H713.312C710.586 561.438 708.375 563.652 708.375 566.384V586.116C708.375 588.847 710.586 591.062 713.312 591.062H715.781C721.236 591.062 725.656 586.633 725.656 581.169V571.331C725.656 565.867 721.236 561.438 715.781 561.438ZM698.5 521.938C676.422 521.938 659.705 540.319 659 561.438V578.719C659 580.083 660.105 581.188 661.469 581.188H663.938C665.301 581.188 666.406 580.083 666.406 578.719V561.438C666.406 543.744 680.807 529.375 698.5 529.372C716.193 529.375 730.594 543.744 730.594 561.438V578.719C730.594 580.083 731.699 581.188 733.062 581.188H735.531C736.895 581.188 738 580.083 738 578.719V561.438C737.295 540.319 720.578 521.938 698.5 521.938Z"
+                      fill="#FFA665"
+                    />
+                  </g>
+                </g>
+              </g>
+              <defs>
+                <clipPath id="clip0">
+                  <rect
+                    width="65"
+                    height="65"
+                    fill="white"
+                    transform="translate(373 96)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
           </div>
         </section>
         <section className="section top-ten-section py-1 mb-10">
