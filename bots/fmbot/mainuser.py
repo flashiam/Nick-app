@@ -1,4 +1,6 @@
 from .models import *
+
+r               gfnt
 class MainUser(models.Model):
     TYPES = (
         ("Influencer", "Influencer"),

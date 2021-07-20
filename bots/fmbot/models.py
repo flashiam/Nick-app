@@ -40,15 +40,12 @@ class Songs(models.Model):
     mix = models.ManyToManyField(to=SongMix)
     createdOn = models.DateTimeField(auto_created=True, auto_now=True)
 
-
     @classmethod
     def on_create(cls, created, instance, *args, **kwargs):
         if not created:
             return
         else:
             return
-
-
 
 
 
