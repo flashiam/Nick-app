@@ -1,6 +1,6 @@
 from .models import *
 
-r               gfnt
+
 class MainUser(models.Model):
     TYPES = (
         ("Influencer", "Influencer"),
@@ -24,7 +24,7 @@ class MainUser(models.Model):
             cipher_suite = Fernet(key)
 
             if cls.userType is "Influencer":
-                influence = Influence.object.create(
+                influence = Influence.objects.create(
                     user=cls,
                     spotifyToken="",
                     appleToken="",

@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from .definations import *
 from fernet import Fernet
 from .mainuser import MainUser
-from .config import graphical
+
 
 # Create your models here.
 
@@ -46,7 +46,6 @@ class Songs(models.Model):
             return
         else:
             return
-
 
 
 class SuperAdmin(models.Model):

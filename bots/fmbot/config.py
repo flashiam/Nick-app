@@ -1,6 +1,0 @@
-from neo4j import GraphDatabase
-
-
-def graphical():
-    connect = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "specsoid"))
-    return connect
