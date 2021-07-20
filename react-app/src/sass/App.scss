@@ -649,6 +649,24 @@
           padding-top: 0.6rem;
         }
 
+        .initial-showcase {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background: $secondary-color;
+          z-index: 4;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.3s ease;
+
+          &.hide-showcase {
+            transform: translateY(-100%);
+          }
+        }
+
         .select-songs-contain {
           position: absolute;
           top: 0;
@@ -752,6 +770,21 @@
           .points {
             padding-left: 0.6rem;
             font-weight: bold;
+          }
+        }
+
+        .add-song-btn {
+          display: flex;
+          align-items: center;
+          padding: 0.6rem 0.8rem;
+          margin-top: 0.8rem;
+
+          i {
+            font-size: 1rem;
+          }
+          .lead-2 {
+            font-size: 0.9rem;
+            padding-left: 0.6rem;
           }
         }
 

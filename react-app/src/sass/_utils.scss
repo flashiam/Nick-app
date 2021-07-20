@@ -179,8 +179,8 @@ img {
   }
 
   &-disabled {
-    background: $semi-med-color;
-    color: darken($semi-med-color, 10%);
+    background: $med-color;
+    color: darken($med-color, 10%);
     cursor: auto;
   }
 
@@ -532,6 +532,14 @@ img {
   &-6 {
     margin-right: 3.5rem;
   }
+}
+
+.apply-font {
+  font-family: $primary-font;
+}
+
+.inline {
+  display: inline-block;
 }
 
 .song-card {

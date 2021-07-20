@@ -30,7 +30,10 @@ const Influencer = () => {
   const modalBackdrop = useRef<HTMLDivElement>(null);
 
   const [modalOpen, setModal] = useState<boolean>(false);
-  const [songOptions] = useState<Song[]>([
+  const [addSong, ctrlSong] = useState<boolean>(false);
+  const [selectAll, setSelection] = useState<boolean>(false);
+
+  const [songOptions, setSongOptions] = useState<Song[]>([
     {
       id: 1,
       songImg: attention,
@@ -130,9 +133,51 @@ const Influencer = () => {
     }
   };
 
+  // Function to select all songs
+  const selectAllSongs = () => {
+    let songs = songOptions;
+    songs = songs.map(song => ({ ...song, isChecked: true }));
+    setSongOptions(songs);
+  };
+
   useEffect(() => {
     ctrlOverflow();
   }, [modalOpen]);
+
+  // Song item component
+  const SongItem = ({ song }: { song: Song }) => {
+    const [songChecked, setChecked] = useState<boolean>(true);
+
+    useEffect(() => {
+      selectAll ? setChecked(true) : setChecked(false);
+    }, [selectAll]);
+
+    return (
+      <div key={song.id} className="song-item bg-purple">
+        <div className="checkbox-contain">
+          <input
+            type="checkbox"
+            className="checkbox-input"
+            checked={songChecked}
+            onChange={() => {
+              setChecked(prev => !prev);
+              setSelection(false);
+            }}
+          />
+          <div className="song-checkbox">
+            <i className="material-icons">done</i>
+          </div>
+        </div>
+        <div className="song-img-contain">
+          <img src={song.songImg} alt="" className="song-img" />
+        </div>
+        <div className="song-desc">
+          <h5 className="head-5">{song.songName}</h5>
+          <p className="lead-2 med">{song.singerName}</p>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <main className="influencer-page">
@@ -323,6 +368,13 @@ const Influencer = () => {
                   <span className="points">56</span>
                 </div>
               </div>
+              <button
+                className="btn btn-secondary add-song-btn"
+                onClick={() => ctrlSong(true)}
+              >
+                <i className="material-icons">add</i>
+                <p className="lead-2 inline">Add Songs</p>
+              </button>
             </div>
             <div className="btn-grp">
               <button
@@ -331,39 +383,28 @@ const Influencer = () => {
               >
                 Cancel
               </button>
-              <button className="btn btn-secondary">Promote</button>
+              <button className="btn btn-disabled">Promote</button>
             </div>
           </div>
           <div className="modal-showcase">
-            <i className="material-icons primary">campaign</i>
+            {/* Select song box */}
             <div className="select-songs-contain">
               <h4 className="head-4">Select songs to promote</h4>
-              <button className="btn btn-transparent secondary">
-                Select all
+              <button
+                className="btn btn-transparent secondary"
+                onClick={() => setSelection(prev => !prev)}
+              >
+                {selectAll ? "Unselect all" : "Select all"}
               </button>
               <div className="song-list-contain">
                 {songOptions.map(song => (
-                  <div key={song.id} className="song-item bg-purple">
-                    <div className="checkbox-contain">
-                      <input
-                        type="checkbox"
-                        className="checkbox-input"
-                        checked={song.isChecked}
-                      />
-                      <div className="song-checkbox">
-                        <i className="material-icons">done</i>
-                      </div>
-                    </div>
-                    <div className="song-img-contain">
-                      <img src={song.songImg} alt="" className="song-img" />
-                    </div>
-                    <div className="song-desc">
-                      <h5 className="head-5">{song.songName}</h5>
-                      <p className="lead-2 med">{song.singerName}</p>
-                    </div>
-                  </div>
+                  <SongItem key={song.id} song={song} />
                 ))}
               </div>
+            </div>
+            {/* Initial showcase */}
+            <div className={`initial-showcase ${addSong && "hide-showcase"}`}>
+              <i className="material-icons primary">campaign</i>
             </div>
           </div>
         </div>
