@@ -733,8 +733,9 @@ img {
       left: 0;
       height: 100%;
       width: 100%;
-      background: rgba($secondary-color, 0.9);
-      color: $primary-color;
+      background: lighten($dark-purple-color, 5%);
+      // background: rgba($secondary-color, 0.9);
+      color: $semi-med-color;
       opacity: 0;
       border-radius: 8px;
       transform: translate(0, 0);
@@ -748,12 +749,35 @@ img {
         display: flex;
         flex-direction: column;
         align-items: center;
-        color: $primary-color;
+        color: $semi-med-color;
         margin-bottom: 0.6rem;
 
         .stat-count {
           font-weight: 600;
           font-size: 2.2rem;
+        }
+
+        .listen-contain {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .lead-2 {
+            color: $semi-med-color;
+            padding-bottom: 0.6rem;
+          }
+
+          .listen-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            grid-gap: 0.6rem;
+            .listen-img {
+              height: 2.5rem;
+              width: 2.5rem;
+            }
+          }
         }
       }
     }

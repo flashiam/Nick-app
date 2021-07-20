@@ -299,4 +299,25 @@
       }
     }
   }
+
+  .influencer-list-page {
+    .songs-header {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .layout-ctrl-contain {
+        .layout-btn {
+          padding: 0.4rem 0.8rem;
+        }
+      }
+    }
+    .songs-section {
+      .songs-contain {
+        &.grid-view {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+  }
 }

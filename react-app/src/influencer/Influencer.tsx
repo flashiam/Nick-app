@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import albumArt from "../img/recom_song_2.jpg";
 import spotifyLogo from "../img/Spotify_Logo_Green.png";
 import appleMusic from "../img/apple-music-2.png";
@@ -179,9 +180,9 @@ const Influencer = () => {
       <section className="songs-section container">
         <div className="songs-header">
           <h2 className="head-2 pb-1">Your curated lists of songs</h2>
-          <a href="#" className="more-btn secondary">
+          <Link to="/influencer/songs" className="more-btn secondary">
             More
-          </a>
+          </Link>
         </div>
         <div className="songs-contain">
           <Carousel responsive={responsive} swipeable draggable>
