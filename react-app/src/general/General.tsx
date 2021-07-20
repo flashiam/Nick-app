@@ -1,8 +1,5 @@
-import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import albumArt from "../img/recom_song_1.jpg";
-import spotifyLogo from "../img/Spotify_Logo_Green.png";
-import appleMusic from "../img/apple-music-2.png";
 import spotifyIcon from "../img/Spotify_Icon_Green.png";
 import artistImg from "../img/charlie-puth.png";
 
@@ -23,12 +20,6 @@ const Influencer = () => {
       partialVisibilityGutter: 15,
     },
   };
-
-  const modalBackdrop = useRef<HTMLDivElement>(null);
-  const toggler = useRef<HTMLInputElement>(null);
-
-  const [modalOpen, setModal] = useState<boolean>(false);
-  const [openPopover, setPopover] = useState<boolean>(false);
 
   return (
     <main className="general-page">
@@ -68,7 +59,7 @@ const Influencer = () => {
         <div className="albums-contain">
           <Carousel responsive={responsive}>
             {[1, 2, 3, 4, 5].map(num => (
-              <div key={num} className="album-item">
+              <div key={num} className="album-item mt-1">
                 <div className="item-img">
                   <img src={albumArt} alt="" className="album-img" />
                   <div className="item-stats">

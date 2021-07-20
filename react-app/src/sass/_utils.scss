@@ -16,6 +16,30 @@ body {
   line-height: 1.4;
 }
 
+// Scrollbar
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $primary-color;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $purple-color;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: lighten($purple-color, 5%);
+}
+
 a {
   text-decoration: none;
 }
@@ -733,7 +757,7 @@ img {
       left: 0;
       height: 100%;
       width: 100%;
-      background: lighten($dark-purple-color, 5%);
+      background: rgba($dark-purple-color, 0.9);
       // background: rgba($secondary-color, 0.9);
       color: $semi-med-color;
       opacity: 0;

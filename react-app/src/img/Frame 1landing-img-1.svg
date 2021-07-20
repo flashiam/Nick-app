@@ -74,25 +74,25 @@
 <rect id="Rectangle 2" x="566" y="13" width="264" height="402" rx="12" fill="#3E2782" fill-opacity="0.73"/>
 <g id="progress-bar">
 <circle id="Ellipse 2" cx="698" cy="156" r="89" fill="#6B58C2"/>
-<circle id="progress-line" cx="698" cy="156" r="81" stroke="#FFA665" stroke-width="16"/>
+<path id="progress-line" d="M779 156.223C778.879 200.855 742.661 237 698 237C653.265 237 617 200.735 617 156C617 111.265 653.265 75 698 75C710.611 75 730.127 79.0778 746.777 91.2569C763.056 103.165 777.083 123.146 779 156.223Z" stroke="#FFA665" stroke-width="16"/>
 <circle id="Ellipse 3" cx="698" cy="156" r="73" fill="#32206A"/>
 </g>
 <g id="stats contain">
 <g id="Group 11">
 <circle id="album-1" cx="616" cy="304" r="7" fill="#6B58C2"/>
-<rect id="status-1" x="630" y="301" width="157" height="6" rx="3" fill="#FFA665"/>
+<rect id="status-1" x="630" y="301" width="9" height="6" rx="3" fill="#FFA665"/>
 </g>
 <g id="Group 12">
 <circle id="album-2" cx="616" cy="324" r="7" fill="#6B58C2"/>
-<rect id="status-2" x="630" y="321" width="126" height="6" rx="3" fill="#FFA665"/>
+<rect id="status-2" x="630" y="321" width="9" height="6" rx="3" fill="#FFA665"/>
 </g>
 <g id="Group 13">
 <circle id="album-3" cx="616" cy="344" r="7" fill="#6B58C2"/>
-<rect id="status-3" x="630" y="341" width="115" height="6" rx="3" fill="#FFA665"/>
+<rect id="status-3" x="630" y="341" width="9" height="6" rx="3" fill="#FFA665"/>
 </g>
 <g id="Group 14">
-<ellipse id="album-4" cx="615.371" cy="364" rx="6.37079" ry="7" fill="#6B58C2"/>
-<rect id="status-4" x="628" y="361" width="143" height="6" rx="3" fill="#FFA665"/>
+<circle id="album-3_2" cx="616" cy="364" r="7" fill="#6B58C2"/>
+<rect id="status-3_2" x="630" y="361" width="9" height="6" rx="3" fill="#FFA665"/>
 </g>
 </g>
 </g>

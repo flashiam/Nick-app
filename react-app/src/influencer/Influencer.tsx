@@ -1,10 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Carousel from "react-multi-carousel";
+
 import albumArt from "../img/recom_song_2.jpg";
 import spotifyLogo from "../img/Spotify_Logo_Green.png";
 import appleMusic from "../img/apple-music-2.png";
+import attention from "../img/attention.png";
+import havana from "../img/havana.png";
+import shape from "../img/shape.png";
 
-import Carousel from "react-multi-carousel";
+import { Song } from "../types";
 
 const Influencer = () => {
   const history = window.history;
@@ -25,6 +30,88 @@ const Influencer = () => {
   const modalBackdrop = useRef<HTMLDivElement>(null);
 
   const [modalOpen, setModal] = useState<boolean>(false);
+  const [songOptions] = useState<Song[]>([
+    {
+      id: 1,
+      songImg: attention,
+      songName: "Attention",
+      singerName: "Charlie Puth",
+      creationDate: "12/02/2021",
+      isPromoted: false,
+      platform: "Spotify",
+      isChecked: false,
+    },
+    {
+      id: 2,
+      songImg: havana,
+      songName: "Havana",
+      singerName: "Camila Cabello",
+      creationDate: "12/02/2021",
+      isPromoted: false,
+      platform: "Apple music",
+      isChecked: false,
+    },
+    {
+      id: 3,
+      songImg: shape,
+      songName: "Shape of you",
+      singerName: "Ed Sheeren",
+      creationDate: "12/02/2021",
+      isPromoted: false,
+      platform: "Spotify",
+      isChecked: false,
+    },
+    {
+      id: 4,
+      songImg: attention,
+      songName: "Attention",
+      singerName: "Charlie Puth",
+      creationDate: "12/02/2021",
+      isPromoted: false,
+      platform: "Spotify",
+      isChecked: false,
+    },
+    {
+      id: 5,
+      songImg: havana,
+      songName: "Havana",
+      singerName: "Camila Cabello",
+      creationDate: "12/02/2021",
+      isPromoted: false,
+      platform: "Apple music",
+      isChecked: false,
+    },
+    {
+      id: 6,
+      songImg: shape,
+      songName: "Shape of you",
+      singerName: "Ed Sheeren",
+      creationDate: "12/02/2021",
+      isPromoted: false,
+      platform: "Spotify",
+      isChecked: false,
+    },
+    {
+      id: 7,
+      songImg: shape,
+      songName: "Shape of you",
+      singerName: "Ed Sheeren",
+      creationDate: "12/02/2021",
+      isPromoted: false,
+      platform: "Spotify",
+      isChecked: false,
+    },
+    {
+      id: 8,
+      songImg: shape,
+      songName: "Shape of you",
+      singerName: "Ed Sheeren",
+      creationDate: "12/02/2021",
+      isPromoted: false,
+      platform: "Spotify",
+      isChecked: false,
+    },
+  ]);
 
   const ctrlOverflow = () => {
     if (modalOpen) {
@@ -149,7 +236,7 @@ const Influencer = () => {
           <div className="albums-contain">
             <Carousel responsive={responsive} swipeable draggable>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                <div key={num} className="album-item">
+                <div key={num} className="album-item mt-1">
                   <div className="item-img">
                     <img src={albumArt} alt="" className="album-img" />
                     <div className="item-stats">
@@ -247,8 +334,37 @@ const Influencer = () => {
               <button className="btn btn-secondary">Promote</button>
             </div>
           </div>
-          <div className="modal-showcase bg-light">
+          <div className="modal-showcase">
             <i className="material-icons primary">campaign</i>
+            <div className="select-songs-contain">
+              <h4 className="head-4">Select songs to promote</h4>
+              <button className="btn btn-transparent secondary">
+                Select all
+              </button>
+              <div className="song-list-contain">
+                {songOptions.map(song => (
+                  <div key={song.id} className="song-item bg-purple">
+                    <div className="checkbox-contain">
+                      <input
+                        type="checkbox"
+                        className="checkbox-input"
+                        checked={song.isChecked}
+                      />
+                      <div className="song-checkbox">
+                        <i className="material-icons">done</i>
+                      </div>
+                    </div>
+                    <div className="song-img-contain">
+                      <img src={song.songImg} alt="" className="song-img" />
+                    </div>
+                    <div className="song-desc">
+                      <h5 className="head-5">{song.songName}</h5>
+                      <p className="lead-2 med">{song.singerName}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

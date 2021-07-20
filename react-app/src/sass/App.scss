@@ -626,8 +626,10 @@
       }
 
       .modal-showcase {
+        position: relative;
         width: 40%;
         display: flex;
+        overflow: hidden;
         align-items: center;
         justify-content: center;
         background-color: $secondary-color;
@@ -636,6 +638,103 @@
 
         i {
           font-size: 5rem;
+        }
+
+        .btn-transparent {
+          padding: 0;
+          margin: 0;
+          color: $secondary-color;
+          font-family: $primary-font;
+          font-size: 0.9rem;
+          padding-top: 0.6rem;
+        }
+
+        .select-songs-contain {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          overflow: auto;
+          width: 100%;
+          background-color: darken($dark-color, 5%);
+          padding: 0.6rem 1rem;
+
+          .song-list-contain {
+            margin-top: 2rem;
+            .song-item {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              background-color: lighten($dark-color, 5%);
+              border-radius: 8px;
+              margin-bottom: 0.6rem;
+              padding: 0.3rem 1rem;
+
+              .checkbox-contain {
+                position: relative;
+                height: 1rem;
+                width: 1rem;
+
+                .song-checkbox {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  height: 100%;
+                  width: 100%;
+                  background-color: $semi-med-color;
+                  border: 1px solid darken($semi-med-color, 3%);
+                  border-radius: 3px;
+                  color: $primary-color;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+
+                  i {
+                    display: none;
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                  }
+                }
+
+                .checkbox-input {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  height: 100%;
+                  width: 100%;
+                  z-index: 2;
+                  opacity: 0;
+
+                  &:checked ~ .song-checkbox {
+                    background-color: $secondary-color;
+                    border-color: darken($secondary-color, 5%);
+
+                    i {
+                      display: block;
+                    }
+                  }
+                }
+              }
+
+              .song-img-contain {
+                height: 3rem;
+                width: 3rem;
+                border-radius: 4px;
+                margin-left: 1rem;
+              }
+
+              .song-desc {
+                margin-left: 0.6rem;
+                .head-5 {
+                  font-size: 1rem;
+                }
+
+                .lead-2 {
+                  font-size: 0.8rem;
+                }
+              }
+            }
+          }
         }
       }
 

@@ -115,6 +115,8 @@ const Home = () => {
       duration: 250,
     });
 
+    // const progressTime = anime.timeline
+
     // anime({
     //   targets: "#progress-line",
     //   d: [
@@ -165,11 +167,30 @@ const Home = () => {
         },
         "-=100"
       )
+
+      .add(
+        {
+          targets: "#ctrl-range-3",
+          translateY: 35,
+        },
+        "-=150"
+      )
       .add({
-        targets: "#ctrl-range-3",
-        translateY: 35,
+        targets: "#status-1",
+        width: 157,
       })
-      .add({});
+      .add({
+        targets: "#status-2",
+        width: 126,
+      })
+      .add({
+        targets: "#status-3",
+        width: 115,
+      })
+      .add({
+        targets: "#status-3_2",
+        width: 143,
+      });
   };
 
   useEffect(() => {
@@ -681,12 +702,9 @@ const Home = () => {
                       r="89"
                       fill="#6B58C2"
                     />
-                    <circle
+                    <path
                       id="progress-line"
-                      strokeDashoffset="67"
-                      cx="698"
-                      cy="156"
-                      r="81"
+                      d="M779 156.223C778.879 200.855 742.661 237 698 237C653.265 237 617 200.735 617 156C617 111.265 653.265 75 698 75C710.611 75 730.127 79.0778 746.777 91.2569C763.056 103.165 777.083 123.146 779 156.223Z"
                       stroke="#FFA665"
                       stroke-width="16"
                     />
@@ -711,7 +729,7 @@ const Home = () => {
                         id="status-1"
                         x="630"
                         y="301"
-                        width="157"
+                        width="9"
                         height="6"
                         rx="3"
                         fill="#FFA665"
@@ -729,7 +747,7 @@ const Home = () => {
                         id="status-2"
                         x="630"
                         y="321"
-                        width="126"
+                        width="9"
                         height="6"
                         rx="3"
                         fill="#FFA665"
@@ -747,26 +765,25 @@ const Home = () => {
                         id="status-3"
                         x="630"
                         y="341"
-                        width="115"
+                        width="9"
                         height="6"
                         rx="3"
                         fill="#FFA665"
                       />
                     </g>
                     <g id="Group 14">
-                      <ellipse
-                        id="album-4"
-                        cx="615.371"
+                      <circle
+                        id="album-3_2"
+                        cx="616"
                         cy="364"
-                        rx="6.37079"
-                        ry="7"
+                        r="7"
                         fill="#6B58C2"
                       />
                       <rect
-                        id="status-4"
-                        x="628"
+                        id="status-3_2"
+                        x="630"
                         y="361"
-                        width="143"
+                        width="9"
                         height="6"
                         rx="3"
                         fill="#FFA665"

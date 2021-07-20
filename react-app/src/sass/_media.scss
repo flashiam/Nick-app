@@ -230,6 +230,28 @@
     }
   }
 
+  // .general-page {
+  .general-page {
+    .top-header {
+      .landing-section {
+        .typo-contain {
+          width: 50%;
+          .typo {
+            font-size: 1.5rem;
+          }
+
+          .btn {
+            padding: 0.6rem;
+
+            .lead-2 {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
   // Influencer
   .influencer-page {
     .top-header {
