@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+
 import musicLogo from "../img/music-logo.png";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+  const [loginModal, setLoginModal] = useState(false)
+
   return (
     <nav className="navbar py-1 container">
       <Link to="/" className="logo-contain">
@@ -33,8 +37,10 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="nav-btn-grp">
-          <Link to="#" className="btn btn-secondary-stroked">
+          <Link to="#" className="btn btn-secondary-stroked" onClick={()=>{setLoginModal(true)}}>
+            
             Register
+         
           </Link>
           <Link to="#" className="btn btn-transparent">
             Login
