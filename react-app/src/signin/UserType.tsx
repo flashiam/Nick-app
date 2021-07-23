@@ -3,9 +3,10 @@ import { Player } from "@lottiefiles/react-lottie-player";
 
 type Props = {
   submitUserType: Function;
+  changeFlow: Function;
 };
 
-const UserType = ({ submitUserType }: Props) => {
+const UserType = ({ submitUserType, changeFlow }: Props) => {
   const generalLottie =
     "https://assets3.lottiefiles.com/packages/lf20_ejs1jvp2.json";
   const influencerLottie =
@@ -20,6 +21,12 @@ const UserType = ({ submitUserType }: Props) => {
   const switchUserType = (type: string) => {
     setUserType(type);
     type === "general" ? setLottie(generalLottie) : setLottie(influencerLottie);
+  };
+
+  // Function to save the user type
+  const saveUserType = () => {
+    submitUserType(userType);
+    changeFlow("appSignIn");
   };
 
   return (
@@ -51,7 +58,7 @@ const UserType = ({ submitUserType }: Props) => {
           <a
             href="#"
             className="btn btn-primary next-btn"
-            onClick={() => submitUserType(userType)}
+            onClick={() => saveUserType()}
           >
             Next
           </a>

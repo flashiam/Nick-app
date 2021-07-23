@@ -342,4 +342,17 @@
       }
     }
   }
+
+  #sign-in-root {
+    .sign-in-form {
+      width: 90%;
+      .sign-in-showcase {
+        display: none;
+      }
+
+      .sign-in-content {
+        width: 100%;
+      }
+    }
+  }
 }

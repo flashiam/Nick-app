@@ -36,6 +36,11 @@ const SignInRoot = () => {
     });
   };
 
+  // Function to change the sign in flow
+  const changeFlow = (flow: string) => {
+    setCurrentFlow(flow);
+  };
+
   // Function to switch signin flow
   // const switchFlow = () => {
   //   switch(currentFlow) {
@@ -48,10 +53,11 @@ const SignInRoot = () => {
   }, [userDetails]);
 
   return (
-    <main className="sign-in-root">
+    <main id="sign-in-root">
       {currentFlow === "typeOfUser" && (
-        <UserType submitUserType={submitUserType} />
+        <UserType submitUserType={submitUserType} changeFlow={changeFlow} />
       )}
+      {currentFlow === "appSignIn" && <SignInForm />}
     </main>
   );
 };
