@@ -23,3 +23,15 @@ export interface Song {
   platform: string;
   isChecked: boolean;
 }
+
+export interface User {
+  name: string;
+  email: string;
+  type: string;
+}
+
+export interface SignInFlow {
+  typeOfUser: boolean;
+  appSignIn: boolean;
+  discordSignIn: boolean;
+}

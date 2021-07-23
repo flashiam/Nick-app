@@ -32,6 +32,9 @@ const Influencer = () => {
   const [modalOpen, setModal] = useState<boolean>(false);
   const [addSong, ctrlSong] = useState<boolean>(false);
   const [selectAll, setSelection] = useState<boolean>(false);
+  const [selectedSongs, setSelectedSongs] = useState<Song[]>([]);
+
+  // let selectedSongs: Song[] = [];
 
   const [songOptions, setSongOptions] = useState<Song[]>([
     {
@@ -134,11 +137,11 @@ const Influencer = () => {
   };
 
   // Function to select all songs
-  const selectAllSongs = () => {
-    let songs = songOptions;
-    songs = songs.map(song => ({ ...song, isChecked: true }));
-    setSongOptions(songs);
-  };
+  // const selectAllSongs = () => {
+  //   let songs = songOptions;
+  //   songs = songs.map(song => ({ ...song, isChecked: true }));
+  //   setSongOptions(songs);
+  // };
 
   useEffect(() => {
     ctrlOverflow();
@@ -148,8 +151,38 @@ const Influencer = () => {
   const SongItem = ({ song }: { song: Song }) => {
     const [songChecked, setChecked] = useState<boolean>(true);
 
-    useEffect(() => {
+    // Function to add/remove the songs
+    const updateSongs = () => {
+      // songChecked ? addItem(song) : removeItem(song.id);
+      songChecked ? addItem(song) : removeItem(song.id);
+    };
+
+    // Function to execute checkbox when checkbox get changed
+    const checkChanged = () => {
+      setChecked(prev => !prev);
+      setSelection(false);
+      updateSongs();
+    };
+
+    // Function to add item to selection
+    const addItem = (songItem: Song) => {
+      setSelectedSongs([...selectedSongs, songItem]);
+    };
+
+    // Function to remove item from selection
+    const removeItem = (id: number) => {
+      let songs = selectedSongs;
+      songs = songs.filter(song => song.id !== id);
+      setSelectedSongs(songs);
+    };
+
+    // Function to select all songs
+    const selectAllSongs = () => {
       selectAll ? setChecked(true) : setChecked(false);
+    };
+
+    useEffect(() => {
+      selectAllSongs();
     }, [selectAll]);
 
     return (
@@ -159,10 +192,7 @@ const Influencer = () => {
             type="checkbox"
             className="checkbox-input"
             checked={songChecked}
-            onChange={() => {
-              setChecked(prev => !prev);
-              setSelection(false);
-            }}
+            onChange={checkChanged}
           />
           <div className="song-checkbox">
             <i className="material-icons">done</i>
@@ -367,6 +397,12 @@ const Influencer = () => {
                   <p className="lead-2">Giveaway points</p>
                   <span className="points">56</span>
                 </div>
+                {/* Testing purpose */}
+                {selectedSongs.map(song => (
+                  <p key={song.id} className="lead-2">
+                    {song.songName}
+                  </p>
+                ))}
               </div>
               <button
                 className="btn btn-secondary add-song-btn"
