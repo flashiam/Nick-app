@@ -1,6 +1,11 @@
 import signInArt from "../img/sign-in-art.svg";
+import googleLogo from "../img/google.svg";
 
-const SignInForm = () => {
+type Props = {
+  changeFlow: Function;
+};
+
+const SignInForm = ({ changeFlow }: Props) => {
   return (
     <main className="sign-in-form bg-semi-med">
       <div className="sign-in-showcase bg-purple">
@@ -31,6 +36,10 @@ const SignInForm = () => {
             type="submit"
             value="Verify"
             className="btn btn-purple submit-btn"
+            onClick={e => {
+              changeFlow("discordSignIn");
+              e.preventDefault();
+            }}
           />
         </div>
         <label className="or-label med">OR</label>
@@ -39,7 +48,7 @@ const SignInForm = () => {
           <p className="lead-2 semi-med">Sign in with facebook</p>
         </button>
         <button className="btn google-btn auth-btn">
-          <i className="fa fa-google purple" />
+          <img src={googleLogo} alt="" className="google-logo" />
           <p className="lead-2">Sign in with google</p>
         </button>
       </div>

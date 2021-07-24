@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import UserType from "./UserType";
 import SignInForm from "./SignInForm";
+import SignInDiscord from "./SignInDiscord";
 
 import { User, SignInFlow } from "../types";
 
@@ -48,16 +49,13 @@ const SignInRoot = () => {
   //   }
   // }
 
-  useEffect(() => {
-    console.log(userDetails);
-  }, [userDetails]);
-
   return (
     <main id="sign-in-root">
       {currentFlow === "typeOfUser" && (
         <UserType submitUserType={submitUserType} changeFlow={changeFlow} />
       )}
-      {currentFlow === "appSignIn" && <SignInForm />}
+      {currentFlow === "appSignIn" && <SignInForm changeFlow={changeFlow} />}
+      {currentFlow === "discordSignIn" && <SignInDiscord />}
     </main>
   );
 };

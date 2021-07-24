@@ -57,7 +57,7 @@ const UserType = ({ submitUserType, changeFlow }: Props) => {
         <div className="bottom-content">
           <a
             href="#"
-            className="btn btn-primary next-btn"
+            className="btn btn-purple next-btn"
             onClick={() => saveUserType()}
           >
             Next

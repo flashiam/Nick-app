@@ -344,6 +344,28 @@
   }
 
   #sign-in-root {
+    .user-type-contain {
+      width: 90%;
+
+      .user-type-showcase {
+        height: 40vh;
+        .animated-showcase {
+          height: 40vh;
+        }
+      }
+
+      .user-type-content {
+        .head-3 {
+          text-align: center;
+          padding-bottom: 0.6rem;
+        }
+
+        .type-btn-grp {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
     .sign-in-form {
       width: 90%;
       .sign-in-showcase {
@@ -352,6 +374,14 @@
 
       .sign-in-content {
         width: 100%;
+      }
+    }
+
+    .sign-in-discord {
+      width: 90%;
+
+      .head-3 {
+        font-size: 1.2rem;
       }
     }
   }

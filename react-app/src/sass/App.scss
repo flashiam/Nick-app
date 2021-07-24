@@ -1070,7 +1070,6 @@
 
       .animated-showcase {
         height: 50vh;
-        // width: ;
       }
     }
 
@@ -1081,6 +1080,12 @@
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
 
+      .head-3 {
+        text-align: center;
+        font-weight: 600;
+        padding-bottom: 0.6rem;
+      }
+
       .type-btn-grp {
         display: flex;
         justify-content: center;
@@ -1088,6 +1093,7 @@
 
         .btn {
           font-weight: 600;
+          font-family: $primary-font;
           &.btn-secondary {
             color: $light-color;
 
@@ -1178,6 +1184,7 @@
         width: 100%;
         padding: 0.8rem 1rem;
         margin-bottom: 0.6rem;
+        font-family: $primary-font;
 
         i {
           position: absolute;
@@ -1194,7 +1201,49 @@
         &.google-btn {
           border: 1px solid lighten($med-color, 18%);
           background: $light-color;
+
+          .google-logo {
+            position: absolute;
+            height: 1.3rem;
+            width: 1.3rem;
+            left: 1rem;
+            top: 0.8rem;
+          }
         }
+      }
+    }
+  }
+
+  .sign-in-discord {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    height: 70%;
+    width: 30%;
+    border-radius: 8px;
+    .inner-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      .discord-logo {
+        height: 5rem;
+        width: 5rem;
+      }
+
+      .head-3 {
+        text-align: center;
+        padding: 2rem 0 5rem 0;
+        font-weight: 600;
+      }
+
+      .discord-btn {
+        background: #8c9eff;
+        color: $light-color;
+        width: 100%;
+        text-align: center;
       }
     }
   }
