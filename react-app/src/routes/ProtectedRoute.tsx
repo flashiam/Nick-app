@@ -5,28 +5,26 @@ import { connect } from "react-redux";
 import Navbar from "../layouts/Navbar";
 import NavbarMobo from "../layouts/NavbarMobo";
 
-const PrivateRoute = (props: any) => {
+const ProtectedRoute = (props: any) => {
   const [loggedIn] = useState<boolean>(true);
   const { isLoggedIn, authToken } = props.auth;
 
   return (
     <>
-      <NavbarMobo />
-      <Navbar />
       <Route
         {...props.routeParams}
         render={() =>
           localStorage.getItem("user-auth") !== null && authToken ? (
-            // Private components to render when user logged in
-            <>{props.children}</>
-          ) : (
-            // Redirect to sign in page when unauthenticated
+            // Redirect to home page when authenticated
             <Redirect
               to={{
-                pathname: "/sign_in",
+                pathname: "/",
                 state: { from: props.location },
               }}
             />
+          ) : (
+            // Protected components to render when user not logged in
+            <>{props.children}</>
           )
         }
       />
@@ -46,4 +44,4 @@ const mapStateToProps = (state: any, ownProps: any) => {
   };
 };
 
-export default connect(mapStateToProps, null)(PrivateRoute);
+export default connect(mapStateToProps, null)(ProtectedRoute);

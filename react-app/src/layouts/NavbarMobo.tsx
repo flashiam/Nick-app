@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, MutableRefObject } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import musicLogo from "../img/music-logo.png";
 

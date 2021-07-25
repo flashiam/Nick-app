@@ -59,13 +59,9 @@
     .progress-contain {
       .song-progress {
         position: relative;
-        // position: absolute;
         width: 80px;
         height: 80px;
         z-index: 2;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
 
         .song-img {
           position: absolute;
@@ -76,10 +72,6 @@
           border-radius: 50%;
           cursor: pointer;
           overflow: hidden;
-          // transform: translate(50%, -50%);
-          // display: flex;
-          // justify-self: center;
-          // align-self: center;
 
           &:hover {
             .song-desc {
@@ -90,8 +82,8 @@
 
           .song-desc {
             position: absolute;
-            top: -2rem;
-            left: -1rem;
+            top: -3rem;
+            left: -4rem;
             height: 100%;
             width: 100%;
             background: rgba($purple-color, 0.9);
@@ -107,10 +99,12 @@
             .stat {
               display: flex;
               align-items: center;
+              font-size: 0.9rem;
               // margin-bottom: 0.6rem;
 
               i {
                 margin-right: 0.3rem;
+                font-size: 0.8rem;
               }
             }
           }
@@ -323,6 +317,11 @@
   }
 
   .influencer-list-page {
+    .top-header {
+      .head-1 {
+        font-size: 1.4rem;
+      }
+    }
     .songs-header {
       flex-direction: column;
       justify-content: flex-start;
@@ -333,11 +332,31 @@
           padding: 0.4rem 0.8rem;
         }
       }
+
+      .search-contain {
+        margin-bottom: 0.6rem;
+
+        .search-input {
+          font-size: 1rem;
+        }
+      }
+
+      .layout-ctrl-contain {
+        align-self: flex-end;
+      }
     }
     .songs-section {
       .songs-contain {
         &.grid-view {
           grid-template-columns: repeat(2, 1fr);
+        }
+
+        .album-item {
+          &.list-view {
+            .item-stats {
+              display: none;
+            }
+          }
         }
       }
     }
@@ -382,6 +401,25 @@
 
       .head-3 {
         font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1450px) and (min-width: 768px) {
+  #sign-in-root {
+    .sign-in-form {
+      .sign-in-showcase {
+        height: 29rem;
+
+        .sign-in-art {
+          height: 20rem;
+          width: 20rem;
+        }
+      }
+
+      .sign-in-content {
+        width: 100%;
       }
     }
   }

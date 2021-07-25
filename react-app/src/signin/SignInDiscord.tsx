@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import discordLogo from "../img/discord.svg";
 
-const SignInDiscord = () => {
+// import { userSignIn } from "../actions/authActions";
+
+type Props = {
+  authenticateUser: Function;
+};
+
+const SignInDiscord = ({ authenticateUser }: Props) => {
   return (
     <main className="sign-in-discord bg-semi-med p-1">
       <div className="inner-content">
@@ -9,9 +16,12 @@ const SignInDiscord = () => {
         <h3 className="head-3 primary">
           Connect your discord account to get the most out of Musix
         </h3>
-        <Link to="/" className="btn auth-btn discord-btn">
+        <button
+          className="btn auth-btn discord-btn"
+          onClick={() => authenticateUser()}
+        >
           Connect to discord
-        </Link>
+        </button>
       </div>
     </main>
   );

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import anime from "animejs";
 
 import havana from "../img/havana.png";
@@ -11,7 +13,15 @@ import landingArt from "../img/landing-img.svg";
 
 import { TopTen } from "../types";
 
-const Home = () => {
+// type Props = {
+//   auth: {
+//     isLoggedIn: boolean;
+//   };
+// };
+
+const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
+  const history = useHistory();
+
   const [topTenSongs] = useState<TopTen[]>([
     {
       id: 1,
@@ -195,7 +205,9 @@ const Home = () => {
 
   useEffect(() => {
     triggerSVG();
-  }, []);
+    // Redirect back to sign in when user not loggedin
+    !authToken && history.push("/sign_in");
+  }, [authToken]);
 
   return (
     <div className="container">
@@ -1003,4 +1015,9 @@ const Home = () => {
   );
 };
 
-export default Home;
+// Function to map state to props
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, null)(Home);
