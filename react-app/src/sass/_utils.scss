@@ -14,6 +14,7 @@ body {
   color: $semi-med-color;
   font-family: $primary-font;
   line-height: 1.4;
+  scroll-behavior: smooth;
 }
 
 // Scrollbar
@@ -112,7 +113,7 @@ img {
   border-radius: 6px;
   border: 1px solid transparent;
   cursor: pointer;
-  //   font-family: $montserrat;
+  font-family: $primary-font;
   transition: all 0.3s ease;
 }
 
@@ -124,15 +125,15 @@ img {
     color: $light-color;
 
     &-stroked {
-      background: $light-color;
+      background: transparent;
       border-color: $primary-color;
       color: $primary-color;
 
-      &:hover {
-        background: $primary-color;
-        border-color: transparent;
-        color: $light-color;
-      }
+      // &:hover {
+      //   background: $primary-color;
+      //   border-color: transparent;
+      //   color: $light-color;
+      // }
     }
 
     &:hover {
@@ -169,6 +170,27 @@ img {
 
     &:hover {
       background: lighten($purple-color, 10%);
+    }
+  }
+
+  &-semi-med {
+    background: $semi-med-color;
+    color: $primary-color;
+
+    &-stroked {
+      background: transparent;
+      border-color: $semi-med-color;
+      color: $semi-med-color;
+
+      // &:hover {
+      //   background: $primary-color;
+      //   border-color: transparent;
+      //   color: $light-color;
+      // }
+    }
+
+    &:hover {
+      background: darken($semi-med-color, 10%);
     }
   }
 
@@ -658,9 +680,17 @@ img {
           transform: translate(5px, 5px);
 
           &:nth-child(2) {
-            stroke: $purple-color;
+            // stroke: $purple-color;
+            stroke: lighten($purple-color, 25%);
             stroke-dasharray: 440;
-            stroke-dashoffset: calc(440 - (440 * 10) / 100);
+            animation: song-progress 1s ease;
+            // stroke-dashoffset: calc(440 - (440 * 10) / 100);
+
+            @keyframes song-progress {
+              from {
+                stroke-dashoffset: 440;
+              }
+            }
           }
         }
       }

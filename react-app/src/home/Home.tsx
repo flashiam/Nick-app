@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import anime from "animejs";
 
 import havana from "../img/havana.png";
@@ -13,6 +15,7 @@ import landingArt from "../img/landing-img.svg";
 
 import { TopTen } from "../types";
 
+gsap.registerPlugin(ScrollTrigger);
 // type Props = {
 //   auth: {
 //     isLoggedIn: boolean;
@@ -21,6 +24,14 @@ import { TopTen } from "../types";
 
 const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
   const history = useHistory();
+
+  const typoHead = useRef<HTMLHeadingElement>(null);
+  const svgCard = useRef<SVGGElement>(null);
+  const topSongs = useRef<HTMLDivElement>(null);
+
+  // Creating group of refs
+  const songProgress = useRef<any>([]);
+  songProgress.current = [];
 
   const [topTenSongs] = useState<TopTen[]>([
     {
@@ -115,8 +126,13 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
     },
   ]);
 
-  // Function to animate equalizer bar
-  const animateEqualizer = () => {};
+  // Function to add elements to progress ref
+  const appendToRefs = (el: any, trendOffset: number, id: number) => {
+    if (el) {
+      const progressLine = { id, el, trendOffset };
+      songProgress.current.push(progressLine);
+    }
+  };
 
   // Function to trigger SVG animation
   const triggerSVG = () => {
@@ -124,24 +140,6 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
       easing: "linear",
       duration: 250,
     });
-
-    // const progressTime = anime.timeline
-
-    // anime({
-    //   targets: "#progress-line",
-    //   d: [
-    //     {
-    //       value:
-    //         "M787 156C787 148.33 786.009 140.692 784.05 133.277L698 156H787Z",
-    //     },
-    //     {
-    //       value:
-    //         "M787 156C787 140.252 782.821 124.786 774.891 111.18C766.96 97.5749 755.562 86.3173 741.858 78.5568C728.155 70.7963 712.638 66.8107 696.891 67.0069C681.144 67.2031 665.731 71.574 652.226 79.6735C638.72 87.773 627.606 99.3111 620.016 113.11C612.427 126.909 608.635 142.474 609.028 158.217C609.42 173.961 613.983 189.318 622.25 202.721C630.517 216.125 642.192 227.095 656.085 234.512L698 156H787Z",
-    //     },
-    //   ],
-    //   duration: 300,
-    //   easing: "linear",
-    // });
 
     equalizerTime
       .add({
@@ -203,8 +201,54 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
       });
   };
 
+  // Function to animate stuffs when page loads
+  const animateStuffs = () => {
+    const t1 = gsap.timeline({ defaults: { duration: 1 } });
+    t1.fromTo(
+      typoHead.current,
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0 }
+    ).fromTo(
+      ".svg-card",
+      { y: 0 },
+      {
+        y: -20,
+        stagger: {
+          amount: 1.5,
+        },
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        duration: 2,
+      }
+    );
+  };
+
+  // Function to control scroll animations
+  const ctrlScrollAnim = () => {
+    songProgress.current.forEach((progress: any) => {
+      gsap.fromTo(
+        progress.el,
+        {
+          strokeDashoffset: 440,
+        },
+        {
+          duration: 50,
+          strokeDashoffset: 90,
+          scrollTrigger: {
+            trigger: progress.el,
+            scrub: true,
+            start: "top bottom",
+          },
+        }
+      );
+    });
+  };
+
   useEffect(() => {
     triggerSVG();
+    animateStuffs();
+    ctrlScrollAnim();
     // Redirect back to sign in when user not loggedin
     !authToken && history.push("/sign_in");
   }, [authToken]);
@@ -214,12 +258,14 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
       <main className="home-page py-2">
         <section className="section landing-section mb-4">
           <div className="typo-contain">
-            <h1 className="head-1 typo pb-1">When words fail music speaks</h1>
+            <h1 ref={typoHead} className="head-1 typo pb-1">
+              When words fail music speaks
+            </h1>
             <p className="lead-2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
               sapien in turpis eu non tempus, sed.
             </p>
-            <a href="#" className="btn btn-secondary">
+            <a href="#top-ten-section" className="btn btn-secondary">
               <i className="material-icons pr-0">play_circle_filled</i>
               Explore
             </a>
@@ -232,7 +278,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <g id="Frame 1">
-                <g id="equalizer card">
+                <g id="equalizer card" className="svg-card svg-card-1">
                   <rect
                     id="Rectangle 6"
                     x="4"
@@ -333,7 +379,11 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     </g>
                   </g>
                 </g>
-                <g id="music player">
+                <g
+                  ref={svgCard}
+                  id="music player"
+                  className="svg-card svg-card-2"
+                >
                   <path
                     id="Rectangle 4"
                     d="M54 276C54 269.373 59.3726 264 66 264H514C520.627 264 526 269.373 526 276V602C526 608.627 520.627 614 514 614H66C59.3726 614 54 608.627 54 602V276Z"
@@ -695,7 +745,11 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     </g>
                   </g>
                 </g>
-                <g id="progress card">
+                <g
+                  ref={svgCard}
+                  id="progress card"
+                  className="svg-card svg-card-1"
+                >
                   <rect
                     id="Rectangle 2"
                     x="566"
@@ -803,7 +857,11 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     </g>
                   </g>
                 </g>
-                <g id="music card">
+                <g
+                  ref={svgCard}
+                  id="music card"
+                  className="svg-card svg-card-2"
+                >
                   <rect
                     id="Rectangle 1"
                     x="285"
@@ -822,7 +880,11 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     />
                   </g>
                 </g>
-                <g id="headphone card">
+                <g
+                  ref={svgCard}
+                  id="headphone card"
+                  className="svg-card svg-card-1"
+                >
                   <rect
                     id="Rectangle 5"
                     x="566"
@@ -855,25 +917,32 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
             </svg>
           </div>
         </section>
-        <section className="section top-ten-section py-1 mb-10">
+        <section
+          id="top-ten-section"
+          className="section top-ten-section py-1 mb-10"
+        >
           <div className="section-header mb-2">
             <h4 className="head-4 med sub-head">Week's Top 10</h4>
             <h2>Top 10 songs being discovered this week</h2>
           </div>
 
           <div className="top-ten-songs songs-contain">
-            {topTenSongs.map(song => (
+            {topTenSongs.map((song, i) => (
               <div key={song.id} className="music-item">
                 <div className="progress-contain">
                   <div className="song-progress">
                     <svg>
                       <circle cx="70" cy="70" r="70"></circle>
                       <circle
+                        className="progress-line"
+                        ref={(el: any) =>
+                          appendToRefs(el, song.trendPercent, i)
+                        }
                         cx="70"
                         cy="70"
                         r="70"
                         style={{
-                          strokeDashoffset: `calc(440 - (440 * ${song.trendPercent}) / 100)`,
+                          strokeDashoffset: `calc(440 - (440 * ${song.trendPercent} / 100)`,
                         }}
                       ></circle>
                     </svg>

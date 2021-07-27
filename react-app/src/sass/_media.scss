@@ -130,7 +130,7 @@
             transform: scale(0.7);
 
             &:nth-child(2) {
-              stroke: $purple-color;
+              // stroke: $purple-color;
               stroke-dasharray: 440;
               stroke-dashoffset: calc(440 - (440 * 10) / 100);
             }
