@@ -1,8 +1,25 @@
-import React from "react";
-import musicLogo from "../img/music-logo.png";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 
-const Navbar = () => {
+import { userSignOut } from "../actions/authActions";
+import musicLogo from "../img/music-logo.png";
+
+type Props = {
+  auth: {
+    user: any;
+  };
+  userSignOut: Function;
+};
+
+const Navbar = ({ auth: { userDetails, isLoggedIn }, userSignOut }: any) => {
+  const history = useHistory();
+  const [loginStatus, setStatus] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   isLoggedIn && history.push("/sign_in");
+  // }, [isLoggedIn]);
+
   return (
     <nav className="navbar py-1 container">
       <Link to="/" className="logo-contain">
@@ -11,16 +28,19 @@ const Navbar = () => {
       </Link>
       <div className="right-nav-content">
         <ul className="nav-links">
-          <li className="link">
-            <Link to="/general" className="light">
-              General
-            </Link>
-          </li>
-          <li className="link">
-            <Link to="/influencer" className="light">
-              Influencer
-            </Link>
-          </li>
+          {userDetails?.type === "general" ? (
+            <li className="link">
+              <Link to="/general" className="light">
+                General
+              </Link>
+            </li>
+          ) : (
+            <li className="link">
+              <Link to="/influencer" className="light">
+                Influencer
+              </Link>
+            </li>
+          )}
           <li className="link">
             <Link to="#" className="light">
               Support
@@ -33,16 +53,32 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="nav-btn-grp">
-          <Link to="#" className="btn btn-secondary-stroked">
-            Register
-          </Link>
-          <Link to="#" className="btn btn-transparent">
-            Login
-          </Link>
+          {isLoggedIn ? (
+            <button
+              className="btn btn-transparent sign-out-btn"
+              onClick={() => userSignOut()}
+            >
+              Sign out
+            </button>
+          ) : (
+            <>
+              <Link to="#" className="btn btn-secondary-stroked">
+                Register
+              </Link>
+              <Link to="#" className="btn btn-transparent">
+                Login
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+// Function to map state to props
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { userSignOut })(Navbar);

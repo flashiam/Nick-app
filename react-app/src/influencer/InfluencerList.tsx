@@ -4,24 +4,6 @@ import spotifyIcon from "../img/Spotify_Icon_Green.png";
 
 const InfluencerList = () => {
   const history = window.history;
-
-  interface LayoutBtn {
-    id: number;
-    icon: string;
-  }
-
-  let num = 0;
-  const [layoutBtn] = useState<LayoutBtn[]>([
-    {
-      id: 1,
-      icon: "grid_view",
-    },
-    {
-      id: 2,
-      icon: "view_list",
-    },
-  ]);
-
   const [currentLayout, switchLayout] = useState<number>(1);
 
   return (

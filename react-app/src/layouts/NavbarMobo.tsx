@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect, MutableRefObject } from "react";
+import { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
 import { Link } from "react-router-dom";
 import musicLogo from "../img/music-logo.png";
 
@@ -18,8 +19,19 @@ const NavbarMobo = () => {
   // Function to close nav
   const closeNav = () => setNav(false);
 
+  // Function to animate nav links
+  const animateNavLinks = () => {
+    gsap.to(".link", {
+      opacity: 1,
+      x: 0,
+      stagger: { amount: 1 },
+      duration: 300,
+    });
+  };
+
   useEffect(() => {
     ctrlOverflow();
+    animateNavLinks();
   }, [navOpen]);
 
   return (
@@ -63,6 +75,10 @@ const NavbarMobo = () => {
                 </Link>
               </li>
             </ul>
+          </div>
+          <div className="btn-grp mt-1">
+            <button className="btn btn-primary">Register</button>
+            <button className="btn btn-primary-stroked">Sign In</button>
           </div>
         </div>
       </div>

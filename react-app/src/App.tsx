@@ -11,6 +11,7 @@ import SignIn from "./signin/SignInRoot";
 import SaveSpotify from "./signin/SaveSpotify";
 
 import PrivateRoute from "./routes/PrivateRoute";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 import store from "./store";
 
@@ -19,7 +20,22 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-          <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute exact path="/">
+            <Home />
+          </PrivateRoute>
+          <PrivateRoute exact path="/influencer">
+            <Influencer />
+          </PrivateRoute>
+          <PrivateRoute exact path="/general">
+            <General />
+          </PrivateRoute>
+          <PrivateRoute exact path="/influencer/songs">
+            <InfluencerList />
+          </PrivateRoute>
+          <PrivateRoute exact path="/general/artists">
+            <GeneralList />
+          </PrivateRoute>
+          {/* <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute exact path="/influencer" component={Influencer} />
           <PrivateRoute exact path="/general" component={General} />
           <PrivateRoute exact path="/spotify_auth" component={SaveSpotify} />
@@ -28,8 +44,10 @@ function App() {
             path="/influencer/songs"
             component={InfluencerList}
           />
-          <PrivateRoute exact path="/general/artists" component={GeneralList} />
-          <Route exact path="/sign_in" component={SignIn} />
+          <PrivateRoute exact path="/general/artists" component={GeneralList} /> */}
+          <ProtectedRoute exact path="/sign_in">
+            <SignIn />
+          </ProtectedRoute>
         </Switch>
       </Router>
     </Provider>

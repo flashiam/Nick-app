@@ -297,7 +297,15 @@ const Influencer = () => {
             <img src={spotifyLogo} alt="" className="platform-logo pb-0" />
           </div>
           <div className="albums-contain">
-            <Carousel responsive={responsive} swipeable draggable>
+            <div className="alt-message-contain">
+              <p className="lead-2">
+                Looks like you haven't connected you spotify account
+              </p>
+              <a href="#" className="btn btn-secondary">
+                Connect to spotify
+              </a>
+            </div>
+            {/* <Carousel responsive={responsive} swipeable draggable>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
                 <div key={num} className="album-item">
                   <div className="item-img">
@@ -321,7 +329,7 @@ const Influencer = () => {
                   </div>
                 </div>
               ))}
-            </Carousel>
+            </Carousel> */}
           </div>
         </div>
 
