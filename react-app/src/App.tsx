@@ -8,6 +8,7 @@ import Influencer from "./influencer/Influencer";
 import InfluencerList from "./influencer/InfluencerList";
 import GeneralList from "./general/GeneralList";
 import SignIn from "./signin/SignInRoot";
+import SaveSpotify from "./signin/SaveSpotify";
 
 import PrivateRoute from "./routes/PrivateRoute";
 
@@ -21,6 +22,7 @@ function App() {
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute exact path="/influencer" component={Influencer} />
           <PrivateRoute exact path="/general" component={General} />
+          <PrivateRoute exact path="/spotify_auth" component={SaveSpotify} />
           <PrivateRoute
             exact
             path="/influencer/songs"

@@ -10,7 +10,7 @@ import NavbarMobo from "../layouts/NavbarMobo";
 // };
 
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
-  const [loggedIn] = useState<boolean>(false);
+  const [loggedIn] = useState<boolean>(true);
 
   return (
     <>

@@ -9,7 +9,7 @@ const SignInForm = ({ changeFlow }: Props) => {
   return (
     <main className="sign-in-form bg-semi-med">
       <div className="sign-in-showcase bg-purple">
-        <img src={signInArt} alt="" className="sign-in-art" />
+        <img src={signInArt} alt="" className="sign-in-art" style={{marginRight:"100px"}}/>
       </div>
       <div className="sign-in-content">
         <h1 className="head-1 primary">

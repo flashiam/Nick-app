@@ -9,7 +9,10 @@ import attention from "../img/attention.png";
 import havana from "../img/havana.png";
 import shape from "../img/shape.png";
 
+import Auth from '../Auth';
+
 import { Song } from "../types";
+import { Button } from "react-bootstrap";
 
 const Influencer = () => {
   const history = window.history;
@@ -32,7 +35,11 @@ const Influencer = () => {
   const [modalOpen, setModal] = useState<boolean>(false);
   const [addSong, ctrlSong] = useState<boolean>(false);
   const [selectAll, setSelection] = useState<boolean>(false);
+  const [spotifyLink, setSpotifyLink] = useState<boolean>(false)
   const [selectedSongs, setSelectedSongs] = useState<Song[]>([]);
+  
+  const auth = Auth()
+  // const screen = new Screen
 
   // let selectedSongs: Song[] = [];
 
@@ -145,7 +152,10 @@ const Influencer = () => {
 
   useEffect(() => {
     ctrlOverflow();
+    localStorage.getItem("spotifyToken")
   }, [modalOpen]);
+
+
 
   // Song item component
   const SongItem = ({ song }: { song: Song }) => {
@@ -237,6 +247,18 @@ const Influencer = () => {
       </div>
 
       {/* Highly promoted albums */}
+      {!spotifyLink ? 
+      
+        <Button onClick={()=>{
+          var popupWinWidth = window.screen.width/4
+          var popupWinHeight = window.screen.height/2
+          var left = (window.screen.width - popupWinWidth) / 2;
+          var top = (window.screen.height - popupWinHeight) / 2;
+          window.open(auth, 'newwindow', `width=`+popupWinWidth+`, height=`+popupWinHeight+`,top=`+top+`,left=`+left)}} className="btn auth-btn discord-btn">
+          Link Spotify
+        </Button>:
+        null
+      }
       <section className="promoted-album-contain mb-6 container">
         <div className="promote-header">
           <h2 className="head-2 pb-1">Highly promoted albums</h2>
