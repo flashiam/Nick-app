@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import { userSignOut } from "../actions/authActions";
 import musicLogo from "../img/music-logo.png";
+import profileImg from "../img/charlie-puth.png";
 
 type Props = {
   auth: {
@@ -12,7 +13,10 @@ type Props = {
   userSignOut: Function;
 };
 
-const Navbar = ({ auth: { userDetails, isLoggedIn }, userSignOut }: any) => {
+const Navbar = ({
+  auth: { userDetails, isLoggedIn, userType },
+  userSignOut,
+}: any) => {
   const history = useHistory();
   const [loginStatus, setStatus] = useState<boolean>(false);
 
@@ -28,7 +32,7 @@ const Navbar = ({ auth: { userDetails, isLoggedIn }, userSignOut }: any) => {
       </Link>
       <div className="right-nav-content">
         <ul className="nav-links">
-          {userDetails?.type === "general" ? (
+          {userType === "general" ? (
             <li className="link">
               <Link to="/general" className="light">
                 General
@@ -54,12 +58,33 @@ const Navbar = ({ auth: { userDetails, isLoggedIn }, userSignOut }: any) => {
         </ul>
         <div className="nav-btn-grp">
           {isLoggedIn ? (
-            <button
-              className="btn btn-transparent sign-out-btn"
-              onClick={() => userSignOut()}
-            >
-              Sign out
-            </button>
+            <div className="user-profile-contain">
+              <div className="profile-pic">
+                {userDetails?.picture ? (
+                  <img
+                    src={userDetails.picture}
+                    alt="user profile"
+                    className="user-pic"
+                  />
+                ) : (
+                  <i className="material-icons">account_circle</i>
+                )}
+              </div>
+              <div className="right-content">
+                <div className="user-name">
+                  {userDetails.name || "Musix User"}
+                </div>
+                <button className="sign-out-btn" onClick={() => userSignOut()}>
+                  <i className="material-icons">logout</i>
+                </button>
+              </div>
+              {/* <button
+                className="btn btn-transparent sign-out-btn"
+                onClick={() => userSignOut()}
+              >
+                Sign out
+              </button> */}
+            </div>
           ) : (
             <>
               <Link to="#" className="btn btn-secondary-stroked">

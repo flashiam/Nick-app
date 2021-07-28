@@ -35,3 +35,12 @@ export interface SignInFlow {
   appSignIn: boolean;
   discordSignIn: boolean;
 }
+
+export interface Facebook {
+  id: string;
+  accessToken: string;
+  name: string;
+  picture: string;
+  userId: string;
+  loginType: string;
+}

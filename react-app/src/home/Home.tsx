@@ -233,12 +233,12 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
           strokeDashoffset: 440,
         },
         {
-          duration: 50,
-          strokeDashoffset: 90,
+          duration: 300,
+          strokeDashoffset: progress.trendOffset,
           scrollTrigger: {
-            trigger: progress.el,
+            trigger: ".top-ten-songs .music-contain",
             scrub: true,
-            start: "top bottom",
+            // start: "top bottom",
           },
         }
       );
@@ -286,7 +286,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     height="214"
                     rx="12"
                     fill="#3E2782"
-                    fill-opacity="0.73"
+                    fillOpacity="0.73"
                   />
                   <g id="Equalizer bar">
                     <g id="Group 2">
@@ -297,8 +297,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         x2="64"
                         y2="173"
                         stroke="#6B58C2"
-                        stroke-width="2"
-                        stroke-linecap="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
                       />
                       <line
                         id="ctrl-range-1"
@@ -307,8 +307,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         x2="64"
                         y2="95"
                         stroke="#FFA665"
-                        stroke-width="8"
-                        stroke-linecap="round"
+                        strokeWidth="8"
+                        strokeLinecap="round"
                       />
                     </g>
                     <g id="Group 3">
@@ -319,8 +319,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         x2="106"
                         y2="173"
                         stroke="#6B58C2"
-                        stroke-width="2"
-                        stroke-linecap="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
                       />
                       <line
                         id="ctrl-range-2"
@@ -329,8 +329,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         x2="106"
                         y2="135"
                         stroke="#FFA665"
-                        stroke-width="8"
-                        stroke-linecap="round"
+                        strokeWidth="8"
+                        strokeLinecap="round"
                       />
                     </g>
                     <g id="Group 4">
@@ -341,8 +341,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         x2="148"
                         y2="173"
                         stroke="#6B58C2"
-                        stroke-width="2"
-                        stroke-linecap="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
                       />
                       <line
                         id="ctrl-range-3"
@@ -351,8 +351,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         x2="148"
                         y2="110"
                         stroke="#FFA665"
-                        stroke-width="8"
-                        stroke-linecap="round"
+                        strokeWidth="8"
+                        strokeLinecap="round"
                       />
                     </g>
                     <g id="Group 5">
@@ -363,8 +363,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         x2="190"
                         y2="173"
                         stroke="#6B58C2"
-                        stroke-width="2"
-                        stroke-linecap="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
                       />
                       <line
                         id="ctrl-range-4"
@@ -373,8 +373,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         x2="190"
                         y2="164"
                         stroke="#FFA665"
-                        stroke-width="8"
-                        stroke-linecap="round"
+                        strokeWidth="8"
+                        strokeLinecap="round"
                       />
                     </g>
                   </g>
@@ -388,7 +388,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     id="Rectangle 4"
                     d="M54 276C54 269.373 59.3726 264 66 264H514C520.627 264 526 269.373 526 276V602C526 608.627 520.627 614 514 614H66C59.3726 614 54 608.627 54 602V276Z"
                     fill="#3E2782"
-                    fill-opacity="0.73"
+                    fillOpacity="0.73"
                   />
                   <g id="lyrics">
                     <line
@@ -398,8 +398,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="124.868"
                       y2="387.313"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-2"
@@ -408,8 +408,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="136.291"
                       y2="392.209"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-3"
@@ -418,8 +418,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="147.422"
                       y2="383.689"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-4"
@@ -428,8 +428,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="158.7"
                       y2="386.508"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-5"
@@ -438,8 +438,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="169.977"
                       y2="390.737"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-6"
@@ -448,8 +448,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="181.983"
                       y2="400.368"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-7"
@@ -458,8 +458,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="193.94"
                       y2="392.147"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-8"
@@ -468,8 +468,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="205.217"
                       y2="385.098"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-9"
@@ -478,8 +478,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="216.494"
                       y2="390.737"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-10"
@@ -488,8 +488,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="227.674"
                       y2="387.313"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-11"
@@ -498,8 +498,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="239.048"
                       y2="390.737"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-12"
@@ -508,8 +508,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="250.52"
                       y2="402"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-13"
@@ -518,8 +518,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="261.943"
                       y2="395.473"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-14"
@@ -528,8 +528,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="273.366"
                       y2="388.945"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-15"
@@ -538,8 +538,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="284.157"
                       y2="382.279"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-16"
@@ -548,8 +548,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="296.843"
                       y2="389.327"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-17"
@@ -558,8 +558,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="308.12"
                       y2="386.508"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-18"
@@ -568,8 +568,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="319.057"
                       y2="398.736"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-19"
@@ -578,8 +578,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="330.48"
                       y2="393.841"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-20"
@@ -588,8 +588,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="341.903"
                       y2="388.945"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-21"
@@ -598,8 +598,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="353.326"
                       y2="393.841"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-22"
@@ -608,8 +608,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="364.506"
                       y2="390.737"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-23"
@@ -618,8 +618,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="375.783"
                       y2="387.918"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-24"
@@ -628,8 +628,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="387.06"
                       y2="382.279"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-25"
@@ -638,8 +638,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="398.337"
                       y2="383.689"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-26"
@@ -648,8 +648,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="410.44"
                       y2="388.945"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-27"
@@ -658,8 +658,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="421.863"
                       y2="395.473"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-28"
@@ -668,8 +668,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="433.286"
                       y2="393.841"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-29"
@@ -678,8 +678,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="444.709"
                       y2="388.945"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                     <line
                       id="wave-line-30"
@@ -688,8 +688,8 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       x2="456.132"
                       y2="382.279"
                       stroke="#6B58C2"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                   </g>
                   <g id="player controls">
@@ -713,7 +713,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         id="Polygon 2"
                         d="M173.328 500.732C171.994 499.962 171.994 498.038 173.328 497.268L192.828 486.01C194.161 485.24 195.828 486.202 195.828 487.742V510.258C195.828 511.798 194.161 512.76 192.828 511.99L173.328 500.732Z"
                         fill="#FFA665"
-                        fill-opacity="0.72"
+                        fillOpacity="0.72"
                       />
                       <rect
                         id="Rectangle 12"
@@ -723,7 +723,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         height="25"
                         rx="1"
                         fill="#FFA665"
-                        fill-opacity="0.72"
+                        fillOpacity="0.72"
                       />
                     </g>
                     <g id="Group 9">
@@ -731,7 +731,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         id="Polygon 2_2"
                         d="M397 500.732C398.333 499.962 398.333 498.038 397 497.268L377.5 486.01C376.167 485.24 374.5 486.202 374.5 487.742V510.258C374.5 511.798 376.167 512.76 377.5 511.99L397 500.732Z"
                         fill="#FFA665"
-                        fill-opacity="0.72"
+                        fillOpacity="0.72"
                       />
                       <rect
                         id="Rectangle 12_2"
@@ -740,7 +740,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                         rx="1"
                         transform="matrix(-1 0 0 1 402.328 486)"
                         fill="#FFA665"
-                        fill-opacity="0.72"
+                        fillOpacity="0.72"
                       />
                     </g>
                   </g>
@@ -758,7 +758,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     height="402"
                     rx="12"
                     fill="#3E2782"
-                    fill-opacity="0.73"
+                    fillOpacity="0.73"
                   />
                   <g id="progress-bar">
                     <circle
@@ -772,7 +772,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                       id="progress-line"
                       d="M779 156.223C778.879 200.855 742.661 237 698 237C653.265 237 617 200.735 617 156C617 111.265 653.265 75 698 75C710.611 75 730.127 79.0778 746.777 91.2569C763.056 103.165 777.083 123.146 779 156.223Z"
                       stroke="#FFA665"
-                      stroke-width="16"
+                      strokeWidth="16"
                     />
                     <circle
                       id="Ellipse 3"
@@ -870,7 +870,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     height="171"
                     rx="12"
                     fill="#3E2782"
-                    fill-opacity="0.73"
+                    fillOpacity="0.73"
                   />
                   <g id="music" clip-path="url(#clip0)">
                     <path
@@ -893,7 +893,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     height="182"
                     rx="12"
                     fill="#3E2782"
-                    fill-opacity="0.73"
+                    fillOpacity="0.73"
                   />
                   <g id="headphones-alt">
                     <path
