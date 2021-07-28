@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import GoogleLogin from "react-google-login";
@@ -28,6 +28,10 @@ const SignInForm = ({
     name: "",
     email: "",
   });
+
+  // OAuth's client id's
+  const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  const facebookAppId = process.env.REACT_APP_FACEBOOK_APP_ID;
 
   // Function to set user details
   const fillUserDetails = (e: any) => {
@@ -62,6 +66,10 @@ const SignInForm = ({
   const googleResponse = (response: any) => {
     console.log(response);
   };
+
+  // useEffect(() => {
+  //   console.log(facebookAppId);
+  // }, [facebookAppId]);
 
   return (
     <main className="sign-in-form bg-semi-med">
@@ -106,9 +114,9 @@ const SignInForm = ({
         </div>
         <label className="or-label med">OR</label>
         <FacebookLogin
-          appId="902135053705322"
+          appId={facebookAppId as string}
           callback={facebookResponse}
-          // autoLoad
+          autoLoad
           fields="name,email,picture"
           render={renderProps => (
             <button
@@ -121,7 +129,7 @@ const SignInForm = ({
           )}
         />
         <GoogleLogin
-          clientId="676749148895-k4347lg10d6bq1n6uir7ho6ed28tkrv3.apps.googleusercontent.com"
+          clientId={googleClientId as string}
           render={renderProps => (
             <button
               className="btn google-btn auth-btn"
