@@ -683,14 +683,14 @@ img {
             // stroke: $purple-color;
             stroke: lighten($purple-color, 25%);
             stroke-dasharray: 440;
-            animation: song-progress 1s ease;
+            // animation: song-progress 1s ease;
             // stroke-dashoffset: calc(440 - (440 * 10) / 100);
 
-            @keyframes song-progress {
-              from {
-                stroke-dashoffset: 440;
-              }
-            }
+            // @keyframes song-progress {
+            //   from {
+            //     stroke-dashoffset: 440;
+            //   }
+            // }
           }
         }
       }
