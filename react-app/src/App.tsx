@@ -37,9 +37,9 @@ function App() {
           </PrivateRoute>
           {/* <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute exact path="/influencer" component={Influencer} />
-          <PrivateRoute exact path="/general" component={General} />
+          <PrivateRoute exact path="/general" component={General} /> */}
           <PrivateRoute exact path="/spotify_auth" component={SaveSpotify} />
-          <PrivateRoute
+          {/* <PrivateRoute
             exact
             path="/influencer/songs"
             component={InfluencerList}

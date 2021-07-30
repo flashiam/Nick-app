@@ -74,7 +74,7 @@ const SignInForm = ({
   return (
     <main className="sign-in-form bg-semi-med">
       <div className="sign-in-showcase bg-purple">
-        <img src={signInArt} alt="" className="sign-in-art" style={{marginRight:"100px"}}/>
+        <img src={signInArt} alt="" className="sign-in-art" />
       </div>
       <div className="sign-in-content">
         <h1 className="head-1 primary">
