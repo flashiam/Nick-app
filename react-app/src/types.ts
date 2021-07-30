@@ -42,3 +42,12 @@ export interface PromotionDetails {
   points: number;
   selectedSongs: (Song | null)[];
 }
+
+export interface Facebook {
+  id: string;
+  accessToken: string;
+  name: string;
+  picture: string;
+  userId: string;
+  loginType: string;
+}

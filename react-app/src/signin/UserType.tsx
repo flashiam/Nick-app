@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { connect } from "react-redux";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { assignUserType } from "../actions/authActions";
 
 type Props = {
   submitUserType: Function;
   changeFlow: Function;
+  assignUserType?: Function;
 };
 
-const UserType = ({ submitUserType, changeFlow }: Props) => {
+const UserType = ({ submitUserType, changeFlow, assignUserType }: Props) => {
   const generalLottie =
     "https://assets3.lottiefiles.com/packages/lf20_ejs1jvp2.json";
   const influencerLottie =
@@ -25,7 +28,7 @@ const UserType = ({ submitUserType, changeFlow }: Props) => {
 
   // Function to save the user type
   const saveUserType = () => {
-    submitUserType(userType);
+    assignUserType && assignUserType(userType);
     changeFlow("appSignIn");
   };
 
@@ -68,7 +71,7 @@ const UserType = ({ submitUserType, changeFlow }: Props) => {
   );
 };
 
-export default UserType;
+export default connect(null, { assignUserType })(UserType);
 
 {
   /* <a href="https://www.vecteezy.com/free-vector/music-notes-pattern">Music Notes Pattern Vectors by Vecteezy</a> */

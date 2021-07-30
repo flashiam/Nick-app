@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import GoogleLogin from "react-google-login";
+
+import { facebookLogin } from "../actions/authActions";
 
 import signInArt from "../img/sign-in-art.svg";
 import googleLogo from "../img/google.svg";
@@ -7,6 +11,7 @@ import googleLogo from "../img/google.svg";
 type Props = {
   changeFlow: Function;
   submitUserCredentials: Function;
+  facebookLogin?: Function;
 };
 
 interface User {
@@ -14,11 +19,19 @@ interface User {
   email: string;
 }
 
-const SignInForm = ({ changeFlow, submitUserCredentials }: Props) => {
+const SignInForm = ({
+  changeFlow,
+  submitUserCredentials,
+  facebookLogin,
+}: Props) => {
   const [user, setUser] = useState<User>({
     name: "",
     email: "",
   });
+
+  // OAuth's client id's
+  const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  const facebookAppId = process.env.REACT_APP_FACEBOOK_APP_ID;
 
   // Function to set user details
   const fillUserDetails = (e: any) => {
@@ -36,8 +49,27 @@ const SignInForm = ({ changeFlow, submitUserCredentials }: Props) => {
 
   // Function to get the response from facebook
   const facebookResponse = (response: any) => {
+    const fbData = {
+      id: response.id,
+      accessToken: response.accessToken,
+      name: response.name,
+      picture: response.picture.data.url,
+      userId: response.userId,
+      loginType: response.graphDomain,
+    };
+    console.log(response);
+    console.log(fbData);
+    facebookLogin && facebookLogin(fbData);
+  };
+
+  // Function to get the response from google
+  const googleResponse = (response: any) => {
     console.log(response);
   };
+
+  // useEffect(() => {
+  //   console.log(facebookAppId);
+  // }, [facebookAppId]);
 
   return (
     <main className="sign-in-form bg-semi-med">
@@ -82,7 +114,7 @@ const SignInForm = ({ changeFlow, submitUserCredentials }: Props) => {
         </div>
         <label className="or-label med">OR</label>
         <FacebookLogin
-          appId={process.env.REACT_APP_FACEBOOK_APP_ID as string}
+          appId={facebookAppId as string}
           callback={facebookResponse}
           autoLoad
           fields="name,email,picture"
@@ -96,13 +128,24 @@ const SignInForm = ({ changeFlow, submitUserCredentials }: Props) => {
             </button>
           )}
         />
-        <button className="btn google-btn auth-btn">
-          <img src={googleLogo} alt="" className="google-logo" />
-          <p className="lead-2">Sign in with google</p>
-        </button>
+        <GoogleLogin
+          clientId={googleClientId as string}
+          render={renderProps => (
+            <button
+              className="btn google-btn auth-btn"
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+            >
+              <img src={googleLogo} alt="google" className="google-logo" />
+              <p className="lead-2">Sign in with google</p>
+            </button>
+          )}
+          onSuccess={googleResponse}
+          onFailure={googleResponse}
+        />
       </div>
     </main>
   );
 };
 
-export default SignInForm;
+export default connect(null, { facebookLogin })(SignInForm);

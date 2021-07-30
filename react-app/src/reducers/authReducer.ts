@@ -1,7 +1,8 @@
-import { LOGIN_USER, LOGOUT_USER } from "../actions/stateTypes";
+import { LOGIN_USER, LOGOUT_USER, USER_TYPE } from "../actions/stateTypes";
 
 // Initial state
 const initialState = {
+  userType: "",
   isLoggedIn: false,
   authToken: localStorage.getItem("user-auth"),
   userDetails: null,
@@ -9,6 +10,11 @@ const initialState = {
 
 const authReducer = (state = initialState, action: any) => {
   switch (action.type) {
+    case USER_TYPE:
+      return {
+        ...state,
+        userType: action.payload,
+      };
     case LOGIN_USER:
       localStorage.setItem("user-auth", action.payload.token);
       return {
