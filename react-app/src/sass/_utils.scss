@@ -207,6 +207,8 @@ img {
     background: $med-color;
     color: darken($med-color, 10%);
     cursor: auto;
+    user-select: none;
+    pointer-events: none;
   }
 
   &-transparent {

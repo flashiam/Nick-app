@@ -11,7 +11,7 @@ import shape from "../img/shape.png";
 
 import Auth from "../Auth";
 
-import { Song } from "../types";
+import { Song, PromotionDetails } from "../types";
 import { Button } from "react-bootstrap";
 
 const Influencer = () => {
@@ -114,7 +114,6 @@ const Influencer = () => {
   ]);
 
   const modalBackdrop = useRef<HTMLDivElement>(null);
-
   const [modalOpen, setModal] = useState<boolean>(false);
   const [addSong, ctrlSong] = useState<boolean>(false);
   const [selectAll, setSelection] = useState<boolean>(false);
@@ -123,13 +122,24 @@ const Influencer = () => {
   const [songChecked, setChecked] = useState<boolean[]>(
     new Array(songOptions.length).fill(false)
   );
+  const [promoServer, setServer] = useState<string>("");
+  const [listenLimit, setLimit] = useState<number>(0);
+  const [totalPoints, setPoints] = useState<number>(0);
+  const [promotionDetails, setDetails] = useState<PromotionDetails>({
+    promoServer: "",
+    listenLimit: 0,
+    points: 0,
+    selectedSongs: [],
+  });
 
   const auth = Auth();
 
   const ctrlOverflow = () => {
     if (modalOpen) {
+      console.log("hidden");
       document.body.style.overflow = "hidden";
     } else {
+      console.log("auto");
       document.body.style.overflow = "auto";
     }
   };
@@ -192,11 +202,35 @@ const Influencer = () => {
     setSelectedSongs([]);
   };
 
+  // Function to update points
+  const updatePoints = () => {
+    if (listenLimit >= 1000) {
+      setPoints(1);
+    } else if (listenLimit >= 2000) {
+      setPoints(2);
+    }
+  };
+
+  // Function to fill promotion details
+  const fillPromotion = (e: any) => {
+    setDetails({
+      ...promotionDetails,
+      [e.target.name]: e.target.value,
+      selectedSongs,
+    });
+  };
+
+  // Function to promote songs
+  const promoteSongs = () => {
+    console.log(promotionDetails);
+  };
+
   useEffect(() => {
     ctrlOverflow();
     localStorage.getItem("spotifyToken");
     selectAll ? selectAllSongs() : unselectSongs();
-  }, [selectAll]);
+    updatePoints();
+  }, [selectAll, listenLimit]);
 
   return (
     <main className="influencer-page">
@@ -385,32 +419,39 @@ const Influencer = () => {
             <h3 className="head-3">Promote your album</h3>
             <div className="form-contain">
               <div className="form-grp">
-                <label htmlFor="server">Select promotion server</label>
-                <select name="server" className="server-select-box">
+                <label htmlFor="promoServer">Select promotion server</label>
+                <select
+                  name="promoServer"
+                  value={promoServer}
+                  className="server-select-box"
+                  onChange={e => setServer(e.target.value)}
+                >
                   <option value="discord">Discord Server</option>
+                  <option value="server 1">Server 1</option>
+                  <option value="server 2">Server 2</option>
+                  <option value="server 3">Server 3</option>
                 </select>
               </div>
               <div className="bottom-form-contain">
                 <div className="form-grp">
-                  <label htmlFor="listen">Set listen limit</label>
-                  <input type="number" name="listen" className="listen-input" />
+                  <label htmlFor="listenLimit">Set listen limit</label>
+                  <input
+                    type="number"
+                    name="listenLimit"
+                    className="listen-input"
+                    value={listenLimit}
+                    onChange={e => setLimit(parseInt(e.target.value))}
+                  />
                 </div>
                 <div className="points-contain">
                   <p className="lead-2">Giveaway points</p>
-                  <span className="points">56</span>
+                  <span className="points">{totalPoints}</span>
                 </div>
-                {/* Testing purpose */}
-                {selectedSongs.map(
-                  song =>
-                    song && (
-                      <p key={song.id} className="lead-2">
-                        {song.songName}
-                      </p>
-                    )
-                )}
               </div>
               <button
-                className="btn btn-secondary add-song-btn"
+                className={`btn ${
+                  addSong ? "btn-disabled" : "btn-secondary"
+                } add-song-btn`}
                 onClick={() => ctrlSong(true)}
               >
                 <i className="material-icons">add</i>
@@ -424,20 +465,34 @@ const Influencer = () => {
               >
                 Cancel
               </button>
-              <button className="btn btn-disabled">Promote</button>
+              <button
+                className={`btn ${
+                  selectedSongs.length ? "btn-secondary" : "btn-disabled"
+                }`}
+                onClick={promoteSongs}
+              >
+                Promote {selectedSongs.length} song(s)
+              </button>
             </div>
           </div>
           <div className="modal-showcase">
             {/* Select song box */}
             <div className="select-songs-contain">
               <h4 className="head-4">Select songs to promote</h4>
-
-              <button
-                className="btn btn-transparent secondary"
-                onClick={() => setSelection(prev => !prev)}
-              >
-                {selectAll ? "Unselect all" : "Select all"}
-              </button>
+              <div className="top-btn-grp">
+                <button
+                  className="btn btn-secondary select-btn"
+                  onClick={() => setSelection(prev => !prev)}
+                >
+                  {selectAll ? "Unselect all" : "Select all"}
+                </button>
+                <button
+                  className="btn btn-transparent semi-med cancel-btn"
+                  onClick={() => ctrlSong(false)}
+                >
+                  Cancel
+                </button>
+              </div>
               <div className="song-list-contain">
                 {songOptions.map((song, i) => (
                   <div key={song.id} className="song-item bg-purple">
