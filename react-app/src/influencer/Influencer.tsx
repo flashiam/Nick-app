@@ -222,7 +222,12 @@ const Influencer = () => {
 
   // Function to promote songs
   const promoteSongs = () => {
-    console.log(promotionDetails);
+    setDetails({
+      promoServer,
+      listenLimit,
+      points: totalPoints,
+      selectedSongs,
+    });
   };
 
   useEffect(() => {
@@ -230,7 +235,7 @@ const Influencer = () => {
     localStorage.getItem("spotifyToken");
     selectAll ? selectAllSongs() : unselectSongs();
     updatePoints();
-  }, [selectAll, listenLimit]);
+  }, [modalOpen, selectAll, listenLimit]);
 
   return (
     <main className="influencer-page">
