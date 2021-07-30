@@ -12,7 +12,6 @@ import shape from "../img/shape.png";
 import Auth from "../Auth";
 
 import { Song, PromotionDetails } from "../types";
-import { Button } from "react-bootstrap";
 
 const Influencer = () => {
   const history = window.history;
@@ -211,15 +210,6 @@ const Influencer = () => {
     }
   };
 
-  // Function to fill promotion details
-  const fillPromotion = (e: any) => {
-    setDetails({
-      ...promotionDetails,
-      [e.target.name]: e.target.value,
-      selectedSongs,
-    });
-  };
-
   // Function to promote songs
   const promoteSongs = () => {
     setDetails({
@@ -257,7 +247,7 @@ const Influencer = () => {
                 className="btn btn-secondary promote-btn"
                 onClick={() => setModal(true)}
               >
-                <p className="lead-2">Lets Promote</p>
+                <p className="lead-2">Let's Promote</p>
               </button>
             </div>
           </div>
@@ -306,7 +296,7 @@ const Influencer = () => {
             {!spotifyLink ? (
               <div className="alt-message-contain">
                 <p className="lead-2">
-                  Looks like you haven't connected you spotify account
+                  Looks like you haven't connected your spotify account
                 </p>
                 <button className="btn btn-secondary" onClick={connectSpotify}>
                   Connect to spotify
