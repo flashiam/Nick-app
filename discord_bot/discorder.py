@@ -43,5 +43,5 @@ async def on_message(message):
         await message.channel.send("Hey ! "+str(message.author)+" How are you doing today ?")
 
 
-client.run('ODY0MjIyMjY0NTI2MzcyODk0.YOyTtA.rJATI2gauORz56kNwjK4Gz-EtbY')
+client.run('ODY0MjIyMjY0NTI2MzcyODk0.YOyTtA.LExNYXzTfcDIyF7qARP9N2XK3s0')
 

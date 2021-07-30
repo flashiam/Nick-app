@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fmbot'
+    'fmbot',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bots.wsgi.application'
+ASGI_APPLICATION = 'bots.asgi.application'
 
 
 # Database
