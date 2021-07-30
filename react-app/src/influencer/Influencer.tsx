@@ -249,13 +249,13 @@ const Influencer = () => {
       {/* Highly promoted albums */}
       {!spotifyLink ? 
       
-        <Button onClick={()=>{
+        <Button className="btn auth-btn discord-btn" onClick={()=>{
           var popupWinWidth = window.screen.width/4
           var popupWinHeight = window.screen.height/2
           var left = (window.screen.width - popupWinWidth) / 2;
           var top = (window.screen.height - popupWinHeight) / 2;
-          window.open(auth, 'newwindow', `width=`+popupWinWidth+`, height=`+popupWinHeight+`,top=`+top+`,left=`+left)}} className="btn auth-btn discord-btn">
-          Link Spotify
+          window.open(auth, 'newwindow', `width=`+popupWinWidth+`, height=`+popupWinHeight+`,top=`+top+`,left=`+left)}}>
+          Connect Spotify
         </Button>:
         null
       }

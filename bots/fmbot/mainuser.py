@@ -9,9 +9,9 @@ class MainUser(models.Model):
     )
     userType = models.CharField(choices=TYPES, null=False, max_length=100)
     email = models.EmailField(unique=True, null=False)
-    username = models.CharField(max_length=200, null=True, default="guest")
+    # username = models.CharField(max_length=200, null=True, default="guest")
     name = models.CharField(max_length=200, null=False, default="guest")
-    password = models.CharField(max_length=100, null=False, default="False")
+    password = models.CharField(max_length=100, null=True, default="False")
     token = models.CharField(max_length=200, null=False, auto_created=True)
     timestamp = models.DateTimeField(auto_now=True, auto_created=True)
 
