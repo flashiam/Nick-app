@@ -35,3 +35,10 @@ export interface SignInFlow {
   appSignIn: boolean;
   discordSignIn: boolean;
 }
+
+export interface PromotionDetails {
+  promoServer: string;
+  listenLimit: number;
+  points: number;
+  selectedSongs: (Song | null)[];
+}

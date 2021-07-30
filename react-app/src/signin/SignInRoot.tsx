@@ -81,9 +81,7 @@ const SignInRoot = ({ userSignIn }: Props) => {
           submitUserCredentials={submitUserCredentials}
         />
       )}
-      {currentFlow === "discordSignIn" && (
-        <SignInDiscord authenticateUser={authenticateUser} />
-      )}
+      {currentFlow === "discordSignIn" && <SignInDiscord />}
     </main>
   );
 };

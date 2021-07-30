@@ -9,9 +9,9 @@ import attention from "../img/attention.png";
 import havana from "../img/havana.png";
 import shape from "../img/shape.png";
 
-import Auth from '../Auth';
+import Auth from "../Auth";
 
-import { Song } from "../types";
+import { Song, PromotionDetails } from "../types";
 import { Button } from "react-bootstrap";
 
 const Influencer = () => {
@@ -29,19 +29,6 @@ const Influencer = () => {
       partialVisibilityGutter: 15,
     },
   };
-
-  const modalBackdrop = useRef<HTMLDivElement>(null);
-
-  const [modalOpen, setModal] = useState<boolean>(false);
-  const [addSong, ctrlSong] = useState<boolean>(false);
-  const [selectAll, setSelection] = useState<boolean>(false);
-  const [spotifyLink, setSpotifyLink] = useState<boolean>(false)
-  const [selectedSongs, setSelectedSongs] = useState<Song[]>([]);
-  
-  const auth = Auth()
-  // const screen = new Screen
-
-  // let selectedSongs: Song[] = [];
 
   const [songOptions, setSongOptions] = useState<Song[]>([
     {
@@ -126,10 +113,33 @@ const Influencer = () => {
     },
   ]);
 
+  const modalBackdrop = useRef<HTMLDivElement>(null);
+  const [modalOpen, setModal] = useState<boolean>(false);
+  const [addSong, ctrlSong] = useState<boolean>(false);
+  const [selectAll, setSelection] = useState<boolean>(false);
+  const [spotifyLink, setSpotifyLink] = useState<boolean>(false);
+  const [selectedSongs, setSelectedSongs] = useState<(Song | null)[]>([]);
+  const [songChecked, setChecked] = useState<boolean[]>(
+    new Array(songOptions.length).fill(false)
+  );
+  const [promoServer, setServer] = useState<string>("");
+  const [listenLimit, setLimit] = useState<number>(0);
+  const [totalPoints, setPoints] = useState<number>(0);
+  const [promotionDetails, setDetails] = useState<PromotionDetails>({
+    promoServer: "",
+    listenLimit: 0,
+    points: 0,
+    selectedSongs: [],
+  });
+
+  const auth = Auth();
+
   const ctrlOverflow = () => {
     if (modalOpen) {
+      console.log("hidden");
       document.body.style.overflow = "hidden";
     } else {
+      console.log("auto");
       document.body.style.overflow = "auto";
     }
   };
@@ -143,81 +153,89 @@ const Influencer = () => {
     }
   };
 
+  // Function to connect spotify
+  const connectSpotify = () => {
+    var popupWinWidth = window.screen.width / 4;
+    var popupWinHeight = window.screen.height / 2;
+    var left = (window.screen.width - popupWinWidth) / 2;
+    var top = (window.screen.height - popupWinHeight) / 2;
+
+    window.open(
+      auth,
+      "newwindow",
+      `width=` +
+        popupWinWidth +
+        `, height=` +
+        popupWinHeight +
+        `,top=` +
+        top +
+        `,left=` +
+        left
+    );
+  };
+
+  // Function to execute checkbox when checkbox get changed
+  const checkChanged = (index: number) => {
+    const filteredChecks = songChecked.map((check, i) =>
+      i === index ? !check : check
+    );
+    setChecked(filteredChecks);
+    const checkedSongs = filteredChecks.map((check, i) =>
+      check ? songOptions[i] : null
+    );
+    const songs = checkedSongs.filter(song => song !== null);
+
+    !songs.includes(null) && setSelectedSongs(songs);
+  };
+
   // Function to select all songs
-  // const selectAllSongs = () => {
-  //   let songs = songOptions;
-  //   songs = songs.map(song => ({ ...song, isChecked: true }));
-  //   setSongOptions(songs);
-  // };
+  const selectAllSongs = () => {
+    const checkedSongs = songChecked.map(() => true);
+    setChecked(checkedSongs);
+    setSelectedSongs(songOptions);
+  };
+
+  // Function unselect all songs
+  const unselectSongs = () => {
+    const uncheckedSongs = songChecked.map(() => false);
+    setChecked(uncheckedSongs);
+    setSelectedSongs([]);
+  };
+
+  // Function to update points
+  const updatePoints = () => {
+    if (listenLimit >= 1000) {
+      setPoints(1);
+    } else if (listenLimit >= 2000) {
+      setPoints(2);
+    }
+  };
+
+  // Function to fill promotion details
+  const fillPromotion = (e: any) => {
+    setDetails({
+      ...promotionDetails,
+      [e.target.name]: e.target.value,
+      selectedSongs,
+    });
+  };
+
+  // Function to promote songs
+  const promoteSongs = () => {
+    setDetails({
+      promoServer,
+      listenLimit,
+      points: totalPoints,
+      selectedSongs,
+    });
+  };
 
   useEffect(() => {
     ctrlOverflow();
-    localStorage.getItem("spotifyToken")
-  }, [modalOpen]);
-
-
-
-  // Song item component
-  const SongItem = ({ song }: { song: Song }) => {
-    const [songChecked, setChecked] = useState<boolean>(true);
-
-    // Function to add/remove the songs
-    const updateSongs = () => {
-      // songChecked ? addItem(song) : removeItem(song.id);
-      songChecked ? addItem(song) : removeItem(song.id);
-    };
-
-    // Function to execute checkbox when checkbox get changed
-    const checkChanged = () => {
-      setChecked(prev => !prev);
-      setSelection(false);
-      updateSongs();
-    };
-
-    // Function to add item to selection
-    const addItem = (songItem: Song) => {
-      setSelectedSongs([...selectedSongs, songItem]);
-    };
-
-    // Function to remove item from selection
-    const removeItem = (id: number) => {
-      let songs = selectedSongs;
-      songs = songs.filter(song => song.id !== id);
-      setSelectedSongs(songs);
-    };
-
-    // Function to select all songs
-    const selectAllSongs = () => {
-      selectAll ? setChecked(true) : setChecked(false);
-    };
-
-    useEffect(() => {
-      selectAllSongs();
-    }, [selectAll]);
-
-    return (
-      <div key={song.id} className="song-item bg-purple">
-        <div className="checkbox-contain">
-          <input
-            type="checkbox"
-            className="checkbox-input"
-            checked={songChecked}
-            onChange={checkChanged}
-          />
-          <div className="song-checkbox">
-            <i className="material-icons">done</i>
-          </div>
-        </div>
-        <div className="song-img-contain">
-          <img src={song.songImg} alt="" className="song-img" />
-        </div>
-        <div className="song-desc">
-          <h5 className="head-5">{song.songName}</h5>
-          <p className="lead-2 med">{song.singerName}</p>
-        </div>
-      </div>
-    );
-  };
+    localStorage.getItem("spotifyToken");
+    selectAll ? selectAllSongs() : unselectSongs();
+    updatePoints();
+  }, [modalOpen, selectAll, listenLimit]);
 
   return (
     <main className="influencer-page">
@@ -247,18 +265,6 @@ const Influencer = () => {
       </div>
 
       {/* Highly promoted albums */}
-      {!spotifyLink ? 
-      
-        <Button className="btn auth-btn discord-btn" onClick={()=>{
-          var popupWinWidth = window.screen.width/4
-          var popupWinHeight = window.screen.height/2
-          var left = (window.screen.width - popupWinWidth) / 2;
-          var top = (window.screen.height - popupWinHeight) / 2;
-          window.open(auth, 'newwindow', `width=`+popupWinWidth+`, height=`+popupWinHeight+`,top=`+top+`,left=`+left)}}>
-          Connect Spotify
-        </Button>:
-        null
-      }
       <section className="promoted-album-contain mb-6 container">
         <div className="promote-header">
           <h2 className="head-2 pb-1">Highly promoted albums</h2>
@@ -297,39 +303,44 @@ const Influencer = () => {
             <img src={spotifyLogo} alt="" className="platform-logo pb-0" />
           </div>
           <div className="albums-contain">
-            <div className="alt-message-contain">
-              <p className="lead-2">
-                Looks like you haven't connected you spotify account
-              </p>
-              <a href="#" className="btn btn-secondary">
-                Connect to spotify
-              </a>
-            </div>
-            {/* <Carousel responsive={responsive} swipeable draggable>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                <div key={num} className="album-item">
-                  <div className="item-img">
-                    <img src={albumArt} alt="" className="album-img" />
-                    <div className="item-stats">
-                      <div className="stat-contain">
-                        <div className="stat listen-stat">Total listens</div>
-                        <div className="stat-count listen-count">1.2k</div>
-                      </div>
-                      <div className="stat-contain">
-                        <div className="stat listen-stat">
-                          Total listen time
+            {!spotifyLink ? (
+              <div className="alt-message-contain">
+                <p className="lead-2">
+                  Looks like you haven't connected you spotify account
+                </p>
+                <button className="btn btn-secondary" onClick={connectSpotify}>
+                  Connect to spotify
+                </button>
+              </div>
+            ) : (
+              <Carousel responsive={responsive} swipeable draggable>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                  <div key={num} className="album-item">
+                    <div className="item-img">
+                      <img src={albumArt} alt="" className="album-img" />
+                      <div className="item-stats">
+                        <div className="stat-contain">
+                          <div className="stat listen-stat">Total listens</div>
+                          <div className="stat-count listen-count">1.2k</div>
                         </div>
-                        <div className="stat-count listen-count">23:05:34</div>
+                        <div className="stat-contain">
+                          <div className="stat listen-stat">
+                            Total listen time
+                          </div>
+                          <div className="stat-count listen-count">
+                            23:05:34
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    <div className="item-desc">
+                      <h4 className="head-4 song-name">Pain</h4>
+                      <p className="lead-2 med promoted-on">11th July 2021</p>
+                    </div>
                   </div>
-                  <div className="item-desc">
-                    <h4 className="head-4 song-name">Pain</h4>
-                    <p className="lead-2 med promoted-on">11th July 2021</p>
-                  </div>
-                </div>
-              ))}
-            </Carousel> */}
+                ))}
+              </Carousel>
+            )}
           </div>
         </div>
 
@@ -413,29 +424,39 @@ const Influencer = () => {
             <h3 className="head-3">Promote your album</h3>
             <div className="form-contain">
               <div className="form-grp">
-                <label htmlFor="server">Select promotion server</label>
-                <select name="server" className="server-select-box">
+                <label htmlFor="promoServer">Select promotion server</label>
+                <select
+                  name="promoServer"
+                  value={promoServer}
+                  className="server-select-box"
+                  onChange={e => setServer(e.target.value)}
+                >
                   <option value="discord">Discord Server</option>
+                  <option value="server 1">Server 1</option>
+                  <option value="server 2">Server 2</option>
+                  <option value="server 3">Server 3</option>
                 </select>
               </div>
               <div className="bottom-form-contain">
                 <div className="form-grp">
-                  <label htmlFor="listen">Set listen limit</label>
-                  <input type="number" name="listen" className="listen-input" />
+                  <label htmlFor="listenLimit">Set listen limit</label>
+                  <input
+                    type="number"
+                    name="listenLimit"
+                    className="listen-input"
+                    value={listenLimit}
+                    onChange={e => setLimit(parseInt(e.target.value))}
+                  />
                 </div>
                 <div className="points-contain">
                   <p className="lead-2">Giveaway points</p>
-                  <span className="points">56</span>
+                  <span className="points">{totalPoints}</span>
                 </div>
-                {/* Testing purpose */}
-                {selectedSongs.map(song => (
-                  <p key={song.id} className="lead-2">
-                    {song.songName}
-                  </p>
-                ))}
               </div>
               <button
-                className="btn btn-secondary add-song-btn"
+                className={`btn ${
+                  addSong ? "btn-disabled" : "btn-secondary"
+                } add-song-btn`}
                 onClick={() => ctrlSong(true)}
               >
                 <i className="material-icons">add</i>
@@ -449,22 +470,57 @@ const Influencer = () => {
               >
                 Cancel
               </button>
-              <button className="btn btn-disabled">Promote</button>
+              <button
+                className={`btn ${
+                  selectedSongs.length ? "btn-secondary" : "btn-disabled"
+                }`}
+                onClick={promoteSongs}
+              >
+                Promote {selectedSongs.length} song(s)
+              </button>
             </div>
           </div>
           <div className="modal-showcase">
             {/* Select song box */}
             <div className="select-songs-contain">
               <h4 className="head-4">Select songs to promote</h4>
-              <button
-                className="btn btn-transparent secondary"
-                onClick={() => setSelection(prev => !prev)}
-              >
-                {selectAll ? "Unselect all" : "Select all"}
-              </button>
+              <div className="top-btn-grp">
+                <button
+                  className="btn btn-secondary select-btn"
+                  onClick={() => setSelection(prev => !prev)}
+                >
+                  {selectAll ? "Unselect all" : "Select all"}
+                </button>
+                <button
+                  className="btn btn-transparent semi-med cancel-btn"
+                  onClick={() => ctrlSong(false)}
+                >
+                  Cancel
+                </button>
+              </div>
               <div className="song-list-contain">
-                {songOptions.map(song => (
-                  <SongItem key={song.id} song={song} />
+                {songOptions.map((song, i) => (
+                  <div key={song.id} className="song-item bg-purple">
+                    <div className="checkbox-contain">
+                      <input
+                        type="checkbox"
+                        className="checkbox-input"
+                        checked={songChecked[i]}
+                        onChange={() => checkChanged(i)}
+                        value={song.id}
+                      />
+                      <div className="song-checkbox">
+                        <i className="material-icons">done</i>
+                      </div>
+                    </div>
+                    <div className="song-img-contain">
+                      <img src={song.songImg} alt="" className="song-img" />
+                    </div>
+                    <div className="song-desc">
+                      <h5 className="head-5">{song.songName}</h5>
+                      <p className="lead-2 med">{song.singerName}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

@@ -679,13 +679,26 @@
           font-size: 5rem;
         }
 
-        .btn-transparent {
-          padding: 0;
-          margin: 0;
-          color: $secondary-color;
-          font-family: $primary-font;
-          font-size: 0.9rem;
-          padding-top: 0.6rem;
+        .top-btn-grp {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .btn-transparent {
+            padding: 0;
+            margin: 0;
+            color: $secondary-color;
+            font-family: $primary-font;
+            font-size: 0.9rem;
+            padding-top: 0.6rem;
+
+            &.cancel-btn {
+              color: $semi-med-color;
+            }
+          }
+          .btn-secondary {
+            padding: 0.4rem 1rem;
+          }
         }
 
         .initial-showcase {
@@ -784,6 +797,7 @@
                 margin-left: 0.6rem;
                 .head-5 {
                   font-size: 1rem;
+                  font-weight: 400;
                 }
 
                 .lead-2 {
