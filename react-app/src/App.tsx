@@ -36,22 +36,12 @@ function App() {
           <PrivateRoute exact path="/general/artists">
             <GeneralList />
           </PrivateRoute>
-          <ProtectedRoute exact path="/discord_signup">
-            <SaveDiscord />
-          </ProtectedRoute>
           <PrivateRoute exact path="/spotify_auth">
             <SaveSpotify />
           </PrivateRoute>
-          {/* <PrivateRoute exact path="/" component={Home} />
-          <PrivateRoute exact path="/influencer" component={Influencer} />
-          <PrivateRoute exact path="/general" component={General} />
-          <PrivateRoute exact path="/spotify_auth" component={SaveSpotify} />
-          <PrivateRoute
-            exact
-            path="/influencer/songs"
-            component={InfluencerList}
-          />
-          <PrivateRoute exact path="/general/artists" component={GeneralList} /> */}
+          <ProtectedRoute exact path="/discord_signup">
+            <SaveDiscord />
+          </ProtectedRoute>
           <ProtectedRoute exact path="/sign_in">
             <SignIn />
           </ProtectedRoute>

@@ -51,3 +51,12 @@ export interface Facebook {
   userId: string;
   loginType: string;
 }
+
+export interface Google {
+  userId: string;
+  accessToken: string;
+    name: string;
+    picture: string;
+    email: string;
+    loginType: string;
+}

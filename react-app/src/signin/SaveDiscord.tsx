@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { Card, Spinner } from "react-bootstrap"
+import { useHistory } from "react-router"
 
-const SaveSpotify = () => {
-    
+const SaveDiscord = () => {
+    const history = useHistory()
     const [spotifyToken, setSpotifyToken] = useState<string>("")
 
     useEffect(()=>{
@@ -12,6 +13,7 @@ const SaveSpotify = () => {
         setSpotifyToken(code?code:"")
         localStorage.setItem("discordToken", code?code:"")
         localStorage.setItem("discordServer", serverid?serverid:"")
+        history.push({pathname:"/"})
         window.close()
     
     }, [spotifyToken])
@@ -32,4 +34,4 @@ const SaveSpotify = () => {
 
 }
 
-export default SaveSpotify
+export default SaveDiscord

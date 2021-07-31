@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import GoogleLogin from "react-google-login";
 
-import { facebookLogin } from "../actions/authActions";
+import { facebookLogin, googleLogin } from "../actions/authActions";
 
 import signInArt from "../img/sign-in-art.svg";
 import googleLogo from "../img/google.svg";
@@ -12,6 +12,7 @@ type Props = {
   changeFlow: Function;
   submitUserCredentials: Function;
   facebookLogin?: Function;
+  googleLogin?: Function;
 };
 
 interface User {
@@ -23,6 +24,7 @@ const SignInForm = ({
   changeFlow,
   submitUserCredentials,
   facebookLogin,
+  googleLogin
 }: Props) => {
   const [user, setUser] = useState<User>({
     name: "",
@@ -57,19 +59,25 @@ const SignInForm = ({
       userId: response.userId,
       loginType: response.graphDomain,
     };
-    console.log(response);
-    console.log(fbData);
     facebookLogin && facebookLogin(fbData);
   };
 
   // Function to get the response from google
   const googleResponse = (response: any) => {
-    console.log(response);
+    const googleData = {
+      userId: response.googleId,
+      accessToken: response.accessToken,
+      name: response.profileObj.givenName,
+      picture: response.profileObj.imageUrl,
+      email: response.profileObj.email,
+      loginType: 'google'
+    }
+    googleLogin && googleLogin(googleData);
   };
 
-  // useEffect(() => {
-  //   console.log(facebookAppId);
-  // }, [facebookAppId]);
+  useEffect(() => {
+    console.log(facebookAppId);
+  }, [facebookAppId]);
 
   return (
     <main className="sign-in-form bg-semi-med">
@@ -118,7 +126,7 @@ const SignInForm = ({
         <FacebookLogin
           appId={facebookAppId as string}
           callback={facebookResponse}
-          // autoLoad
+          autoLoad
           fields="name,email,picture"
           render={renderProps => (
             <button
@@ -150,4 +158,4 @@ const SignInForm = ({
   );
 };
 
-export default connect(null, { facebookLogin })(SignInForm);
+export default connect(null, { facebookLogin, googleLogin })(SignInForm);
