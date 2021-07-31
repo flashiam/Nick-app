@@ -25,6 +25,7 @@ const SignInForm = ({
   changeFlow,
   submitUserCredentials,
   facebookLogin,
+  googleLogin,
 }: Props) => {
   const [user, setUser] = useState<User>({
     name: "",
@@ -59,24 +60,25 @@ const SignInForm = ({
       userId: response.userId,
       loginType: response.graphDomain,
     };
-    console.log(response);
-    console.log(fbData);
     facebookLogin && facebookLogin(fbData);
   };
 
   // Function to get the response from google
   const googleResponse = (response: any) => {
-    console.log(response);
-    // const googleData:Google = {
-    //   userId: response.googleId,
-    //   accessToken: response.accessToken,
-    //   name: response.profileObj.
-    // }
+    const googleData = {
+      userId: response.googleId,
+      accessToken: response.accessToken,
+      name: response.profileObj.givenName,
+      picture: response.profileObj.imageUrl,
+      email: response.profileObj.email,
+      loginType: "google",
+    };
+    googleLogin && googleLogin(googleData);
   };
 
-  // useEffect(() => {
-  //   console.log(facebookAppId);
-  // }, [facebookAppId]);
+  useEffect(() => {
+    console.log(facebookAppId);
+  }, [facebookAppId]);
 
   return (
     <main className="sign-in-form bg-semi-med">
@@ -97,6 +99,8 @@ const SignInForm = ({
               name="name"
               className="input-field name-field"
               value={user.name}
+              // onFocus={e=>e.currentTarget.style.border="0.5px solid purple"}
+              // onBlur={e=>e.currentTarget.style.border="1px"}
               onChange={e => fillUserDetails(e)}
             />
           </div>
@@ -141,7 +145,7 @@ const SignInForm = ({
             <button
               className="btn google-btn auth-btn"
               onClick={renderProps.onClick}
-              disabled={renderProps.disabled}
+              // disabled={renderProps.disabled}
             >
               <img src={googleLogo} alt="google" className="google-logo" />
               <p className="lead-2">Sign in with google</p>

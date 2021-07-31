@@ -40,8 +40,8 @@ async def on_message(message):
     if message.author == client.user:
         return
     else:
-        await message.channel.send("Hey ! "+str(message.author)+" How are you doing today ?")
+        await message.channel.send("Hey ! "+str(message.author)+" How are you brother ?")
 
 
-client.run('ODY0MjIyMjY0NTI2MzcyODk0.YOyTtA.LExNYXzTfcDIyF7qARP9N2XK3s0')
+client.run('ODY0MjIyMjY0NTI2MzcyODk0.YOyTtA.PSOQqCSg9F95_4D-uaM4WGzVJSw')
 
