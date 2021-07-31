@@ -268,14 +268,44 @@
     }
 
     .promote-modal {
+      flex-direction: column;
       .modal-content {
-        width: 80%;
-        height: 60%;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
         .modal-form {
+          position: relative;
           width: 100%;
+
+          .add-song-btn {
+            position: relative;
+            z-index: 1;
+          }
+
+          .btn-grp {
+            justify-content: flex-end;
+            .close-modal-btn {
+              display: none;
+            }
+
+            .promote-btn {
+              display: flex;
+              justify-self: flex-end;
+            }
+          }
+
+          .mobo-close-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
         }
         .modal-showcase {
-          display: none;
+          // display: none;
+          width: 100%;
+          height: 50%;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
         }
       }
     }
