@@ -1,5 +1,6 @@
 import discord
-
+import os
+from dotenv import load_dotenv
 
 intents = discord.Intents.default()
 intents.members = True
@@ -42,6 +43,6 @@ async def on_message(message):
     else:
         await message.channel.send("Hey ! "+str(message.author)+" How are you brother ?")
 
-
-client.run('ODY0MjIyMjY0NTI2MzcyODk0.YOyTtA.PSOQqCSg9F95_4D-uaM4WGzVJSw')
+load_dotenv()
+client.run(os.getenv("DISCORD_BOT_SECRET"))
 
