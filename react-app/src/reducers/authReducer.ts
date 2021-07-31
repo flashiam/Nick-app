@@ -29,7 +29,10 @@ const authReducer = (state = initialState, action: any) => {
       };
     case DISCORD_TOKEN:
       localStorage.setItem("user-auth", action.payload.token);
-      localStorage.setItem("discord-auth", action.payload.discord);
+      localStorage.setItem(
+        "discord-auth",
+        JSON.stringify(action.payload.discord)
+      );
       return {
         ...state,
         isLoggedIn: true,

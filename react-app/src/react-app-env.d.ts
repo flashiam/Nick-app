@@ -1,7 +1,7 @@
 /// <reference types="react-scripts" />
 declare module "react-facebook-login/dist/facebook-login-render-props" {
   export interface RenderProps {
-    onClick: Function;
+    onClick(event: React.MouseEvent<HTMLDivElement>): void;
     isDisabled: boolean;
     isProcessing: boolean;
     isSdkLoaded: boolean;

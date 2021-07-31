@@ -34,7 +34,6 @@ const SignInForm = ({
     name: "",
     email: "",
   });
-  const history = useHistory();
 
   // OAuth's client id's
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -57,19 +56,19 @@ const SignInForm = ({
   // Function to get the response from facebook
   const facebookResponse = (response: any) => {
     const fbData: Facebook = {
-      id: response.id,
-      accessToken: response.accessToken,
-      name: response.name,
-      picture: response.picture.data.url,
-      userId: response.userId,
-      loginType: response.graphDomain,
+      id: response?.id,
+      accessToken: response?.accessToken,
+      name: response?.name,
+      picture: response?.picture.data.url,
+      userId: response?.userId,
+      loginType: response?.graphDomain,
     };
     facebookLogin && facebookLogin(fbData);
   };
 
   // Function to get the response from google
   const googleResponse = (response: any) => {
-    const googleData = {
+    const googleData: Google = {
       userId: response.googleId,
       accessToken: response.accessToken,
       name: response.profileObj.givenName,
@@ -81,7 +80,6 @@ const SignInForm = ({
   };
 
   useEffect(() => {
-    console.log(facebookAppId);
     authToken && changeFlow("discordSignIn");
   }, [facebookAppId, authToken]);
 
