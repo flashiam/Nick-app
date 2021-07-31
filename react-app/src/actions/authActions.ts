@@ -4,7 +4,7 @@ import {
   LOGOUT_USER,
   USER_TYPE,
 } from "./stateTypes";
-import { Facebook, Google, Token } from "../types";
+import { Discord, Facebook, Google } from "../types";
 
 // Function for test login
 export const userSignIn = (user: any) => {
@@ -49,10 +49,10 @@ export const googleLogin = (googleData: Google) => {
 };
 
 // Function to interact with discord
-export const discordLogin = (userData: Token) => {
+export const discordLogin = (discordData: Discord) => {
   return {
     type: DISCORD_TOKEN,
-    payload: userData,
+    payload: discordData,
   };
 };
 

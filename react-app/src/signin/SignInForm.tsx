@@ -64,6 +64,7 @@ const SignInForm = ({
       loginType: response?.graphDomain,
     };
     facebookLogin && facebookLogin(fbData);
+    changeFlow("discordSignIn");
   };
 
   // Function to get the response from google
@@ -77,11 +78,13 @@ const SignInForm = ({
       loginType: "google",
     };
     googleLogin && googleLogin(googleData);
+    changeFlow("discordSignIn");
   };
 
-  useEffect(() => {
-    authToken && changeFlow("discordSignIn");
-  }, [facebookAppId, authToken]);
+  // useEffect(() => {
+  //   // console.log(authToken);
+  //   authToken && changeFlow("discordSignIn");
+  // }, [facebookAppId, authToken]);
 
   return (
     <main className="sign-in-form bg-semi-med">

@@ -16,7 +16,7 @@ const PrivateRoute = (props: any) => {
       <Route
         {...props.routeParams}
         render={() =>
-          localStorage.getItem("user-auth") !== null && authToken ? (
+          localStorage.getItem("discord-auth") !== null ? (
             // Private components to render when user logged in
             <>{props.children}</>
           ) : (

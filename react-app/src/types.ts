@@ -61,10 +61,7 @@ export interface Google {
   loginType: string;
 }
 
-export interface Token {
+export interface Discord {
   token: string;
-  discord: {
-    token: string;
-    server: string;
-  };
+  server: string;
 }
