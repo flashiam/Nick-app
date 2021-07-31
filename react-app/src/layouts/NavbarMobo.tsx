@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from "react";
+import { connect } from "react-redux";
 import { gsap } from "gsap";
 import { Link } from "react-router-dom";
 import musicLogo from "../img/music-logo.png";
 
-const NavbarMobo = () => {
-  const [navOpen, setNav] = useState<boolean>(false);
+import { userSignOut } from "../actions/authActions";
 
+const NavbarMobo = ({ auth: { userType, userDetails }, userSignOut }: any) => {
+  const [navOpen, setNav] = useState<boolean>(false);
+  const authToken = localStorage.getItem("user-auth");
   const navToggler = useRef<HTMLInputElement>(null);
 
   const ctrlOverflow = () => {
@@ -53,17 +56,38 @@ const NavbarMobo = () => {
         </div>
         <div className="nav-menu">
           <div className="menu-links-contain">
+            <div className="user-profile-contain">
+              <div className="profile-pic">
+                {userDetails?.picture ? (
+                  <img
+                    src={userDetails?.picture}
+                    alt="user profile"
+                    className="user-pic"
+                  />
+                ) : (
+                  <i className="material-icons">account_circle</i>
+                )}
+              </div>
+              <div className="right-content">
+                <div className="user-name">
+                  {userDetails?.name || "Musix User"}
+                </div>
+              </div>
+            </div>
             <ul className="menu-links">
-              <li className="link">
-                <Link to="/general" className="light" onClick={closeNav}>
-                  General
-                </Link>
-              </li>
-              <li className="link">
-                <Link to="/influencer" className="light" onClick={closeNav}>
-                  Influencer
-                </Link>
-              </li>
+              {userType === "general" ? (
+                <li className="link">
+                  <Link to="/general" className="light" onClick={closeNav}>
+                    General
+                  </Link>
+                </li>
+              ) : (
+                <li className="link">
+                  <Link to="/influencer" className="light" onClick={closeNav}>
+                    Influencer
+                  </Link>
+                </li>
+              )}
               <li className="link">
                 <Link to="/general" className="light">
                   Support
@@ -77,8 +101,18 @@ const NavbarMobo = () => {
             </ul>
           </div>
           <div className="btn-grp mt-1">
-            <button className="btn btn-primary">Register</button>
-            <button className="btn btn-primary-stroked">Sign In</button>
+            {authToken ? (
+              <button
+                className="btn btn-primary-stroked"
+                onClick={() => userSignOut()}
+              >
+                Sign Out
+              </button>
+            ) : (
+              <Link to="/sign_in" className="btn btn-primary">
+                Sign In
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -86,4 +120,8 @@ const NavbarMobo = () => {
   );
 };
 
-export default NavbarMobo;
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { userSignOut })(NavbarMobo);

@@ -63,13 +63,6 @@ const SignInRoot = ({ userSignIn }: Props) => {
     setCurrentFlow(flow);
   };
 
-  // Function to switch signin flow
-  // const switchFlow = () => {
-  //   switch(currentFlow) {
-  //     case 'typeOfUser': setFlow()
-  //   }
-  // }
-
   return (
     <main id="sign-in-root">
       {currentFlow === "typeOfUser" && (

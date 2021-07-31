@@ -57,12 +57,12 @@ const Navbar = ({
           </li>
         </ul>
         <div className="nav-btn-grp">
-          {isLoggedIn ? (
+          {localStorage.getItem("user-auth") ? (
             <div className="user-profile-contain">
               <div className="profile-pic">
                 {userDetails?.picture ? (
                   <img
-                    src={userDetails.picture}
+                    src={userDetails?.picture}
                     alt="user profile"
                     className="user-pic"
                   />
@@ -72,28 +72,21 @@ const Navbar = ({
               </div>
               <div className="right-content">
                 <div className="user-name">
-                  {userDetails.name || "Musix User"}
+                  {userDetails?.name || "Musix User"}
                 </div>
-                <button className="sign-out-btn" onClick={() => userSignOut()}>
+                <button
+                  className="sign-out-btn"
+                  onClick={() => userSignOut()}
+                  title="sign out"
+                >
                   <i className="material-icons">logout</i>
                 </button>
               </div>
-              {/* <button
-                className="btn btn-transparent sign-out-btn"
-                onClick={() => userSignOut()}
-              >
-                Sign out
-              </button> */}
             </div>
           ) : (
-            <>
-              <Link to="#" className="btn btn-secondary-stroked">
-                Register
-              </Link>
-              <Link to="#" className="btn btn-transparent">
-                Login
-              </Link>
-            </>
+            <Link to="/sign_in" className="btn btn-secondary">
+              Sign In
+            </Link>
           )}
         </div>
       </div>

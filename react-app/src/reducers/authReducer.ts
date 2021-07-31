@@ -38,11 +38,13 @@ const authReducer = (state = initialState, action: any) => {
     case LOGOUT_USER:
       localStorage.removeItem("user-auth");
       localStorage.removeItem("discord-auth");
+      localStorage.removeItem("spotifyToken");
       return {
         ...state,
         authToken: null,
         userDetails: null,
         isLoggedIn: false,
+        discord: null,
       };
     default:
       return state;
