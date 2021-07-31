@@ -6,10 +6,10 @@ import { Button } from "react-bootstrap";
 
 const SignInDiscord = () => {
   const verifyUrl =
-    "https://discord.com/api/oauth2/authorize?client_id=864222264526372894&permissions=0&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code&scope=bot%20guilds.join%20guilds%20gdm.join%20webhook.incoming%20activities.read%20activities.write%20identify";
+    "https://discord.com/api/oauth2/authorize?client_id=864222264526372894&permissions=0&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdiscord_signup&response_type=code&scope=identify%20guilds%20guilds.join%20gdm.join%20bot";
 
   // import { userSignIn } from "../actions/authActions";
-
+  // const wind = new Window()
   type Props = {
     authenticateUser: Function;
   };
@@ -24,7 +24,8 @@ const SignInDiscord = () => {
         </h3>
         <Button
           onClick={() => {
-            window.open(verifyUrl, "newwindow", "width=500,height=700");
+            window.open(verifyUrl, "newwindow", "width=500,height=700")
+            window.name = "discord"
           }}
           className="btn auth-btn discord-btn"
         >

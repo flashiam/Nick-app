@@ -74,7 +74,7 @@ const SignInForm = ({
   return (
     <main className="sign-in-form bg-semi-med">
       <div className="sign-in-showcase bg-purple">
-        <img src={signInArt} alt="" className="sign-in-art" style={{marginRight:"100px"}}/>
+        <img src={signInArt} alt=""/>
       </div>
       <div className="sign-in-content">
         <h1 className="head-1 primary">
@@ -90,6 +90,8 @@ const SignInForm = ({
               name="name"
               className="input-field name-field"
               value={user.name}
+              // onFocus={e=>e.currentTarget.style.border="0.5px solid purple"}
+              // onBlur={e=>e.currentTarget.style.border="1px"}
               onChange={e => fillUserDetails(e)}
             />
           </div>
@@ -116,7 +118,7 @@ const SignInForm = ({
         <FacebookLogin
           appId={facebookAppId as string}
           callback={facebookResponse}
-          autoLoad
+          // autoLoad
           fields="name,email,picture"
           render={renderProps => (
             <button
@@ -134,7 +136,7 @@ const SignInForm = ({
             <button
               className="btn google-btn auth-btn"
               onClick={renderProps.onClick}
-              disabled={renderProps.disabled}
+              // disabled={renderProps.disabled}
             >
               <img src={googleLogo} alt="google" className="google-logo" />
               <p className="lead-2">Sign in with google</p>
