@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import GoogleLogin from "react-google-login";
 
@@ -10,6 +11,7 @@ import googleLogo from "../img/google.svg";
 import { Facebook, Google } from "../types";
 
 type Props = {
+  auth: { authToken: string };
   changeFlow: Function;
   submitUserCredentials: Function;
   facebookLogin?: Function;
@@ -22,6 +24,7 @@ interface User {
 }
 
 const SignInForm = ({
+  auth: { authToken },
   changeFlow,
   submitUserCredentials,
   facebookLogin,
@@ -31,6 +34,7 @@ const SignInForm = ({
     name: "",
     email: "",
   });
+  const history = useHistory();
 
   // OAuth's client id's
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -78,7 +82,8 @@ const SignInForm = ({
 
   useEffect(() => {
     console.log(facebookAppId);
-  }, [facebookAppId]);
+    authToken && changeFlow("discordSignIn");
+  }, [facebookAppId, authToken]);
 
   return (
     <main className="sign-in-form bg-semi-med">
@@ -159,4 +164,10 @@ const SignInForm = ({
   );
 };
 
-export default connect(null, { facebookLogin, googleLogin })(SignInForm);
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { facebookLogin, googleLogin })(
+  SignInForm
+);

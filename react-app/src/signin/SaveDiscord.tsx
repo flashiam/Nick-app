@@ -1,37 +1,54 @@
-import { useEffect, useState } from "react"
-import { Card, Spinner } from "react-bootstrap"
-import { useHistory } from "react-router"
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Card, Spinner } from "react-bootstrap";
+import { useHistory } from "react-router";
 
-const SaveDiscord = () => {
-    const history = useHistory()
-    const [spotifyToken, setSpotifyToken] = useState<string>("")
+import { discordLogin } from "../actions/authActions";
 
-    useEffect(()=>{
+type Props = {
+  auth: {
+    authToken: string;
+  };
+  discordLogin?: Function;
+};
 
-        const code = new URLSearchParams(window.location.search).get('code')
-        const serverid = new URLSearchParams(window.location.search).get('guild_id')
-        setSpotifyToken(code?code:"")
-        localStorage.setItem("discordToken", code?code:"")
-        localStorage.setItem("discordServer", serverid?serverid:"")
-        history.push({pathname:"/"})
-        window.close()
-    
-    }, [spotifyToken])
+const SaveDiscord = ({ auth: { authToken }, discordLogin }: Props) => {
+  const history = useHistory();
+  const [spotifyToken, setSpotifyToken] = useState<string>("");
 
-    return (
-        <Card>
-            <div>
-                <Spinner animation="grow">
+  useEffect(() => {
+    const code = new URLSearchParams(window.location.search).get("code");
+    const serverid = new URLSearchParams(window.location.search).get(
+      "guild_id"
+    );
+    setSpotifyToken(code ? code : "");
 
-                </Spinner>
-                <p>{spotifyToken}</p>
-            </div>
-        </Card>
-        
-        
-    )
+    const userData = {
+      token: authToken,
+      discord: {
+        token: code,
+        server: serverid,
+      },
+    };
+    discordLogin && discordLogin(userData);
+    // localStorage.setItem("discordToken", code ? code : "")
+    // localStorage.setItem("discordServer", serverid ? serverid : "")
+    // history.push({pathname:"/"})
+    window.close();
+  }, [spotifyToken, authToken]);
 
+  return (
+    <Card>
+      <div>
+        <Spinner animation="grow"></Spinner>
+        <p>{spotifyToken}</p>
+      </div>
+    </Card>
+  );
+};
 
-}
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
 
-export default SaveDiscord
+export default connect(mapStateToProps, { discordLogin })(SaveDiscord);

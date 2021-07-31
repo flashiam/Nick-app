@@ -60,3 +60,11 @@ export interface Google {
   email: string;
   loginType: string;
 }
+
+export interface Token {
+  token: string;
+  discord: {
+    token: string;
+    server: string;
+  };
+}

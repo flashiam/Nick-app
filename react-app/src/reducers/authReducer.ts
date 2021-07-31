@@ -1,4 +1,9 @@
-import { LOGIN_USER, LOGOUT_USER, USER_TYPE } from "../actions/stateTypes";
+import {
+  LOGIN_USER,
+  LOGOUT_USER,
+  USER_TYPE,
+  DISCORD_TOKEN,
+} from "../actions/stateTypes";
 
 // Initial state
 const initialState = {
@@ -6,6 +11,7 @@ const initialState = {
   isLoggedIn: false,
   authToken: localStorage.getItem("user-auth"),
   userDetails: null,
+  discord: localStorage.getItem("discord-auth"),
 };
 
 const authReducer = (state = initialState, action: any) => {
@@ -16,15 +22,22 @@ const authReducer = (state = initialState, action: any) => {
         userType: action.payload,
       };
     case LOGIN_USER:
-      localStorage.setItem("user-auth", action.payload.token);
       return {
         ...state,
         authToken: action.payload.token,
         userDetails: action.payload,
+      };
+    case DISCORD_TOKEN:
+      localStorage.setItem("user-auth", action.payload.token);
+      localStorage.setItem("discord-auth", action.payload.discord);
+      return {
+        ...state,
         isLoggedIn: true,
+        discordToken: action.payload,
       };
     case LOGOUT_USER:
       localStorage.removeItem("user-auth");
+      localStorage.removeItem("discord-auth");
       return {
         ...state,
         authToken: null,
