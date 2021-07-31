@@ -1,5 +1,5 @@
 import { LOGIN_USER, LOGOUT_USER, USER_TYPE } from "./stateTypes";
-import { Facebook } from "../types";
+import { Facebook, Google } from "../types";
 
 // Function for test login
 export const userSignIn = (user: any) => {
@@ -28,6 +28,17 @@ export const facebookLogin = (fbData: Facebook) => {
     payload: {
       ...fbData,
       token: fbData.accessToken,
+    },
+  };
+};
+
+// Function for login from google
+export const googleLogin = (googleData: Google) => {
+  return {
+    type: LOGIN_USER,
+    payload: {
+      ...googleData,
+      token: googleData.accessToken,
     },
   };
 };

@@ -12,7 +12,7 @@ type Props = {
 
 const SignInDiscord = () => {
   const verifyUrl =
-    "https://discord.com/api/oauth2/authorize?client_id=864222264526372894&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code&scope=identify%20email%20connections%20guilds%20guilds.join%20rpc%20gdm.join%20bot%20webhook.incoming%20messages.read%20applications.builds.upload%20applications.builds.read%20applications.commands%20applications.store.update%20applications.entitlements%20activities.read%20activities.write%20relationships.read%20rpc.notifications.read";
+    "https://discord.com/oauth2/authorize?client_id=864222264526372894&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code&scope=identify%20email%20guilds%20guilds.join%20gdm.join%20rpc%20bot%20webhook.incoming%20activities.read%20activities.write";
 
   return (
     <main className="sign-in-discord bg-semi-med p-1">

@@ -3,15 +3,17 @@ import { connect } from "react-redux";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import GoogleLogin from "react-google-login";
 
-import { facebookLogin } from "../actions/authActions";
+import { facebookLogin, googleLogin } from "../actions/authActions";
 
 import signInArt from "../img/sign-in-art.svg";
 import googleLogo from "../img/google.svg";
+import { Facebook, Google } from "../types";
 
 type Props = {
   changeFlow: Function;
   submitUserCredentials: Function;
   facebookLogin?: Function;
+  googleLogin?: Function;
 };
 
 interface User {
@@ -49,7 +51,7 @@ const SignInForm = ({
 
   // Function to get the response from facebook
   const facebookResponse = (response: any) => {
-    const fbData = {
+    const fbData: Facebook = {
       id: response.id,
       accessToken: response.accessToken,
       name: response.name,
@@ -65,6 +67,11 @@ const SignInForm = ({
   // Function to get the response from google
   const googleResponse = (response: any) => {
     console.log(response);
+    // const googleData:Google = {
+    //   userId: response.googleId,
+    //   accessToken: response.accessToken,
+    //   name: response.profileObj.
+    // }
   };
 
   // useEffect(() => {
@@ -148,4 +155,4 @@ const SignInForm = ({
   );
 };
 
-export default connect(null, { facebookLogin })(SignInForm);
+export default connect(null, { facebookLogin, googleLogin })(SignInForm);

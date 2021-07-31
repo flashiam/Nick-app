@@ -1,12 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import albumArt from "../img/recom_song_1.jpg";
 import spotifyIcon from "../img/Spotify_Icon_Green.png";
 import artistImg from "../img/charlie-puth.png";
 
 import Carousel from "react-multi-carousel";
+import Auth from "../Auth";
 
 const Influencer = () => {
   const history = window.history;
+  const [spotifyLink, setSpotify] = useState<boolean>(false);
 
   // Carousel responsiveness
   const responsive = {
@@ -19,6 +22,29 @@ const Influencer = () => {
       items: 2,
       partialVisibilityGutter: 15,
     },
+  };
+
+  const auth = Auth();
+
+  // Function to connect spotify
+  const connectSpotify = () => {
+    var popupWinWidth = window.screen.width / 4;
+    var popupWinHeight = window.screen.height / 2;
+    var left = (window.screen.width - popupWinWidth) / 2;
+    var top = (window.screen.height - popupWinHeight) / 2;
+
+    window.open(
+      auth,
+      "newwindow",
+      `width=` +
+        popupWinWidth +
+        `, height=` +
+        popupWinHeight +
+        `,top=` +
+        top +
+        `,left=` +
+        left
+    );
   };
 
   return (
@@ -54,10 +80,46 @@ const Influencer = () => {
         className="trending-album-contain mb-6 container"
       >
         <div className="trending-header">
-          <h2 className="head-2 pb-1">Trending Albums</h2>
+          <h2 className="head-2 pb-1">Trending Songs</h2>
         </div>
         <div className="albums-contain">
-          <Carousel responsive={responsive}>
+          {!spotifyLink ? (
+            <div className="alt-message-contain">
+              <p className="lead-2">
+                Looks like you haven't connected your spotify account
+              </p>
+              <button className="btn btn-secondary" onClick={connectSpotify}>
+                Connect to spotify
+              </button>
+            </div>
+          ) : (
+            <Carousel responsive={responsive} swipeable draggable>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                <div key={num} className="album-item">
+                  <div className="item-img">
+                    <img src={albumArt} alt="" className="album-img" />
+                    <div className="item-stats">
+                      <div className="stat-contain">
+                        <div className="stat listen-stat">Total listens</div>
+                        <div className="stat-count listen-count">1.2k</div>
+                      </div>
+                      <div className="stat-contain">
+                        <div className="stat listen-stat">
+                          Total listen time
+                        </div>
+                        <div className="stat-count listen-count">23:05:34</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="item-desc">
+                    <h4 className="head-4 song-name">Pain</h4>
+                    <p className="lead-2 med promoted-on">11th July 2021</p>
+                  </div>
+                </div>
+              ))}
+            </Carousel>
+          )}
+          {/* <Carousel responsive={responsive}>
             {[1, 2, 3, 4, 5].map(num => (
               <div key={num} className="album-item mt-1">
                 <div className="item-img">
@@ -100,7 +162,7 @@ const Influencer = () => {
                 </div>
               </div>
             ))}
-          </Carousel>
+          </Carousel> */}
         </div>
       </section>
 
