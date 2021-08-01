@@ -56,10 +56,16 @@ const SignInRoot = ({
   const redirectUser = () => {
     currentLoginFlow === "user-login" && changeFlow("appSignIn");
     currentLoginFlow === "user-discord" && changeFlow("discordSignIn");
+    currentLoginFlow === "" && changeFlow("typeOfUser");
+    console.log(currentLoginFlow);
   };
 
   useEffect(() => {
     redirectUser();
+
+    return () => {
+      changeFlow("typeOfUser");
+    };
   }, [currentLoginFlow]);
 
   return (

@@ -41,6 +41,7 @@ const authReducer = (state = initialState, action: any) => {
         ...state,
         authToken: action.payload.token,
         userDetails: action.payload.user,
+        isLoggedIn: true,
       };
     case DISCORD_TOKEN:
       localStorage.setItem("discord-auth", JSON.stringify(action.payload));
@@ -72,7 +73,7 @@ const authReducer = (state = initialState, action: any) => {
       localStorage.removeItem("current-flow");
       return {
         ...state,
-        currenLoginFlow: "",
+        currentLoginFlow: "",
       };
     default:
       return state;
