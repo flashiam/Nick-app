@@ -31,7 +31,13 @@ export const facebookLogin = (fbData: Facebook) => {
   return {
     type: LOGIN_USER,
     payload: {
-      ...fbData,
+      user: {
+        id: fbData.id,
+        name: fbData.name,
+        picture: fbData.picture,
+        userId: fbData.userId,
+        loginType: fbData.loginType,
+      },
       token: fbData.accessToken,
     },
   };
@@ -42,7 +48,13 @@ export const googleLogin = (googleData: Google) => {
   return {
     type: LOGIN_USER,
     payload: {
-      ...googleData,
+      user: {
+        id: googleData.userId,
+        name: googleData.name,
+        picture: googleData.picture,
+        email: googleData.email,
+        loginType: googleData.loginType,
+      },
       token: googleData.accessToken,
     },
   };

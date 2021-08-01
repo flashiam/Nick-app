@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import discordLogo from "../img/discord.svg";
 import { Button } from "react-bootstrap";
@@ -15,20 +14,12 @@ type Props = {
 const SignInDiscord = ({ discordLogin }: Props) => {
   const [discordData, setData] = useState<Discord>();
 
-  const verifyUrl =
-    "https://discord.com/api/oauth2/authorize?client_id=857923209034727454&permissions=52076480656&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdiscord_signup&response_type=code&scope=email%20identify%20bot";
+  const discordClientId = process.env.REACT_APP_DISCORD_CLIENT_ID;
+
+  const verifyUrl = `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&permissions=52076480656&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdiscord_signup&response_type=code&scope=email%20identify%20bot`;
 
   // import { userSignIn } from "../actions/authActions";
   // const wind = new Window()
-  type Props = {
-    authenticateUser: Function;
-  };
-
-  const history = useHistory();
-
-  const testFunction = () => {
-    console.log("hello");
-  };
 
   useEffect(() => {
     window.addEventListener("message", e => {
