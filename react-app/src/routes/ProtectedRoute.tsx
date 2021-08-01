@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -14,7 +14,7 @@ const ProtectedRoute = (props: any) => {
       <Route
         {...props.routeParams}
         render={() =>
-          localStorage.getItem("user-auth") !== null && authToken ? (
+          localStorage.getItem("discord-auth") !== null ? (
             // Redirect to home page when authenticated
             <Redirect
               to={{

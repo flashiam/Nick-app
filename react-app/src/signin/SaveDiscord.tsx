@@ -23,18 +23,32 @@ const SaveDiscord = ({ auth: { authToken }, discordLogin }: Props) => {
     );
     setSpotifyToken(code ? code : "");
 
-    const userData = {
-      token: authToken,
-      discord: {
-        token: code,
-        server: serverid,
-      },
+    const discord = {
+      eventType: "discord",
+      token: code,
+      server: serverid,
     };
-    discordLogin && discordLogin(userData);
+
+    // const userData = {
+    //   token: authToken,
+    //   discord: {
+    //     token: code,
+    //     server: serverid,
+    //   },
+    // };
+    if (window.opener) window.opener.postMessage(discord, "*");
+
+    // localStorage.setItem("discord-auth", JSON.stringify(discord));
     // localStorage.setItem("discordToken", code ? code : "")
     // localStorage.setItem("discordServer", serverid ? serverid : "")
+<<<<<<< HEAD
     window.close()
   }, [spotifyToken, authToken])
+=======
+    // history.push({ pathname: "/" });
+    window.close();
+  }, [spotifyToken]);
+>>>>>>> 7efc64cfeab4d17a071b0b9ee561652257de0358
 
   return (
     <Card>

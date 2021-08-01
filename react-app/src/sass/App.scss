@@ -745,6 +745,10 @@
       .modal-form {
         position: relative;
         width: 60%;
+
+        .mobo-close-btn {
+          display: none;
+        }
       }
 
       .modal-showcase {

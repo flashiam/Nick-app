@@ -455,13 +455,13 @@ const Influencer = () => {
             </div>
             <div className="btn-grp">
               <button
-                className="btn btn-transparent secondary"
+                className="btn btn-transparent secondary close-modal-btn"
                 onClick={() => setModal(false)}
               >
                 Cancel
               </button>
               <button
-                className={`btn ${
+                className={`btn promote-btn ${
                   selectedSongs.length ? "btn-secondary" : "btn-disabled"
                 }`}
                 onClick={promoteSongs}
@@ -469,6 +469,13 @@ const Influencer = () => {
                 Promote {selectedSongs.length} song(s)
               </button>
             </div>
+            {/* Close button for mobo */}
+            <button
+              className="btn btn-transparent mobo-close-btn"
+              onClick={() => setModal(false)}
+            >
+              <i className="material-icons">close</i>
+            </button>
           </div>
           <div className="modal-showcase">
             {/* Select song box */}

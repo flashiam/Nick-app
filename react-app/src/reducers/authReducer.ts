@@ -17,26 +17,24 @@ const initialState = {
 const authReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case USER_TYPE:
+      localStorage.setItem("user-type", action.payload);
       return {
         ...state,
         userType: action.payload,
       };
     case LOGIN_USER:
+      localStorage.setItem("user-auth", action.payload.token);
       return {
         ...state,
         authToken: action.payload.token,
         userDetails: action.payload,
       };
     case DISCORD_TOKEN:
-      localStorage.setItem("user-auth", action.payload.token);
-      localStorage.setItem(
-        "discord-auth",
-        JSON.stringify(action.payload.discord)
-      );
+      localStorage.setItem("discord-auth", JSON.stringify(action.payload));
       return {
         ...state,
         isLoggedIn: true,
-        discordToken: action.payload,
+        discord: action.payload,
       };
     case LOGOUT_USER:
       localStorage.removeItem("user-auth");
