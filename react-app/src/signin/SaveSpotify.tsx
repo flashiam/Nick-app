@@ -9,7 +9,6 @@ const SaveSpotify = () => {
 
         const code = new URLSearchParams(window.location.search).get('code')
         setSpotifyToken(code?code:"")
-        // console.log(code)
         localStorage.setItem("spotifyToken", code?code:"")
         window.close()
     
@@ -19,7 +18,6 @@ const SaveSpotify = () => {
         <Card>
             <div>
                 <Spinner animation="grow">
-
                 </Spinner>
                 <p>{spotifyToken}</p>
             </div>

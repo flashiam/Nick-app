@@ -59,7 +59,7 @@ const SignInForm = ({
       id: response?.id,
       accessToken: response?.accessToken,
       name: response?.name,
-      picture: response?.picture.data.url,
+      picture: response?.picture?.data?.url,
       userId: response?.userId,
       loginType: response?.graphDomain,
     };
@@ -69,11 +69,11 @@ const SignInForm = ({
   // Function to get the response from google
   const googleResponse = (response: any) => {
     const googleData: Google = {
-      userId: response.googleId,
-      accessToken: response.accessToken,
-      name: response.profileObj.givenName,
-      picture: response.profileObj.imageUrl,
-      email: response.profileObj.email,
+      userId: response?.googleId,
+      accessToken: response?.accessToken,
+      name: response?.profileObj.givenName,
+      picture: response?.profileObj.imageUrl,
+      email: response?.profileObj.email,
       loginType: "google",
     };
     googleLogin && googleLogin(googleData);
@@ -86,7 +86,7 @@ const SignInForm = ({
   return (
     <main className="sign-in-form bg-semi-med">
       <div className="sign-in-showcase bg-purple">
-        <img src={signInArt} alt="" className="sign-in-art" />
+        <img src={signInArt} alt="" />
       </div>
       <div className="sign-in-content">
         <h1 className="head-1 primary">
