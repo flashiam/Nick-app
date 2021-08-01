@@ -41,9 +41,14 @@ const SaveDiscord = ({ auth: { authToken }, discordLogin }: Props) => {
     // localStorage.setItem("discord-auth", JSON.stringify(discord));
     // localStorage.setItem("discordToken", code ? code : "")
     // localStorage.setItem("discordServer", serverid ? serverid : "")
+<<<<<<< HEAD
+    window.close()
+  }, [spotifyToken, authToken])
+=======
     // history.push({ pathname: "/" });
     window.close();
   }, [spotifyToken]);
+>>>>>>> 7efc64cfeab4d17a071b0b9ee561652257de0358
 
   return (
     <Card>
