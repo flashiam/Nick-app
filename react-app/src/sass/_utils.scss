@@ -133,12 +133,6 @@ img {
       background: transparent;
       border-color: $primary-color;
       color: $primary-color;
-
-      // &:hover {
-      //   background: $primary-color;
-      //   border-color: transparent;
-      //   color: $light-color;
-      // }
     }
 
     &:hover {
@@ -209,7 +203,7 @@ img {
   }
 
   &-disabled {
-    background: $med-color;
+    background: darken($med-color, 25%);
     color: darken($med-color, 10%);
     cursor: auto;
     user-select: none;

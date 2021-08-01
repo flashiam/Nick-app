@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import discordLogo from "../img/discord.svg";
 
-import { discordLogin } from "../actions/authActions";
+import { discordLogin, flushSignInFlow } from "../actions/authActions";
 import { Discord } from "../types";
 
 type Props = {
   discordLogin?: Function;
+  flushSignInFlow?: Function;
 };
 
-const SignInDiscord = ({ discordLogin }: Props) => {
+const SignInDiscord = ({ discordLogin, flushSignInFlow }: Props) => {
   const [discordData, setData] = useState<Discord>();
   const discordClientId = process.env.REACT_APP_DISCORD_CLIENT_ID;
   const verifyUrl = `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&permissions=52076480656&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdiscord_signup&response_type=code&scope=email%20identify%20bot`;
@@ -31,6 +32,7 @@ const SignInDiscord = ({ discordLogin }: Props) => {
   useEffect(() => {
     if (discordData) {
       discordLogin && discordLogin(discordData);
+      flushSignInFlow && flushSignInFlow();
     }
   }, [discordData]);
 
@@ -49,4 +51,4 @@ const SignInDiscord = ({ discordLogin }: Props) => {
   );
 };
 
-export default connect(null, { discordLogin })(SignInDiscord);
+export default connect(null, { discordLogin, flushSignInFlow })(SignInDiscord);

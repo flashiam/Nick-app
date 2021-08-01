@@ -955,6 +955,7 @@
                   width: 100%;
                   z-index: 2;
                   opacity: 0;
+                  cursor: pointer;
 
                   &:checked ~ .song-checkbox {
                     background-color: $secondary-color;

@@ -13,10 +13,13 @@ type Props = {
     userType: string;
     authToken: string;
     discord: string;
+    currentLoginFlow: string;
   };
 };
 
-const SignInRoot = ({ auth: { userType, authToken } }: Props) => {
+const SignInRoot = ({
+  auth: { userType, authToken, currentLoginFlow },
+}: Props) => {
   // State for user credentials
   const [userDetails, setUser] = useState<User>({
     name: "",
@@ -48,6 +51,16 @@ const SignInRoot = ({ auth: { userType, authToken } }: Props) => {
   const changeFlow = (flow: string) => {
     setCurrentFlow(flow);
   };
+
+  // Function to redirect user according to the previous track
+  const redirectUser = () => {
+    currentLoginFlow === "user-login" && changeFlow("appSignIn");
+    currentLoginFlow === "user-discord" && changeFlow("discordSignIn");
+  };
+
+  useEffect(() => {
+    redirectUser();
+  }, [currentLoginFlow]);
 
   return (
     <main id="sign-in-root">

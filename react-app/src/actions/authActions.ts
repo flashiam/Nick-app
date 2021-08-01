@@ -1,5 +1,7 @@
 import {
+  CURRENT_FLOW,
   DISCORD_TOKEN,
+  FLUSH_FLOW,
   LOGIN_USER,
   LOGOUT_USER,
   USER_TYPE,
@@ -72,5 +74,20 @@ export const discordLogin = (discordData: Discord) => {
 export const userSignOut = () => {
   return {
     type: LOGOUT_USER,
+  };
+};
+
+// Function to save the current flow to keep the track of login process
+export const setCurrentFlow = (flow: string) => {
+  return {
+    type: CURRENT_FLOW,
+    payload: flow,
+  };
+};
+
+// Function to flush the track of sign in flow
+export const flushSignInFlow = () => {
+  return {
+    type: FLUSH_FLOW,
   };
 };

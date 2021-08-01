@@ -3,6 +3,8 @@ import {
   LOGOUT_USER,
   USER_TYPE,
   DISCORD_TOKEN,
+  CURRENT_FLOW,
+  FLUSH_FLOW,
 } from "../actions/stateTypes";
 
 let userDetails = null;
@@ -21,6 +23,7 @@ const initialState = {
   authToken: localStorage.getItem("user-auth"),
   userDetails: userDetails,
   discord: discordDetails,
+  currentLoginFlow: localStorage.getItem("current-flow"),
 };
 
 const authReducer = (state = initialState, action: any) => {
@@ -58,6 +61,18 @@ const authReducer = (state = initialState, action: any) => {
         userDetails: null,
         isLoggedIn: false,
         discord: null,
+      };
+    case CURRENT_FLOW:
+      localStorage.setItem("current-flow", action.payload);
+      return {
+        ...state,
+        currentLoginFlow: action.payload,
+      };
+    case FLUSH_FLOW:
+      localStorage.removeItem("current-flow");
+      return {
+        ...state,
+        currenLoginFlow: "",
       };
     default:
       return state;

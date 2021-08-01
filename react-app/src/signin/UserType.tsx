@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { assignUserType } from "../actions/authActions";
+import { assignUserType, setCurrentFlow } from "../actions/authActions";
 
 type Props = {
   auth: {
@@ -11,6 +11,7 @@ type Props = {
   submitUserType: Function;
   changeFlow: Function;
   assignUserType?: Function;
+  setCurrentFlow?: Function;
 };
 
 const UserType = ({
@@ -18,6 +19,7 @@ const UserType = ({
   submitUserType,
   changeFlow,
   assignUserType,
+  setCurrentFlow,
 }: Props) => {
   const generalLottie =
     "https://assets3.lottiefiles.com/packages/lf20_ejs1jvp2.json";
@@ -38,12 +40,14 @@ const UserType = ({
   // Function to save the user type
   const saveUserType = () => {
     assignUserType && assignUserType(userType);
+    setCurrentFlow && setCurrentFlow("user-login");
     changeFlow("appSignIn");
   };
 
   // useEffect(() => {
-  //   userOfType && !authToken && changeFlow("appSignIn");
-  // }, [userOfType, authToken]);
+  //   if (userOfType) {
+  //   }
+  // }, [userOfType]);
 
   return (
     <main className="user-type-contain bg-semi-med">
@@ -88,7 +92,9 @@ const mapStateToProps = (state: any) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { assignUserType })(UserType);
+export default connect(mapStateToProps, { assignUserType, setCurrentFlow })(
+  UserType
+);
 
 {
   /* <a href="https://www.vecteezy.com/free-vector/music-notes-pattern">Music Notes Pattern Vectors by Vecteezy</a> */
