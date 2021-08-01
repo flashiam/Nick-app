@@ -35,7 +35,7 @@ const SignInForm = ({
     email: "",
   });
 
-  // OAuth's client id's
+  // OAuth client ids
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const facebookAppId = process.env.REACT_APP_FACEBOOK_APP_ID;
 
@@ -83,8 +83,8 @@ const SignInForm = ({
 
   // useEffect(() => {
   //   // console.log(authToken);
-  //   authToken && changeFlow("discordSignIn");
-  // }, [facebookAppId, authToken]);
+  //   authToken ? changeFlow("discordSignIn") : changeFlow("typeOfUser");
+  // }, [authToken]);
 
   return (
     <main className="sign-in-form bg-semi-med">
@@ -133,7 +133,7 @@ const SignInForm = ({
         <FacebookLogin
           appId={facebookAppId as string}
           callback={facebookResponse}
-          autoLoad
+          // autoLoad
           fields="name,email,picture"
           render={renderProps => (
             <button

@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { assignUserType } from "../actions/authActions";
 
 type Props = {
+  auth: {
+    userType: string;
+    authToken: string;
+  };
   submitUserType: Function;
   changeFlow: Function;
   assignUserType?: Function;
 };
 
-const UserType = ({ submitUserType, changeFlow, assignUserType }: Props) => {
+const UserType = ({
+  auth: { userType: userOfType, authToken },
+  submitUserType,
+  changeFlow,
+  assignUserType,
+}: Props) => {
   const generalLottie =
     "https://assets3.lottiefiles.com/packages/lf20_ejs1jvp2.json";
   const influencerLottie =
@@ -31,6 +40,10 @@ const UserType = ({ submitUserType, changeFlow, assignUserType }: Props) => {
     assignUserType && assignUserType(userType);
     changeFlow("appSignIn");
   };
+
+  // useEffect(() => {
+  //   userOfType && !authToken && changeFlow("appSignIn");
+  // }, [userOfType, authToken]);
 
   return (
     <main className="user-type-contain bg-semi-med">
@@ -71,7 +84,11 @@ const UserType = ({ submitUserType, changeFlow, assignUserType }: Props) => {
   );
 };
 
-export default connect(null, { assignUserType })(UserType);
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { assignUserType })(UserType);
 
 {
   /* <a href="https://www.vecteezy.com/free-vector/music-notes-pattern">Music Notes Pattern Vectors by Vecteezy</a> */

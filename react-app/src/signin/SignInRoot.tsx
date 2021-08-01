@@ -1,24 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import UserType from "./UserType";
 import SignInForm from "./SignInForm";
 import SignInDiscord from "./SignInDiscord";
 
-import { User, SignInFlow } from "../types";
+import { User } from "../types";
 import { userSignIn } from "../actions/authActions";
 
-enum UserFlow {
-  typeOfUser = "typeOfUser",
-  appSignIn = "appSignIn",
-  discordSignIn = "discordSignIn",
-}
-
 type Props = {
-  userSignIn: Function;
+  auth: {
+    userType: string;
+    authToken: string;
+    discord: string;
+  };
 };
 
-const SignInRoot = ({ userSignIn }: Props) => {
+const SignInRoot = ({ auth: { userType, authToken } }: Props) => {
   // State for user credentials
   const [userDetails, setUser] = useState<User>({
     name: "",
@@ -28,13 +26,6 @@ const SignInRoot = ({ userSignIn }: Props) => {
 
   // State for current flow
   const [currentFlow, setCurrentFlow] = useState<string>("typeOfUser");
-
-  // State for the sign in flow in app
-  const [signInFlow, setFlow] = useState<SignInFlow>({
-    typeOfUser: true,
-    appSignIn: false,
-    discordSignIn: false,
-  });
 
   // Function to set the user type
   const submitUserType = (type: string) => {
@@ -51,11 +42,6 @@ const SignInRoot = ({ userSignIn }: Props) => {
       name: user.name,
       email: user.email,
     });
-  };
-
-  // Function to login the user to the app
-  const authenticateUser = () => {
-    userSignIn(userDetails);
   };
 
   // Function to change the sign in flow
@@ -79,4 +65,8 @@ const SignInRoot = ({ userSignIn }: Props) => {
   );
 };
 
-export default connect(null, { userSignIn })(SignInRoot);
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { userSignIn })(SignInRoot);

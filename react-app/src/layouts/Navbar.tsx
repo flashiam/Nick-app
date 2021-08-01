@@ -74,12 +74,43 @@ const Navbar = ({
                 <div className="user-name">
                   {userDetails?.name || "Musix User"}
                 </div>
+                {userType === "general" ? (
+                  <div className="points-contain user-stat">
+                    <i className="fa fa-diamond"></i>
+                    <p className="lead-3">125 pts.</p>
+                  </div>
+                ) : (
+                  <div className="listen-contain user-stat">
+                    <i className="fa fa-music"></i>
+                    <p className="lead-3">3.8k listens</p>
+                  </div>
+                )}
+              </div>
+              {/* Pop up options */}
+              <div className="user-pop-up">
+                <ul className="options-contain">
+                  <li className="option">
+                    <a href="#" className="semi-med">
+                      Profile
+                    </a>
+                  </li>
+                  <li className="option">
+                    <a href="#" className="semi-med">
+                      Accounts
+                    </a>
+                  </li>
+                  <li className="option">
+                    <a href="#" className="semi-med">
+                      Stats
+                    </a>
+                  </li>
+                </ul>
                 <button
-                  className="sign-out-btn"
+                  className="btn btn-semi-med-stroked"
                   onClick={() => userSignOut()}
-                  title="sign out"
                 >
                   <i className="material-icons">logout</i>
+                  <p className="lead-2">Sign out</p>
                 </button>
               </div>
             </div>
