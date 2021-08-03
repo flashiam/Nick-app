@@ -133,7 +133,7 @@ const SignInForm = ({
         <FacebookLogin
           appId={facebookAppId as string}
           callback={facebookResponse}
-          autoLoad
+          // autoLoad
           fields="name,email,picture"
           render={renderProps => (
             <button
