@@ -171,7 +171,7 @@
 
     .user-pop-up {
       position: absolute;
-      background: lighten($primary-color, 10%);
+      background: $purple-dark-color;
       padding: 1rem;
       border-radius: 6px;
       min-width: 10rem;
@@ -190,7 +190,7 @@
         height: 2rem;
         width: 2rem;
         transform: rotate(45deg);
-        background: lighten($primary-color, 10%);
+        background: $purple-dark-color;
         border-radius: 4px;
         top: -0.8rem;
         left: 1.2rem;
@@ -210,7 +210,7 @@
 
       .options-contain {
         padding-top: 2rem;
-        background: lighten($primary-color, 10%);
+        background: $purple-dark-color;
         .option {
           margin-bottom: 0.6rem;
         }
@@ -741,10 +741,6 @@
 // Influencer
 .influencer-page {
   .top-header {
-    // display: flex;
-    // align-items: center;
-    // justify-content: space-between;
-
     .landing-section {
       padding: 1rem 0;
       background: url("../img/general_landing.jpg") no-repeat center
@@ -811,270 +807,265 @@
     }
   }
 
-  // Modal
-  .promote-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    background: rgba(0, 0, 0, 0.7);
-    transition: opacity 0.3s ease;
-    z-index: 3;
+  // Promote Modal
+  .modal {
     .modal-content {
-      position: absolute;
-      background: $dark-color;
-      width: 60%;
-      height: 70%;
-      z-index: 4;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      transition: transform 0.3s ease, opacity 0.3s ease-in-out;
-
-      .modal-form {
-        position: relative;
-        width: 60%;
-
-        .mobo-close-btn {
-          display: none;
-        }
-      }
-
-      .modal-showcase {
-        position: relative;
-        width: 40%;
+      .promote-contain {
+        background: $purple-dark-color;
         display: flex;
-        overflow: hidden;
-        align-items: center;
-        justify-content: center;
-        background-color: $secondary-color;
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
 
-        i {
-          font-size: 5rem;
-        }
+        .modal-form {
+          position: relative;
+          width: 60%;
 
-        .top-btn-grp {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+          .btn-grp {
+            position: relative;
+            // bottom: 1rem;
+            // right: 1rem;
+            // left: 1rem;
+            width: 100%;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-          .btn-transparent {
-            padding: 0;
-            margin: 0;
-            color: $secondary-color;
-            font-family: $primary-font;
-            font-size: 0.9rem;
-            padding-top: 0.6rem;
+            .btn {
+              font-family: $primary-font;
+            }
 
-            &.cancel-btn {
-              color: $semi-med-color;
+            .btn-transparent {
+              padding: 0;
+              margin: 0;
+
+              color: $secondary-color;
+            }
+
+            .btn {
+              margin-top: 0;
             }
           }
-          .btn-secondary {
-            padding: 0.4rem 1rem;
+
+          .mobo-close-btn {
+            display: none;
           }
         }
 
-        .initial-showcase {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          background: $secondary-color;
-          z-index: 4;
+        .modal-showcase {
+          position: relative;
+          width: 40%;
           display: flex;
+          overflow: hidden;
           align-items: center;
           justify-content: center;
-          transition: transform 0.3s ease;
+          background-color: $secondary-color;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
 
-          &.hide-showcase {
-            transform: translateY(-100%);
+          .showcase-icon {
+            font-size: 5rem;
+            color: $semi-med-color;
           }
-        }
 
-        .select-songs-contain {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          overflow: auto;
-          width: 100%;
-          background-color: darken($dark-color, 5%);
-          padding: 0.6rem 1rem;
+          .top-btn-grp {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-          .song-list-contain {
-            margin-top: 2rem;
-            .song-item {
-              width: 100%;
-              display: flex;
-              align-items: center;
-              background-color: lighten($dark-color, 5%);
-              border-radius: 8px;
-              margin-bottom: 0.6rem;
-              padding: 0.3rem 1rem;
+            .btn-transparent {
+              padding: 0;
+              margin: 0;
+              color: $secondary-color;
+              font-family: $primary-font;
+              font-size: 0.9rem;
+              padding-top: 0.6rem;
 
-              .checkbox-contain {
-                position: relative;
-                height: 1rem;
-                width: 1rem;
+              &.cancel-btn {
+                color: $secondary-color;
+              }
+            }
+            .btn-secondary {
+              padding: 0.4rem 1rem;
+            }
+          }
 
-                .song-checkbox {
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  height: 100%;
-                  width: 100%;
-                  background-color: lighten($dark-color, 20%);
-                  border: 1px solid darken($dark-color, 3%);
-                  border-radius: 3px;
-                  color: $primary-color;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
+          .initial-showcase {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: lighten($purple-dark-color, 15%);
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
 
-                  i {
-                    display: none;
-                    font-size: 0.8rem;
-                    font-weight: bold;
-                  }
-                }
+            &.hide-showcase {
+              transform: translateY(-100%);
+            }
+          }
 
-                .checkbox-input {
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  height: 100%;
-                  width: 100%;
-                  z-index: 2;
-                  opacity: 0;
-                  cursor: pointer;
+          .select-songs-contain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow: auto;
+            width: 100%;
+            background-color: darken($purple-dark-color, 5%);
+            padding: 0.6rem 1rem;
 
-                  &:checked ~ .song-checkbox {
-                    background-color: $secondary-color;
-                    border-color: darken($secondary-color, 5%);
+            .song-list-contain {
+              margin-top: 2rem;
+              .song-item {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                background-color: lighten($purple-dark-color, 3%);
+                border-radius: 8px;
+                margin-bottom: 0.6rem;
+                padding: 0.3rem 1rem;
+
+                .checkbox-contain {
+                  position: relative;
+                  height: 1rem;
+                  width: 1rem;
+
+                  .song-checkbox {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    background-color: lighten($purple-dark-color, 15%);
+                    border: 1px solid darken($dark-color, 3%);
+                    border-radius: 3px;
+                    color: $primary-color;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
                     i {
-                      display: block;
+                      display: none;
+                      font-size: 0.8rem;
+                      font-weight: bold;
+                    }
+                  }
+
+                  .checkbox-input {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    z-index: 2;
+                    opacity: 0;
+                    cursor: pointer;
+
+                    &:checked ~ .song-checkbox {
+                      background-color: $secondary-color;
+                      border-color: darken($secondary-color, 5%);
+
+                      i {
+                        display: block;
+                      }
                     }
                   }
                 }
-              }
 
-              .song-img-contain {
-                height: 3rem;
-                width: 3rem;
-                border-radius: 4px;
-                margin-left: 1rem;
-              }
-
-              .song-desc {
-                margin-left: 0.6rem;
-                .head-5 {
-                  font-size: 1rem;
-                  font-weight: 400;
+                .song-img-contain {
+                  height: 3rem;
+                  width: 3rem;
+                  border-radius: 4px;
+                  margin-left: 1rem;
                 }
 
-                .lead-2 {
-                  font-size: 0.8rem;
+                .song-desc {
+                  margin-left: 0.6rem;
+                  .head-5 {
+                    font-size: 1rem;
+                    font-weight: 400;
+                  }
+
+                  .lead-2 {
+                    font-size: 0.8rem;
+                  }
                 }
               }
             }
           }
         }
-      }
 
-      .form-contain {
-        margin-top: 2rem;
+        .form-contain {
+          margin-top: 2rem;
 
-        .points-contain {
-          display: flex;
-          align-items: center;
+          .points-contain {
+            display: flex;
+            align-items: center;
 
-          .lead-2 {
-            color: $secondary-color;
-            // padding-bottom: 0.6rem;
-          }
-          .points {
-            padding-left: 0.6rem;
-            font-weight: bold;
-          }
-        }
-
-        .add-song-btn {
-          display: flex;
-          align-items: center;
-          padding: 0.6rem 0.8rem;
-          margin-top: 0.8rem;
-
-          i {
-            font-size: 1rem;
-          }
-          .lead-2 {
-            font-size: 0.9rem;
-            padding-left: 0.6rem;
-          }
-        }
-
-        .form-grp {
-          display: flex;
-          flex-direction: column;
-          margin-bottom: 1rem;
-
-          label {
-            padding-bottom: 0.6rem;
-            color: $secondary-color;
-          }
-
-          .server-select-box {
-            padding: 0.6rem;
-            outline: none;
-            border: none;
-            border-radius: 5px;
-            background: darken($dark-color, 5%);
-            color: $semi-med-color;
-            font-family: $primary-font;
-
-            option {
-              padding: 0.8rem;
+            .lead-2 {
+              color: $semi-med-color;
+              // padding-bottom: 0.6rem;
+            }
+            .points {
+              padding-left: 0.6rem;
+              font-weight: bold;
             }
           }
 
-          .listen-input {
-            padding: 0.6rem 0.3rem;
-            background: darken($dark-color, 5%);
-            color: $semi-med-color;
-            outline: none;
-            border: none;
-            border-radius: 5px;
+          .add-song-btn {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 0.8rem;
+            margin-top: 0.8rem;
+
+            i {
+              font-size: 1rem;
+            }
+            .lead-2 {
+              font-size: 0.9rem;
+              padding-left: 0.6rem;
+            }
           }
-        }
-      }
 
-      .btn-grp {
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        left: 1rem;
-        width: 90%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+          .form-grp {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
 
-        .btn {
-          font-family: $primary-font;
-        }
+            label {
+              padding-bottom: 0.6rem;
+              color: $semi-med-color;
+            }
 
-        .btn-transparent {
-          padding: 0;
-          margin: 0;
+            .server-select-box {
+              padding: 0.6rem;
+              outline: none;
+              border: none;
+              border-radius: 5px;
+              background: lighten($purple-dark-color, 10%);
+              color: $semi-med-color;
+              font-family: $primary-font;
+
+              option {
+                padding: 0.8rem;
+              }
+            }
+
+            .listen-input {
+              padding: 0.6rem 0.3rem;
+              background: lighten($purple-dark-color, 10%);
+              color: $semi-med-color;
+              outline: none;
+              border: none;
+              border-radius: 5px;
+            }
+          }
         }
       }
 
@@ -1484,6 +1475,84 @@
         font-family: $primary-font;
       }
     }
+  }
+}
+
+// Social integration
+.integrate-contain {
+  position: relative;
+  padding: 1.5rem 4rem;
+  height: 100%;
+
+  .head-2 {
+    font-size: 1.2rem;
+  }
+  .social-account-contain {
+    margin-top: 3rem;
+    .social-account {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr 0.4fr;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      .lead-2 {
+        font-size: 1.3rem;
+      }
+      .social-desc {
+        display: flex;
+        align-items: center;
+        .social-img {
+          height: 2rem;
+          width: 2rem;
+          margin-right: 0.6rem;
+        }
+      }
+
+      .social-status {
+        display: flex;
+        align-items: center;
+        .status-indicator {
+          display: inline-block;
+          height: 0.5rem;
+          width: 0.5rem;
+          margin-right: 0.4rem;
+          margin-top: 0.3rem;
+          border-radius: 50%;
+        }
+      }
+
+      .btn-secondary-stroked {
+        margin-top: 0;
+        font-size: 1rem;
+
+        &:hover {
+          background: none;
+          color: $semi-med-color;
+          border-color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  .bottom-section {
+    position: absolute;
+    margin: 0 4rem;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+
+    .btn-transparent {
+      padding: 0;
+      margin-top: 0;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    margin: 1rem;
   }
 }
 

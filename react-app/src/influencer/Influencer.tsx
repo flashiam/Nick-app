@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 
+import Modal from "../layouts/Modal";
+
 import albumArt from "../img/recom_song_2.jpg";
 import spotifyLogo from "../img/Spotify_Logo_Green.png";
 import appleMusic from "../img/apple-music-2.png";
@@ -133,25 +135,6 @@ const Influencer = () => {
 
   const auth = Auth();
 
-  const ctrlOverflow = () => {
-    if (modalOpen) {
-      console.log("hidden");
-      document.body.style.overflow = "hidden";
-    } else {
-      console.log("auto");
-      document.body.style.overflow = "auto";
-    }
-  };
-
-  // Function to close the modal on backdrop press
-  const backdropClose = (e: any) => {
-    if (modalOpen) {
-      if (e.target.classList.contains("promote-modal")) {
-        setModal(false);
-      }
-    }
-  };
-
   // Function to connect spotify
   const connectSpotify = () => {
     var popupWinWidth = window.screen.width / 4;
@@ -221,7 +204,7 @@ const Influencer = () => {
   };
 
   useEffect(() => {
-    ctrlOverflow();
+    // ctrlOverflow();
     localStorage.getItem("spotifyToken");
     selectAll ? selectAllSongs() : unselectSongs();
     updatePoints();
@@ -404,12 +387,8 @@ const Influencer = () => {
         </div>
       </section>
       {/* Promote modal */}
-      <div
-        ref={modalBackdrop}
-        className={`promote-modal ${modalOpen ? "active" : "inactive"}`}
-        onClick={backdropClose}
-      >
-        <div className={`modal-content ${modalOpen ? "active" : "inactive"}`}>
+      <Modal modalOpen={modalOpen} closeModal={() => setModal(false)}>
+        <div className="promote-contain">
           <div className="modal-form p-1">
             <h3 className="head-3">Promote your album</h3>
             <div className="form-contain">
@@ -523,11 +502,11 @@ const Influencer = () => {
             </div>
             {/* Initial showcase */}
             <div className={`initial-showcase ${addSong && "hide-showcase"}`}>
-              <i className="material-icons primary">campaign</i>
+              <i className="material-icons primary showcase-icon">campaign</i>
             </div>
           </div>
         </div>
-      </div>
+      </Modal>
     </main>
   );
 };

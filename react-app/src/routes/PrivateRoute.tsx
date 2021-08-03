@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -6,9 +5,6 @@ import Navbar from "../layouts/Navbar";
 import NavbarMobo from "../layouts/NavbarMobo";
 
 const PrivateRoute = (props: any) => {
-  const [loggedIn] = useState<boolean>(true);
-  const { isLoggedIn, authToken } = props.auth;
-
   return (
     <>
       <NavbarMobo />
