@@ -400,36 +400,43 @@
   }
 
   #sign-in-root {
-    .user-type-contain {
-      width: 90%;
+    .user-animated {
+      min-width: 90%;
 
-      .user-type-showcase {
-        height: 40vh;
-        .animated-showcase {
+      .user-type-contain {
+        min-width: 90%;
+        .user-type-showcase {
           height: 40vh;
-        }
-      }
-
-      .user-type-content {
-        .head-3 {
-          text-align: center;
-          padding-bottom: 0.6rem;
+          .animated-showcase {
+            height: 40vh;
+          }
         }
 
-        .type-btn-grp {
-          margin-bottom: 1rem;
+        .user-type-content {
+          .head-3 {
+            text-align: center;
+            padding-bottom: 0.6rem;
+          }
+
+          .type-btn-grp {
+            margin-bottom: 1rem;
+          }
         }
       }
     }
 
-    .sign-in-form {
+    .sign-in-animated {
       width: 90%;
-      .sign-in-showcase {
-        display: none;
-      }
 
-      .sign-in-content {
-        width: 100%;
+      .sign-in-form {
+        width: 90%;
+        .sign-in-showcase {
+          display: none;
+        }
+
+        .sign-in-content {
+          width: 100%;
+        }
       }
     }
 

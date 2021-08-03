@@ -65,3 +65,8 @@ export interface Discord {
   token: string;
   server: string;
 }
+
+export interface SocialAccount {
+  account: string;
+  token: string;
+}

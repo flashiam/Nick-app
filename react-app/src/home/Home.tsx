@@ -9,25 +9,16 @@ import havana from "../img/havana.png";
 import shape from "../img/shape.png";
 import attention from "../img/attention.png";
 import artist1 from "../img/shawn-mendes.jpg";
-import artist2 from "../img/charlie-puth.png";
-import artist3 from "../img/drake.jpg";
-import landingArt from "../img/landing-img.svg";
 
 import { TopTen } from "../types";
 
 gsap.registerPlugin(ScrollTrigger);
-// type Props = {
-//   auth: {
-//     isLoggedIn: boolean;
-//   };
-// };
 
-const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
+const Home = ({ auth: { authToken } }: any) => {
   const history = useHistory();
 
   const typoHead = useRef<HTMLHeadingElement>(null);
   const svgCard = useRef<SVGGElement>(null);
-  const topSongs = useRef<HTMLDivElement>(null);
 
   // Creating group of refs
   const songProgress = useRef<any>([]);
@@ -251,7 +242,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
     ctrlScrollAnim();
     // Redirect back to sign in when user not loggedin
     !authToken && history.push("/sign_in");
-  }, [authToken]);
+  }, [authToken, history]);
 
   return (
     <div className="container">
@@ -872,7 +863,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                     fill="#3E2782"
                     fillOpacity="0.73"
                   />
-                  <g id="music" clip-path="url(#clip0)">
+                  <g id="music" clipPath="url(#clip0)">
                     <path
                       id="Vector"
                       d="M432.716 96.1923L392.095 108.188C391.27 108.447 390.55 108.962 390.038 109.659C389.527 110.356 389.251 111.197 389.25 112.061V145.248C387.92 144.925 386.556 144.758 385.188 144.751C378.459 144.751 373 148.389 373 152.876C373 157.362 378.459 161.001 385.188 161.001C391.916 161.001 397.375 157.362 397.375 152.876V123.209L429.875 113.688V137.125C428.545 136.801 427.181 136.633 425.812 136.626C419.084 136.626 413.625 140.264 413.625 144.751C413.625 149.237 419.084 152.876 425.812 152.876C432.541 152.876 438 149.238 438 144.751V100.063C437.999 99.4254 437.849 98.7967 437.56 98.228C437.271 97.6594 436.853 97.1666 436.338 96.7897C435.824 96.4128 435.228 96.1624 434.599 96.0586C433.969 95.9548 433.324 96.0006 432.716 96.1923Z"
@@ -1021,7 +1012,7 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
           </div>
           <div className="top-artists songs-contain">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-              <div className="music-item">
+              <div key={num} className="music-item">
                 <div className="progress-contain">
                   <div className="song-progress">
                     <svg>
@@ -1059,24 +1050,6 @@ const Home = ({ auth: { isLoggedIn, authToken } }: any) => {
                 </div>
               </div>
             ))}
-            {/* <div className="song-card">
-              <img src={artist1} alt="song-img" className="song-img" />
-              <div className="song-content">
-                <div className="top-content">
-                  <h3 className="semi-med">Shawn Mendes</h3>
-                </div>
-              </div>
-              <div className="stat-contain">
-                <div className="favorites song-stat">
-                  <i className="material-icons purple stat-icon">favorite</i>
-                  <span className="semi-med count">1.2k</span>
-                </div>
-                <div className="trending song-stat">
-                  <i className="material-icons purple stat-icon">trending_up</i>
-                  <span className="semi-med count">980</span>
-                </div>
-              </div>
-            </div> */}
           </div>
         </section>
       </main>

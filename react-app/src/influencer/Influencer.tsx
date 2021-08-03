@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 
@@ -12,10 +13,18 @@ import havana from "../img/havana.png";
 import shape from "../img/shape.png";
 
 import Auth from "../Auth";
+import { integrateAccount } from "../actions/authActions";
 
 import { Song, PromotionDetails } from "../types";
 
-const Influencer = () => {
+type Props = {
+  auth: {
+    linkedAccounts: any;
+  };
+  integrateAccount?: Function;
+};
+
+const Influencer = ({ auth: { linkedAccounts }, integrateAccount }: Props) => {
   const history = window.history;
 
   // Carousel responsiveness
@@ -31,7 +40,7 @@ const Influencer = () => {
     },
   };
 
-  const [songOptions, setSongOptions] = useState<Song[]>([
+  const [songOptions] = useState<Song[]>([
     {
       id: 1,
       songImg: attention,
@@ -154,6 +163,16 @@ const Influencer = () => {
         `,left=` +
         left
     );
+
+    window.addEventListener("message", e => {
+      if (e.data.eventType === "link-spotify") {
+        const spotify = {
+          account: e.data.account,
+          token: e.data.token,
+        };
+        integrateAccount && integrateAccount(spotify);
+      }
+    });
   };
 
   // Function to execute checkbox when checkbox get changed
@@ -240,7 +259,7 @@ const Influencer = () => {
       {/* Highly promoted albums */}
       <section className="promoted-album-contain mb-6 container">
         <div className="promote-header">
-          <h2 className="head-2 pb-1">Highly promoted albums</h2>
+          <h2 className="head-2 pb-1">Highly promoted songs</h2>
         </div>
         <div className="albums-contain">
           <div className="album-item">
@@ -276,7 +295,7 @@ const Influencer = () => {
             <img src={spotifyLogo} alt="" className="platform-logo pb-0" />
           </div>
           <div className="albums-contain">
-            {!spotifyLink ? (
+            {!linkedAccounts?.spotify ? (
               <div className="alt-message-contain">
                 <p className="lead-2">
                   Looks like you haven't connected your spotify account
@@ -511,4 +530,8 @@ const Influencer = () => {
   );
 };
 
-export default Influencer;
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { integrateAccount })(Influencer);

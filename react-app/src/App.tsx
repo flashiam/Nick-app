@@ -1,5 +1,5 @@
 import "./styles/App.min.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import Home from "./home/Home";

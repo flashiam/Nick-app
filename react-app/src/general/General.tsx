@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import albumArt from "../img/recom_song_1.jpg";
-import spotifyIcon from "../img/Spotify_Icon_Green.png";
 import artistImg from "../img/charlie-puth.png";
 
 import Carousel from "react-multi-carousel";
 import Auth from "../Auth";
+import { integrateAccount } from "../actions/authActions";
 
-const Influencer = () => {
+type Props = {
+  integrateAccount?: Function;
+  auth: {
+    linkedAccounts: any;
+  };
+};
+
+const Influencer = ({ auth: { linkedAccounts }, integrateAccount }: Props) => {
   const history = window.history;
-  const [spotifyLink, setSpotify] = useState<boolean>(false);
 
   // Carousel responsiveness
   const responsive = {
@@ -45,6 +51,16 @@ const Influencer = () => {
         `,left=` +
         left
     );
+
+    window.addEventListener("message", e => {
+      if (e.data.eventType === "link-spotify") {
+        const spotify = {
+          account: e.data.account,
+          token: e.data.token,
+        };
+        integrateAccount && integrateAccount(spotify);
+      }
+    });
   };
 
   return (
@@ -83,7 +99,7 @@ const Influencer = () => {
           <h2 className="head-2 pb-1">Trending Songs</h2>
         </div>
         <div className="albums-contain">
-          {!spotifyLink ? (
+          {!linkedAccounts?.spotify ? (
             <div className="alt-message-contain">
               <p className="lead-2">
                 Looks like you haven't connected your spotify account
@@ -204,4 +220,8 @@ const Influencer = () => {
   );
 };
 
-export default Influencer;
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { integrateAccount })(Influencer);

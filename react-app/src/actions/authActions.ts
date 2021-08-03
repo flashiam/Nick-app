@@ -2,11 +2,13 @@ import {
   CURRENT_FLOW,
   DISCORD_TOKEN,
   FLUSH_FLOW,
+  LINK_ACCOUNT,
   LOGIN_USER,
   LOGOUT_USER,
   USER_TYPE,
+  UNLINK_ACCOUNT,
 } from "./stateTypes";
-import { Discord, Facebook, Google } from "../types";
+import { Discord, Facebook, Google, SocialAccount } from "../types";
 
 // Function for test login
 export const userSignIn = (user: any) => {
@@ -89,5 +91,22 @@ export const setCurrentFlow = (flow: string) => {
 export const flushSignInFlow = () => {
   return {
     type: FLUSH_FLOW,
+  };
+};
+
+// Function to integrate social account
+export const integrateAccount = (account: SocialAccount) => {
+  console.log(account);
+  return {
+    type: LINK_ACCOUNT,
+    payload: account,
+  };
+};
+
+// Function to unlink an social account
+export const disintegrateAccount = (accountName: string) => {
+  return {
+    type: UNLINK_ACCOUNT,
+    payload: accountName,
   };
 };

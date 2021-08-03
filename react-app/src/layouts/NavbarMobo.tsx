@@ -48,8 +48,9 @@ const NavbarMobo = ({ auth: { userType, userDetails }, userSignOut }: any) => {
           ref={navToggler}
           type="checkbox"
           className="toggler"
-          onClick={() => setNav(prevNav => !prevNav)}
+          // onClick={() => setNav(prevNav => !prevNav)}
           checked={navOpen}
+          onChange={e => (e.target.checked ? setNav(true) : setNav(false))}
         />
         <div className="hamburger">
           <div className="menu-line"></div>

@@ -5,6 +5,8 @@ import {
   DISCORD_TOKEN,
   CURRENT_FLOW,
   FLUSH_FLOW,
+  LINK_ACCOUNT,
+  UNLINK_ACCOUNT,
 } from "../actions/stateTypes";
 
 let userDetails = null;
@@ -12,6 +14,9 @@ let discordDetails = null;
 
 const storedDetails = localStorage.getItem("user");
 const storedDiscord = localStorage.getItem("discord-auth");
+const accounts = {
+  spotify: localStorage.getItem("spotify"),
+};
 
 userDetails = storedDetails && JSON.parse(storedDetails);
 discordDetails = storedDiscord && JSON.parse(storedDiscord);
@@ -24,6 +29,7 @@ const initialState = {
   userDetails: userDetails,
   discord: discordDetails,
   currentLoginFlow: localStorage.getItem("current-flow"),
+  linkedAccounts: accounts,
 };
 
 const authReducer = (state = initialState, action: any) => {
@@ -51,11 +57,7 @@ const authReducer = (state = initialState, action: any) => {
         discord: action.payload,
       };
     case LOGOUT_USER:
-      localStorage.removeItem("user");
-      localStorage.removeItem("user-auth");
-      localStorage.removeItem("discord-auth");
-      localStorage.removeItem("spotifyToken");
-      localStorage.removeItem("user-type");
+      localStorage.clear();
       return {
         ...state,
         authToken: null,
@@ -75,6 +77,19 @@ const authReducer = (state = initialState, action: any) => {
         ...state,
         currentLoginFlow: "",
       };
+    case LINK_ACCOUNT:
+      localStorage.setItem(`${action.payload.account}`, action.payload.token);
+      return {
+        ...state,
+        linkedAccounts: {
+          ...state.linkedAccounts,
+          [action.payload.account]: action.payload.token,
+        },
+      };
+    case UNLINK_ACCOUNT:
+      localStorage.removeItem(`${action.payload}`);
+      // delete state.linkedAccounts.spotify
+      return state;
     default:
       return state;
   }

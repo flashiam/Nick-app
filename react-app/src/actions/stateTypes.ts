@@ -5,3 +5,5 @@ export const USER_DETAILS = "USER_DETAILS";
 export const DISCORD_TOKEN = "DISCORD_TOKEN";
 export const CURRENT_FLOW = "CURRENT_FLOW";
 export const FLUSH_FLOW = "FLUSH_FLOW";
+export const LINK_ACCOUNT = "LINK_ACCOUNT";
+export const UNLINK_ACCOUNT = "UNLINK_ACCOUNT";

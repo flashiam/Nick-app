@@ -1,5 +1,4 @@
 import { useState } from "react";
-import songImg from "../img/havana.png";
 import spotifyIcon from "../img/Spotify_Icon_Green.png";
 import artistImg from "../img/charlie-puth.png";
 
@@ -13,7 +12,7 @@ const GeneralList = () => {
         <div className="landing-section">
           <div className="container">
             <div className="back-btn semi-med">
-              <a href="#!" className="back-btn" onClick={() => history.go(-1)}>
+              <a className="back-btn" onClick={() => history.go(-1)}>
                 <i className="material-icons semi-med">chevron_left</i>
               </a>
               Back
@@ -75,10 +74,10 @@ const GeneralList = () => {
                   <div className="listen-contain">
                     <p className="lead-2">Listen on</p>
                     <div className="listen-option">
-                      <a href="#" className="option">
+                      <a className="option">
                         <img src={spotifyIcon} alt="" className="listen-img" />
                       </a>
-                      <a href="#" className="option">
+                      <a className="option">
                         <img src={spotifyIcon} alt="" className="listen-img" />
                       </a>
                     </div>

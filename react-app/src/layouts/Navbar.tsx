@@ -6,27 +6,69 @@ import { userSignOut } from "../actions/authActions";
 import musicLogo from "../img/music-logo.png";
 import profileImg from "../img/charlie-puth.png";
 import spotifyIcon from "../img/Spotify_Icon_Green.png";
+import { integrateAccount, disintegrateAccount } from "../actions/authActions";
 
 import Modal from "../layouts/Modal";
+import Auth from "../Auth";
 
 type Props = {
   auth: {
     user: any;
+    userDetails: any;
+    userType: string;
+    linkedAccounts: any;
   };
-  userSignOut: Function;
+  userSignOut?: Function;
+  integrateAccount?: Function;
+  disintegrateAccount?: Function;
 };
 
 const Navbar = ({
-  auth: { userDetails, isLoggedIn, userType },
+  auth: { userDetails, userType, linkedAccounts },
   userSignOut,
-}: any) => {
+  integrateAccount,
+  disintegrateAccount,
+}: Props) => {
   const history = useHistory();
   const [loginStatus, setStatus] = useState<boolean>(false);
   const [modalOpen, setModal] = useState<boolean>(false);
+  const auth = Auth();
 
-  // useEffect(() => {
-  //   isLoggedIn && history.push("/sign_in");
-  // }, [isLoggedIn]);
+  // Function to link spotify account
+  const linkSpotify = () => {
+    var popupWinWidth = window.screen.width / 4;
+    var popupWinHeight = window.screen.height / 2;
+    var left = (window.screen.width - popupWinWidth) / 2;
+    var top = (window.screen.height - popupWinHeight) / 2;
+
+    window.open(
+      auth,
+      "newwindow",
+      `width=` +
+        popupWinWidth +
+        `, height=` +
+        popupWinHeight +
+        `,top=` +
+        top +
+        `,left=` +
+        left
+    );
+
+    window.addEventListener("message", e => {
+      if (e.data.eventType === "link-spotify") {
+        const spotify = {
+          account: e.data.account,
+          token: e.data.token,
+        };
+        integrateAccount && integrateAccount(spotify);
+      }
+    });
+  };
+
+  // Function to unlink account
+  const unlinkAccount = (account: string) => {
+    disintegrateAccount && disintegrateAccount(account);
+  };
 
   return (
     <>
@@ -116,7 +158,7 @@ const Navbar = ({
                   </ul>
                   <button
                     className="btn btn-semi-med-stroked"
-                    onClick={() => userSignOut()}
+                    onClick={() => userSignOut && userSignOut()}
                   >
                     <i className="material-icons">logout</i>
                     <p className="lead-2">Sign out</p>
@@ -149,12 +191,30 @@ const Navbar = ({
                 <span className="lead-2 social-name">Spotify</span>
               </div>
               <div className="social-status">
-                <span className="bg-success status-indicator"></span>
-                <span className="lead-2 status-name">connected</span>
+                <span
+                  className={`${
+                    linkedAccounts?.spotify ? "bg-success" : "bg-danger"
+                  } status-indicator`}
+                ></span>
+                <span className="lead-2 status-name">
+                  {linkedAccounts?.spotify ? "connected" : "disconnected"}
+                </span>
               </div>
-              <button className="btn btn-secondary-stroked disconnect-btn">
-                Disconnect
-              </button>
+              {linkedAccounts?.spotify ? (
+                <button
+                  className="btn btn-secondary-stroked disconnect-btn"
+                  onClick={() => unlinkAccount("spotify")}
+                >
+                  Disconnect
+                </button>
+              ) : (
+                <button
+                  className="btn btn-secondary connect-btn"
+                  onClick={linkSpotify}
+                >
+                  Connect
+                </button>
+              )}
             </div>
             <div className="social-account">
               <div className="social-desc">
@@ -173,7 +233,12 @@ const Navbar = ({
             </div>
           </div>
           <div className="bottom-section">
-            <button className="btn btn-secondary-stroked">Cancel</button>
+            <button
+              className="btn btn-secondary-stroked"
+              onClick={() => setModal(false)}
+            >
+              Cancel
+            </button>
           </div>
           <button
             className="btn btn-transparent close-btn"
@@ -192,4 +257,8 @@ const mapStateToProps = (state: any) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { userSignOut })(Navbar);
+export default connect(mapStateToProps, {
+  userSignOut,
+  integrateAccount,
+  disintegrateAccount,
+})(Navbar);
