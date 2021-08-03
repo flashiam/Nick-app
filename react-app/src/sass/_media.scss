@@ -400,43 +400,35 @@
   }
 
   #sign-in-root {
-    .user-animated {
+    .user-type-contain {
       min-width: 90%;
-
-      .user-type-contain {
-        min-width: 90%;
-        .user-type-showcase {
+      .user-type-showcase {
+        height: 40vh;
+        .animated-showcase {
           height: 40vh;
-          .animated-showcase {
-            height: 40vh;
-          }
+        }
+      }
+
+      .user-type-content {
+        .head-3 {
+          text-align: center;
+          padding-bottom: 0.6rem;
         }
 
-        .user-type-content {
-          .head-3 {
-            text-align: center;
-            padding-bottom: 0.6rem;
-          }
-
-          .type-btn-grp {
-            margin-bottom: 1rem;
-          }
+        .type-btn-grp {
+          margin-bottom: 1rem;
         }
       }
     }
 
-    .sign-in-animated {
+    .sign-in-form {
       width: 90%;
+      .sign-in-showcase {
+        display: none;
+      }
 
-      .sign-in-form {
-        width: 90%;
-        .sign-in-showcase {
-          display: none;
-        }
-
-        .sign-in-content {
-          width: 100%;
-        }
+      .sign-in-content {
+        width: 100%;
       }
     }
 
