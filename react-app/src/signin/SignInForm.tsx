@@ -4,7 +4,11 @@ import { useHistory } from "react-router-dom";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import GoogleLogin from "react-google-login";
 
-import { facebookLogin, googleLogin } from "../actions/authActions";
+import {
+  facebookLogin,
+  googleLogin,
+  setCurrentFlow,
+} from "../actions/authActions";
 
 import signInArt from "../img/sign-in-art.svg";
 import googleLogo from "../img/google.svg";
@@ -16,6 +20,7 @@ type Props = {
   submitUserCredentials: Function;
   facebookLogin?: Function;
   googleLogin?: Function;
+  setCurrentFlow?: Function;
 };
 
 interface User {
@@ -29,13 +34,14 @@ const SignInForm = ({
   submitUserCredentials,
   facebookLogin,
   googleLogin,
+  setCurrentFlow,
 }: Props) => {
   const [user, setUser] = useState<User>({
     name: "",
     email: "",
   });
 
-  // OAuth's client id's
+  // OAuth client ids
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const facebookAppId = process.env.REACT_APP_FACEBOOK_APP_ID;
 
@@ -64,7 +70,7 @@ const SignInForm = ({
       loginType: response?.graphDomain,
     };
     facebookLogin && facebookLogin(fbData);
-    changeFlow("discordSignIn");
+    // changeFlow("discordSignIn");
   };
 
   // Function to get the response from google
@@ -78,13 +84,17 @@ const SignInForm = ({
       loginType: "google",
     };
     googleLogin && googleLogin(googleData);
-    changeFlow("discordSignIn");
+    // changeFlow("discordSignIn");
   };
 
-  // useEffect(() => {
-  //   // console.log(authToken);
-  //   authToken && changeFlow("discordSignIn");
-  // }, [facebookAppId, authToken]);
+  useEffect(() => {
+    // console.log(authToken);
+    if (authToken) {
+      setCurrentFlow && setCurrentFlow("user-discord");
+      changeFlow("discordSignIn");
+    }
+    // authToken ? changeFlow("discordSignIn") : changeFlow("typeOfUser");
+  }, [authToken]);
 
   return (
     <main className="sign-in-form bg-semi-med">
@@ -169,6 +179,8 @@ const mapStateToProps = (state: any) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { facebookLogin, googleLogin })(
-  SignInForm
-);
+export default connect(mapStateToProps, {
+  facebookLogin,
+  googleLogin,
+  setCurrentFlow,
+})(SignInForm);

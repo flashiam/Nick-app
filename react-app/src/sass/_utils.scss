@@ -109,6 +109,12 @@ img {
 .bg-purple {
   background-color: $purple-color;
 }
+.bg-success {
+  background-color: $success-color;
+}
+.bg-danger {
+  background-color: $danger-color;
+}
 
 // Buttons
 %btn-shared {
@@ -133,12 +139,6 @@ img {
       background: transparent;
       border-color: $primary-color;
       color: $primary-color;
-
-      // &:hover {
-      //   background: $primary-color;
-      //   border-color: transparent;
-      //   color: $light-color;
-      // }
     }
 
     &:hover {
@@ -152,7 +152,7 @@ img {
     color: $primary-color;
 
     &-stroked {
-      background: $primary-color;
+      background: transparent;
       border-color: $secondary-color;
       color: $light-color;
 
@@ -209,7 +209,7 @@ img {
   }
 
   &-disabled {
-    background: $med-color;
+    background: darken($med-color, 25%);
     color: darken($med-color, 10%);
     cursor: auto;
     user-select: none;
@@ -893,5 +893,53 @@ img {
       align-items: center;
       width: 100%;
     }
+  }
+}
+
+// Modal
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+  z-index: 3;
+
+  .modal-content {
+    position: absolute;
+    width: 60%;
+    height: 70%;
+    z-index: 4;
+    border-radius: 8px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+
+    &.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: all;
+    }
+
+    &.inactive {
+      opacity: 0;
+      transform: scale(0);
+      pointer-events: none;
+    }
+  }
+
+  &.active {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  &.inactive {
+    pointer-events: none;
+    opacity: 0;
   }
 }

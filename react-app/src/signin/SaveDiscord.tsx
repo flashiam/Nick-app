@@ -1,27 +1,15 @@
 import { useEffect, useState } from "react";
-import { connect } from "react-redux";
 import { Card, Spinner } from "react-bootstrap";
-import { useHistory } from "react-router";
 
-import { discordLogin } from "../actions/authActions";
-
-type Props = {
-  auth: {
-    authToken: string;
-  };
-  discordLogin?: Function;
-};
-
-const SaveDiscord = ({ auth: { authToken }, discordLogin }: Props) => {
-  const history = useHistory();
-  const [spotifyToken, setSpotifyToken] = useState<string>("");
+const SaveDiscord = () => {
+  const [discordToken, setDiscordToken] = useState<string>("");
 
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get("code");
     const serverid = new URLSearchParams(window.location.search).get(
       "guild_id"
     );
-    setSpotifyToken(code ? code : "");
+    setDiscordToken(code ? code : "");
 
     const discord = {
       eventType: "discord",
@@ -29,34 +17,21 @@ const SaveDiscord = ({ auth: { authToken }, discordLogin }: Props) => {
       server: serverid,
     };
 
-    // const userData = {
-    //   token: authToken,
-    //   discord: {
-    //     token: code,
-    //     server: serverid,
-    //   },
-    // };
+    // winodow.opener referencing to the window which opened the popup window (parent window)
     if (window.opener) window.opener.postMessage(discord, "*");
 
-    // localStorage.setItem("discord-auth", JSON.stringify(discord));
-    // localStorage.setItem("discordToken", code ? code : "")
-    // localStorage.setItem("discordServer", serverid ? serverid : "")
-    // history.push({ pathname: "/" });
+    // Close the window after the response
     window.close();
-  }, [spotifyToken]);
+  }, [discordToken]);
 
   return (
     <Card>
       <div>
         <Spinner animation="grow"></Spinner>
-        <p>{spotifyToken}</p>
+        <p>{discordToken}</p>
       </div>
     </Card>
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps, { discordLogin })(SaveDiscord);
+export default SaveDiscord;
