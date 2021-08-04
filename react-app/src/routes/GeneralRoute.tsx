@@ -1,12 +1,12 @@
-// import {useEffect} from '../'
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Navbar from "../layouts/Navbar";
 import NavbarMobo from "../layouts/NavbarMobo";
 
-const PrivateRoute = (props: any) => {
-  // const {userType} = props.auth;
+const GeneralRoute = (props: any) => {
+  const { userType } = props.auth;
+
   return (
     <>
       <NavbarMobo />
@@ -14,9 +14,19 @@ const PrivateRoute = (props: any) => {
       <Route
         {...props.routeParams}
         render={() =>
+          // Private components to render when user logged in
           localStorage.getItem("discord-auth") !== null ? (
-            // Private components to render when user logged in
-            <>{props.children}</>
+            // Checking wether the user is a general user
+            userType === "general" ? (
+              <>{props.children}</>
+            ) : (
+              <Redirect
+                to={{
+                  pathname: "/",
+                  state: { from: props.location },
+                }}
+              />
+            )
           ) : (
             // Redirect to sign in page when unauthenticated
             <Redirect
@@ -44,4 +54,4 @@ const mapStateToProps = (state: any, ownProps: any) => {
   };
 };
 
-export default connect(mapStateToProps, null)(PrivateRoute);
+export default connect(mapStateToProps, null)(GeneralRoute);

@@ -11,10 +11,14 @@ type Props = {
   integrateAccount?: Function;
   auth: {
     linkedAccounts: any;
+    spotify: string;
   };
 };
 
-const Influencer = ({ auth: { linkedAccounts }, integrateAccount }: Props) => {
+const Influencer = ({
+  auth: { linkedAccounts, spotify },
+  integrateAccount,
+}: Props) => {
   const history = window.history;
 
   // Carousel responsiveness
@@ -99,7 +103,7 @@ const Influencer = ({ auth: { linkedAccounts }, integrateAccount }: Props) => {
           <h2 className="head-2 pb-1">Trending Songs</h2>
         </div>
         <div className="albums-contain">
-          {!linkedAccounts?.spotify ? (
+          {!spotify ? (
             <div className="alt-message-contain">
               <p className="lead-2">
                 Looks like you haven't connected your spotify account

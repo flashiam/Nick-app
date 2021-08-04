@@ -30,6 +30,8 @@ const initialState = {
   discord: discordDetails,
   currentLoginFlow: localStorage.getItem("current-flow"),
   linkedAccounts: accounts,
+  spotify: localStorage.getItem("spotify"),
+  appleMusic: localStorage.getItem("apple-music"),
 };
 
 const authReducer = (state = initialState, action: any) => {
@@ -81,6 +83,7 @@ const authReducer = (state = initialState, action: any) => {
       localStorage.setItem(`${action.payload.account}`, action.payload.token);
       return {
         ...state,
+        [action.payload.account]: action.payload.token,
         linkedAccounts: {
           ...state.linkedAccounts,
           [action.payload.account]: action.payload.token,
@@ -89,7 +92,10 @@ const authReducer = (state = initialState, action: any) => {
     case UNLINK_ACCOUNT:
       localStorage.removeItem(`${action.payload}`);
       // delete state.linkedAccounts.spotify
-      return state;
+      return {
+        ...state,
+        [action.payload]: "",
+      };
     default:
       return state;
   }

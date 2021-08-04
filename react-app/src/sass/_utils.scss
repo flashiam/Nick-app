@@ -17,6 +17,11 @@ body {
   scroll-behavior: smooth;
 }
 
+// Selection
+::selection {
+  background-color: $secondary-color;
+}
+
 // Scrollbar
 
 /* width */

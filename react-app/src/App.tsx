@@ -12,6 +12,8 @@ import SaveSpotify from "./signin/SaveSpotify";
 
 import PrivateRoute from "./routes/PrivateRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import InfluencerRoute from "./routes/InfluencerRoute";
+import GeneralRoute from "./routes/GeneralRoute";
 
 import store from "./store";
 import SaveDiscord from "./signin/SaveDiscord";
@@ -24,18 +26,18 @@ function App() {
           <PrivateRoute exact path="/">
             <Home />
           </PrivateRoute>
-          <PrivateRoute exact path="/influencer">
+          <InfluencerRoute exact path="/influencer">
             <Influencer />
-          </PrivateRoute>
-          <PrivateRoute exact path="/general">
+          </InfluencerRoute>
+          <GeneralRoute exact path="/general">
             <General />
-          </PrivateRoute>
-          <PrivateRoute exact path="/influencer/songs">
+          </GeneralRoute>
+          <InfluencerRoute exact path="/influencer/songs">
             <InfluencerList />
-          </PrivateRoute>
-          <PrivateRoute exact path="/general/artists">
+          </InfluencerRoute>
+          <GeneralRoute exact path="/general/artists">
             <GeneralList />
-          </PrivateRoute>
+          </GeneralRoute>
           <PrivateRoute exact path="/spotify_auth">
             <SaveSpotify />
           </PrivateRoute>

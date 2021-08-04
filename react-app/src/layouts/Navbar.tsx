@@ -17,6 +17,7 @@ type Props = {
     userDetails: any;
     userType: string;
     linkedAccounts: any;
+    spotify: string;
   };
   userSignOut?: Function;
   integrateAccount?: Function;
@@ -24,7 +25,7 @@ type Props = {
 };
 
 const Navbar = ({
-  auth: { userDetails, userType, linkedAccounts },
+  auth: { userDetails, userType, linkedAccounts, spotify },
   userSignOut,
   integrateAccount,
   disintegrateAccount,
@@ -99,7 +100,7 @@ const Navbar = ({
             </li>
             <li className="link">
               <Link to="#" className="light">
-                Download
+                Privacy policy
               </Link>
             </li>
           </ul>
@@ -123,8 +124,10 @@ const Navbar = ({
                   </div>
                   {userType === "general" ? (
                     <div className="points-contain user-stat">
-                      <i className="fa fa-diamond"></i>
-                      <p className="lead-3">125 pts.</p>
+                      <i className="fa fa-diamond secondary"></i>
+                      <p className="lead-3">
+                        <strong>125</strong> pts.
+                      </p>
                     </div>
                   ) : (
                     <div className="listen-contain user-stat">
@@ -193,14 +196,14 @@ const Navbar = ({
               <div className="social-status">
                 <span
                   className={`${
-                    linkedAccounts?.spotify ? "bg-success" : "bg-danger"
+                    spotify ? "bg-success" : "bg-danger"
                   } status-indicator`}
                 ></span>
                 <span className="lead-2 status-name">
-                  {linkedAccounts?.spotify ? "connected" : "disconnected"}
+                  {spotify ? "connected" : "disconnected"}
                 </span>
               </div>
-              {linkedAccounts?.spotify ? (
+              {spotify ? (
                 <button
                   className="btn btn-secondary-stroked disconnect-btn"
                   onClick={() => unlinkAccount("spotify")}
@@ -218,11 +221,12 @@ const Navbar = ({
             </div>
             <div className="social-account">
               <div className="social-desc">
-                <img
+                <i className="fa fa-apple apple-music-logo"></i>
+                {/* <img
                   src={spotifyIcon}
                   alt="spotify icon"
                   className="social-img"
-                />
+                /> */}
                 <span className="lead-2 social-name">Apple Music</span>
               </div>
               <div className="social-status">
