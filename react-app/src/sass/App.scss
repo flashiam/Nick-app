@@ -103,6 +103,12 @@
 
       .link {
         padding-left: 1rem;
+
+        &:hover {
+          a {
+            color: $secondary-color;
+          }
+        }
       }
     }
 
@@ -127,7 +133,8 @@
       height: 3rem;
       width: 3rem;
       border-radius: 50%;
-      border: 3px solid lighten($purple-color, 25%);
+      border: 3px solid $secondary-color;
+      // border: 3px solid lighten($purple-color, 25%);
       margin-right: 1rem;
       display: flex;
       align-items: center;
@@ -171,13 +178,12 @@
 
     .user-pop-up {
       position: absolute;
-      background: $purple-dark-color;
+      background: lighten($purple-dark-color, 5%);
       padding: 1rem;
       border-radius: 6px;
       min-width: 10rem;
       top: 4rem;
       left: -1rem;
-      // transform: translateX(-5rem);
       z-index: 2;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
       opacity: 0;
@@ -190,7 +196,7 @@
         height: 2rem;
         width: 2rem;
         transform: rotate(45deg);
-        background: $purple-dark-color;
+        background: lighten($purple-dark-color, 5%);
         border-radius: 4px;
         top: -0.8rem;
         left: 1.2rem;
@@ -209,10 +215,16 @@
       }
 
       .options-contain {
-        padding-top: 2rem;
-        background: $purple-dark-color;
+        padding-top: 1rem;
+        background: lighten($purple-dark-color, 5%);
         .option {
           margin-bottom: 0.6rem;
+
+          &:hover {
+            a {
+              color: $secondary-color;
+            }
+          }
         }
       }
 
@@ -287,11 +299,6 @@
         transform: rotate(-90deg);
         background: $primary-color;
       }
-
-      // &:checked + .hamburger > .menu-line::after {
-      //   // opacity: 0;
-      //   background: $primary-color;
-      // }
 
       &:checked ~ .nav-menu {
         clip-path: circle(141.4% at 100% 0);
@@ -1285,7 +1292,8 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: $purple-color;
+  background-color: $purple-dark-color;
+  // background-color: $purple-color;
   display: flex;
   justify-content: center;
   align-items: center;

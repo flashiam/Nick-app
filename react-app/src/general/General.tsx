@@ -139,50 +139,6 @@ const Influencer = ({
               ))}
             </Carousel>
           )}
-          {/* <Carousel responsive={responsive}>
-            {[1, 2, 3, 4, 5].map(num => (
-              <div key={num} className="album-item mt-1">
-                <div className="item-img">
-                  <img src={albumArt} alt="" className="album-img" />
-                  <div className="item-stats">
-                    <div className="stat-contain">
-                      <div className="stat listen-stat">Total listens</div>
-                      <div className="stat-count listen-count">1.2k</div>
-                    </div>
-                    <div className="stat-contain">
-                      <div className="stat listen-stat">Total listen time</div>
-                      <div className="stat-count listen-count">23:05:34</div>
-                    </div>
-                    <div className="listen-contain">
-                      <p className="lead-2">Listen on</p>
-                      <div className="listen-option">
-                        <a href="#" className="option">
-                          <img
-                            src={spotifyIcon}
-                            alt=""
-                            className="listen-img"
-                          />
-                        </a>
-                        <a href="#" className="option">
-                          <img
-                            src={spotifyIcon}
-                            alt=""
-                            className="listen-img"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="item-desc">
-                  <div className="song-desc">
-                    <h4 className="head-4 song-name">Xscape</h4>
-                    <p className="lead-2 med singer-name">Brad Traversy</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Carousel> */}
         </div>
       </section>
 

@@ -124,7 +124,7 @@ const Navbar = ({
                   </div>
                   {userType === "general" ? (
                     <div className="points-contain user-stat">
-                      <i className="fa fa-diamond secondary"></i>
+                      <i className="fa fa-diamond"></i>
                       <p className="lead-3">
                         <strong>125</strong> pts.
                       </p>
@@ -160,7 +160,7 @@ const Navbar = ({
                     </li>
                   </ul>
                   <button
-                    className="btn btn-semi-med-stroked"
+                    className="btn btn-secondary-stroked"
                     onClick={() => userSignOut && userSignOut()}
                   >
                     <i className="material-icons">logout</i>

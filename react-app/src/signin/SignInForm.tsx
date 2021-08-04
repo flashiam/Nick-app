@@ -103,7 +103,7 @@ const SignInForm = ({
       </div>
       <div className="sign-in-content">
         <h1 className="head-1 primary">
-          Sign in with <span className="purple">Musix</span>
+          Sign in with <span className="med">Musix</span>
         </h1>
         <div className="form-contain custom-sigin">
           <div className="form-grp">
