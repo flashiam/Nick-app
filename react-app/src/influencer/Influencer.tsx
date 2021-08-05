@@ -16,6 +16,7 @@ import Auth from "../Auth";
 import { integrateAccount } from "../actions/authActions";
 
 import { Song, PromotionDetails } from "../types";
+import Card from "../layouts/Card";
 
 type Props = {
   auth: {
@@ -348,27 +349,7 @@ const Influencer = ({
           <div className="albums-contain">
             <Carousel responsive={responsive} swipeable draggable>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                <div key={num} className="album-item mt-1">
-                  <div className="item-img">
-                    <img src={albumArt} alt="" className="album-img" />
-                    <div className="item-stats">
-                      <div className="stat-contain">
-                        <div className="stat listen-stat">Total listens</div>
-                        <div className="stat-count listen-count">1.2k</div>
-                      </div>
-                      <div className="stat-contain">
-                        <div className="stat listen-stat">
-                          Total listen time
-                        </div>
-                        <div className="stat-count listen-count">23:05:34</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item-desc">
-                    <h4 className="head-4 song-name">Pain</h4>
-                    <p className="lead-2 med promoted-on">11th July 2021</p>
-                  </div>
-                </div>
+                <Card key={num} />
               ))}
             </Carousel>
           </div>
