@@ -1,9 +1,11 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Carousel from "react-multi-carousel";
+
+import Card from "../layouts/Card";
 import albumArt from "../img/recom_song_1.jpg";
 import artistImg from "../img/charlie-puth.png";
 
-import Carousel from "react-multi-carousel";
 import Auth from "../Auth";
 import { integrateAccount } from "../actions/authActions";
 

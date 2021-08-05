@@ -948,3 +948,38 @@ img {
     opacity: 0;
   }
 }
+
+// App card
+.app-card {
+  position: relative;
+  height: 18rem;
+  .card-front,
+  .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .card-front {
+    position: absolute;
+
+    .song-img {
+      height: 90%;
+      width: 100%;
+    }
+
+    .song-header {
+      height: 10%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .card-back {
+    background: $purple-dark-color;
+    padding-top: 5rem;
+  }
+}
