@@ -27,7 +27,7 @@ const Influencer = ({
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 5,
+      items: 4.5,
     },
     mobile: {
       breakpoint: { max: 768, min: 0 },
@@ -117,27 +117,17 @@ const Influencer = ({
           ) : (
             <Carousel responsive={responsive} swipeable draggable>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                <div key={num} className="album-item">
-                  <div className="item-img">
-                    <img src={albumArt} alt="" className="album-img" />
-                    <div className="item-stats">
-                      <div className="stat-contain">
-                        <div className="stat listen-stat">Total listens</div>
-                        <div className="stat-count listen-count">1.2k</div>
-                      </div>
-                      <div className="stat-contain">
-                        <div className="stat listen-stat">
-                          Total listen time
-                        </div>
-                        <div className="stat-count listen-count">23:05:34</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item-desc">
-                    <h4 className="head-4 song-name">Pain</h4>
-                    <p className="lead-2 med promoted-on">11th July 2021</p>
-                  </div>
-                </div>
+                <Card
+                  key={num}
+                  songImg={albumArt}
+                  songName="Xscape"
+                  releaseDate="11/07/21"
+                  totalListens={200}
+                  totalFollowers={100}
+                  listenLimit={20}
+                  points={150}
+                  user="general"
+                />
               ))}
             </Carousel>
           )}

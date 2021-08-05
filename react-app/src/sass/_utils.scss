@@ -94,6 +94,12 @@ img {
 .purple {
   color: $purple-color;
 }
+.danger {
+  color: $danger-color;
+}
+.success {
+  color: $success-color;
+}
 
 // Background colors
 .bg-primary {
@@ -953,8 +959,9 @@ img {
 .app-card {
   position: relative;
   height: 22rem;
+  width: 16rem;
   border-radius: 8px;
-  margin-right: 2rem;
+  margin-right: 3rem;
 
   &:hover {
     .card-front {
@@ -978,7 +985,7 @@ img {
     left: 0;
     height: 100%;
     width: 100%;
-    transition: transform 0.3s ease;
+    transition: transform $med-speed ease;
   }
 
   .card-front {
@@ -1119,7 +1126,7 @@ img {
               opacity: 0;
               pointer-events: none;
               transform: translateX(6px);
-              transition: opacity 0.3s ease, transform 0.3s ease;
+              transition: opacity $high-speed ease, transform $high-speed ease;
             }
           }
         }
@@ -1131,6 +1138,28 @@ img {
           .reward-item {
             margin-left: 0.6rem;
           }
+        }
+      }
+
+      .promotion {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .top-title {
+          display: flex;
+          align-items: center;
+          .promote-indicator {
+            display: inline-block;
+            height: 5px;
+            width: 5px;
+            border-radius: 50%;
+            margin-right: 0.4rem;
+          }
+        }
+
+        .btn {
+          font-size: 0.8rem;
+          padding: 0.4rem;
         }
       }
     }

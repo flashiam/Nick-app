@@ -2,6 +2,8 @@ import { useState } from "react";
 import songImg from "../img/havana.png";
 import spotifyIcon from "../img/Spotify_Icon_Green.png";
 
+import Card from "../layouts/Card";
+
 const InfluencerList = () => {
   const history = window.history;
   const [currentLayout, switchLayout] = useState<number>(1);
