@@ -6,6 +6,7 @@ import Card from "../layouts/Card";
 import albumArt from "../img/recom_song_1.jpg";
 import artistImg from "../img/charlie-puth.png";
 
+import responsive from "../carouselConfig";
 import Auth from "../Auth";
 import { integrateAccount } from "../actions/authActions";
 
@@ -24,17 +25,17 @@ const Influencer = ({
   const history = window.history;
 
   // Carousel responsiveness
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4.5,
-    },
-    mobile: {
-      breakpoint: { max: 768, min: 0 },
-      items: 2,
-      partialVisibilityGutter: 15,
-    },
-  };
+  // const responsive = {
+  //   desktop: {
+  //     breakpoint: { max: 3000, min: 1024 },
+  //     items: 4.5,
+  //   },
+  //   mobile: {
+  //     breakpoint: { max: 768, min: 0 },
+  //     items: 2,
+  //     partialVisibilityGutter: 15,
+  //   },
+  // };
 
   const auth = Auth();
 
@@ -115,7 +116,12 @@ const Influencer = ({
               </button>
             </div>
           ) : (
-            <Carousel responsive={responsive} swipeable draggable>
+            <Carousel
+              responsive={responsive}
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              swipeable
+              draggable
+            >
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
                 <Card
                   key={num}
@@ -143,7 +149,12 @@ const Influencer = ({
           </Link>
         </div>
         <div className="songs-contain">
-          <Carousel responsive={responsive} swipeable draggable>
+          <Carousel
+            responsive={responsive}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            swipeable
+            draggable
+          >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
               <div key={num} className="album-item mt-1">
                 <div className="item-img">

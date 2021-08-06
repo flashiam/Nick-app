@@ -1062,18 +1062,21 @@ img {
       justify-content: space-between;
       align-items: center;
 
+      .btn-round {
+        height: 2.5rem;
+        width: 2.5rem;
+        display: flex;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
       .listen-platform {
         .platform-contain {
           display: flex;
           align-items: center;
           .btn {
-            height: 2.5rem;
-            width: 2.5rem;
-            display: flex;
-            padding: 0;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
             margin-right: 0.6rem;
 
             i {
@@ -1156,10 +1159,16 @@ img {
             margin-right: 0.4rem;
           }
         }
-
         .btn {
           font-size: 0.8rem;
           padding: 0.4rem;
+        }
+        .btn-round {
+          display: none;
+        }
+
+        .desktop-btn {
+          display: block;
         }
       }
     }

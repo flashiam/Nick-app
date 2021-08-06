@@ -48,10 +48,10 @@ const Card = ({
           <div className="listen-platform footer-item">
             <p className="lead-3 label">Listen on</p>
             <div className="platform-contain">
-              <button className="btn btn-secondary spotify">
+              <button className="btn btn-secondary btn-round spotify">
                 <i className="fa fa-spotify" />
               </button>
-              <button className="btn btn-secondary apple">
+              <button className="btn btn-secondary btn-round apple">
                 <i className="fa fa-apple" />
               </button>
             </div>
@@ -96,11 +96,21 @@ const Card = ({
                 </p>
               </div>
               {isPromoted ? (
-                <button className="btn btn-secondary-stroked">
-                  Stop Promotion
-                </button>
+                <>
+                  <button className="btn btn-secondary-stroked desktop-btn">
+                    Stop Promotion
+                  </button>
+                  <button className="btn btn-round btn-secondary-stroked promote-btn">
+                    <i className="fa fa-ban" />
+                  </button>
+                </>
               ) : (
-                <button className="btn btn-secondary">Start Promotion</button>
+                <>
+                  <button className="btn btn-secondary">Start Promotion</button>
+                  <button className="btn btn-round btn-secondary promote-btn">
+                    <i className="fa fa-bullhorn" />
+                  </button>
+                </>
               )}
             </div>
           )}

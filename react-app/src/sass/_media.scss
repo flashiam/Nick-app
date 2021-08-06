@@ -448,6 +448,45 @@
       width: 100%;
     }
   }
+
+  .react-multi-carousel-item {
+    margin-right: 1rem;
+  }
+
+  // App card
+  .app-card {
+    // background: red;
+    height: 20rem;
+    margin-right: 1rem;
+    width: 95%;
+    .card-back {
+      .num {
+        font-size: 1rem;
+      }
+
+      .label {
+        font-size: 0.7rem;
+      }
+      .song-title {
+        font-size: 0.9rem;
+      }
+
+      .head-4 {
+        margin-top: 5rem;
+      }
+
+      .card-back-footer {
+        .promotion {
+          .btn:not(.btn-round) {
+            display: none;
+          }
+          .btn-round {
+            display: block;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 1450px) and (min-width: 768px) {

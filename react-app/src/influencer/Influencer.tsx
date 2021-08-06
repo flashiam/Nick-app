@@ -13,6 +13,7 @@ import havana from "../img/havana.png";
 import shape from "../img/shape.png";
 
 import Auth from "../Auth";
+import responsive from "../carouselConfig";
 import { integrateAccount } from "../actions/authActions";
 
 import { Song, PromotionDetails } from "../types";
@@ -33,17 +34,17 @@ const Influencer = ({
   const history = window.history;
 
   // Carousel responsiveness
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4.5,
-    },
-    mobile: {
-      breakpoint: { max: 768, min: 0 },
-      items: 2,
-      partialVisibilityGutter: 15,
-    },
-  };
+  // const responsive = {
+  //   desktop: {
+  //     breakpoint: { max: 3000, min: 1024 },
+  //     items: 4.5,
+  //   },
+  //   mobile: {
+  //     breakpoint: { max: 768, min: 0 },
+  //     items: 1.5,
+  //     // partialVisibilityGutter: 15,
+  //   },
+  // };
 
   const [songOptions] = useState<Song[]>([
     {
@@ -300,7 +301,12 @@ const Influencer = ({
                 </button>
               </div>
             ) : (
-              <Carousel responsive={responsive} swipeable draggable>
+              <Carousel
+                responsive={responsive}
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                swipeable
+                draggable
+              >
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
                   <Card
                     key={num}
@@ -324,7 +330,12 @@ const Influencer = ({
             <img src={appleMusic} alt="" className="platform-logo pb-0" />
           </div>
           <div className="albums-contain">
-            <Carousel responsive={responsive} swipeable draggable>
+            <Carousel
+              responsive={responsive}
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              swipeable
+              draggable
+            >
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
                 <Card
                   key={num}
@@ -351,7 +362,12 @@ const Influencer = ({
           </Link>
         </div>
         <div className="songs-contain">
-          <Carousel responsive={responsive} swipeable draggable>
+          <Carousel
+            responsive={responsive}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            swipeable
+            draggable
+          >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
               <Card
                 key={num}

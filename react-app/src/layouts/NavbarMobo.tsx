@@ -96,7 +96,7 @@ const NavbarMobo = ({ auth: { userType, userDetails }, userSignOut }: any) => {
               </li>
               <li className="link">
                 <Link to="/general" className="light">
-                  Download
+                  Privacy policy
                 </Link>
               </li>
             </ul>
