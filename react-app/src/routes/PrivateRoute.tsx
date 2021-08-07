@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import Navbar from "../layouts/Navbar";
 import NavbarMobo from "../layouts/NavbarMobo";
+import Footer from "../layouts/Footer";
 
 const PrivateRoute = (props: any) => {
   // const {userType} = props.auth;
@@ -28,6 +29,7 @@ const PrivateRoute = (props: any) => {
           )
         }
       />
+      <Footer />
     </>
   );
 };

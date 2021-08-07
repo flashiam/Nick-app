@@ -74,7 +74,7 @@ const Card = ({
                   <p className="lead-3">{listenLimit} min</p>
                 </div>
                 <div className="time-limit-contain reward-item">
-                  <i className="material-icons">schedule</i>
+                  <i className="material-icons-outlined">monetization_on</i>
                   <p className="lead-3">{points} pts</p>
                 </div>
               </div>

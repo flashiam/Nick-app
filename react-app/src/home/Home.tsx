@@ -1003,45 +1003,25 @@ const Home = ({ auth: { authToken } }: any) => {
             <h2>World's top artists</h2>
           </div>
           <div className="top-artists songs-contain">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-              <div key={num} className="music-item">
-                <div className="progress-contain">
-                  <div className="song-progress">
-                    <svg>
-                      <circle cx="70" cy="70" r="70"></circle>
-                      <circle
-                        cx="70"
-                        cy="70"
-                        r="70"
-                        style={{
-                          strokeDashoffset: `calc(440 - (440 * 80) / 100)`,
-                        }}
-                      ></circle>
-                    </svg>
-                    <div className="song-img">
-                      <img
-                        src={artist1}
-                        alt="song img"
-                        // className="song-img"
-                      />
-                      <div className="song-desc">
-                        <div className="likes stat">
-                          <i className="material-icons">favorite</i>
-                          <span className="fav-count count">999</span>
-                        </div>
-                        <div className="trend stat">
-                          <i className="material-icons">trending_up</i>
-                          <span className="trend-count count">540</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="song-desc">
-                  <h4 className="head-4">Shawn Mendes</h4>
-                </div>
-              </div>
-            ))}
+            <Carousel
+              responsive={responsive}
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              swipeable
+              draggable
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                <Card
+                  key={num}
+                  songImg={artist1}
+                  songName="Shawn Mendes"
+                  releaseDate="23/12/21"
+                  totalListens={250}
+                  totalFollowers={599}
+                  isPromoted={true}
+                  user="influencer"
+                />
+              ))}
+            </Carousel>
           </div>
         </section>
       </main>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import spotifyIcon from "../img/Spotify_Icon_Green.png";
 import artistImg from "../img/charlie-puth.png";
 
+import BackBtn from "../layouts/BackBtn";
+
 const GeneralList = () => {
   const history = window.history;
   const [currentLayout, switchLayout] = useState<number>(1);
@@ -11,12 +13,7 @@ const GeneralList = () => {
       <div className="top-header">
         <div className="landing-section">
           <div className="container">
-            <div className="back-btn semi-med">
-              <a className="back-btn" onClick={() => history.go(-1)}>
-                <i className="material-icons semi-med">chevron_left</i>
-              </a>
-              Back
-            </div>
+            <BackBtn />
             <div className="typo-contain">
               <h1 className="head-1 typo pb-1">Explore 12 Artist(s)</h1>
             </div>

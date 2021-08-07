@@ -3,6 +3,7 @@ import songImg from "../img/havana.png";
 import spotifyIcon from "../img/Spotify_Icon_Green.png";
 
 import Card from "../layouts/Card";
+import BackBtn from "../layouts/BackBtn";
 
 const InfluencerList = () => {
   const history = window.history;
@@ -13,12 +14,7 @@ const InfluencerList = () => {
       <div className="top-header">
         <div className="landing-section">
           <div className="container">
-            <div className="back-btn semi-med">
-              <a href="#!" className="back-btn" onClick={() => history.go(-1)}>
-                <i className="material-icons semi-med">chevron_left</i>
-              </a>
-              Back
-            </div>
+            <BackBtn />
             <div className="typo-contain">
               <h1 className="head-1 typo pb-1">Explore your 12 song(s)</h1>
             </div>

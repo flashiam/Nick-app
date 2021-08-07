@@ -458,7 +458,7 @@
     // background: red;
     height: 20rem;
     margin-right: 2rem;
-    width: 95%;
+    width: 90%;
     .card-back {
       .num {
         font-size: 1rem;
@@ -482,6 +482,34 @@
           }
           .btn-round {
             display: block;
+          }
+        }
+      }
+    }
+  }
+
+  // Footer {
+  .main-footer {
+    .container {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+
+      .footer-item {
+        &-3 {
+          .social-links {
+            grid-template-columns: repeat(2, 2rem);
+          }
+        }
+
+        &-4 {
+          grid-column: span 2;
+          .head-3 {
+            text-align: center;
+          }
+          .newsletter-contain {
+            .btn {
+              padding: 0.4rem 0.8rem;
+            }
           }
         }
       }

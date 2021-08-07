@@ -124,7 +124,7 @@ const Navbar = ({
                   </div>
                   {userType === "general" ? (
                     <div className="points-contain user-stat">
-                      <i className="fa fa-diamond"></i>
+                      <i className="material-icons-outlined">monetization_on</i>
                       <p className="lead-3">
                         <strong>125</strong> pts.
                       </p>

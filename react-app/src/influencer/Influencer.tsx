@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 
 import Modal from "../layouts/Modal";
+import BackBtn from "../layouts/BackBtn";
 
 import albumArt from "../img/recom_song_2.jpg";
 import spotifyLogo from "../img/Spotify_Logo_Green.png";
@@ -32,19 +33,6 @@ const Influencer = ({
   integrateAccount,
 }: Props) => {
   const history = window.history;
-
-  // Carousel responsiveness
-  // const responsive = {
-  //   desktop: {
-  //     breakpoint: { max: 3000, min: 1024 },
-  //     items: 4.5,
-  //   },
-  //   mobile: {
-  //     breakpoint: { max: 768, min: 0 },
-  //     items: 1.5,
-  //     // partialVisibilityGutter: 15,
-  //   },
-  // };
 
   const [songOptions] = useState<Song[]>([
     {
@@ -129,11 +117,9 @@ const Influencer = ({
     },
   ]);
 
-  const modalBackdrop = useRef<HTMLDivElement>(null);
   const [modalOpen, setModal] = useState<boolean>(false);
   const [addSong, ctrlSong] = useState<boolean>(false);
   const [selectAll, setSelection] = useState<boolean>(false);
-  const [spotifyLink, setSpotifyLink] = useState<boolean>(false);
   const [selectedSongs, setSelectedSongs] = useState<(Song | null)[]>([]);
   const [songChecked, setChecked] = useState<boolean[]>(
     new Array(songOptions.length).fill(false)
@@ -240,13 +226,7 @@ const Influencer = ({
       <div className="top-header">
         <div className="landing-section">
           <div className="container">
-            <button
-              className="btn btn-transparent back-btn semi-med"
-              onClick={() => history.go(-1)}
-            >
-              <i className="material-icons semi-med">chevron_left</i>
-              Back
-            </button>
+            <BackBtn />
             <div className="typo-contain">
               <h1 className="head-1 typo pb-1">
                 Hey John , see all your recent activities on{" "}
