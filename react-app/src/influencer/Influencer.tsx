@@ -240,12 +240,13 @@ const Influencer = ({
       <div className="top-header">
         <div className="landing-section">
           <div className="container">
-            <div className="back-btn semi-med">
-              <a href="#!" className="back-btn" onClick={() => history.go(-1)}>
-                <i className="material-icons semi-med">chevron_left</i>
-              </a>
+            <button
+              className="btn btn-transparent back-btn semi-med"
+              onClick={() => history.go(-1)}
+            >
+              <i className="material-icons semi-med">chevron_left</i>
               Back
-            </div>
+            </button>
             <div className="typo-contain">
               <h1 className="head-1 typo pb-1">
                 Hey John , see all your recent activities on{" "}

@@ -577,6 +577,21 @@ img {
   }
 }
 
+.back-btn {
+  padding: 0;
+  cursor: pointer;
+  i {
+    transition: transform 0.3s ease;
+  }
+  &:hover {
+    color: $secondary-color;
+    i {
+      color: $secondary-color;
+      transform: translateX(-5px);
+    }
+  }
+}
+
 .apply-font {
   font-family: $primary-font;
 }
