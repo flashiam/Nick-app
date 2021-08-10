@@ -7,6 +7,7 @@ import General from "./general/General";
 import Influencer from "./influencer/Influencer";
 import InfluencerList from "./influencer/InfluencerList";
 import GeneralList from "./general/GeneralList";
+import GeneralProfile from "./general/GeneralProfile";
 import SignIn from "./signin/SignInRoot";
 import SaveSpotify from "./signin/SaveSpotify";
 
@@ -37,6 +38,9 @@ function App() {
           </InfluencerRoute>
           <GeneralRoute exact path="/general/artists">
             <GeneralList />
+          </GeneralRoute>
+          <GeneralRoute exact path="/general/profile">
+            <GeneralProfile />
           </GeneralRoute>
           <PrivateRoute exact path="/spotify_auth">
             <SaveSpotify />

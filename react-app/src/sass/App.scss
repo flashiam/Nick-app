@@ -1452,7 +1452,7 @@
     justify-content: center;
     padding: 2rem 0;
     height: 70%;
-    width: 30%;
+    max-width: 30%;
     border-radius: 8px;
     .inner-content {
       display: flex;
@@ -1562,6 +1562,236 @@
     right: 0;
     padding: 0;
     margin: 1rem;
+  }
+}
+
+// User profile
+.user-profile {
+  min-height: 100vh;
+
+  .container {
+    display: flex;
+    height: 100%;
+
+    .profile-control {
+      width: 20%;
+      .user-profile-contain {
+        display: flex;
+
+        .profile-pic {
+          height: 4rem;
+          width: 4rem;
+          border: 2px solid $secondary-color;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          i {
+            font-size: 4rem;
+          }
+        }
+
+        .user-desig {
+          .head-3 {
+            font-weight: 400;
+          }
+
+          .user-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            background: $purple-dark-color;
+            padding: 0.2rem 0.8rem;
+            border-radius: 6px;
+            margin-top: 0.4rem;
+          }
+        }
+      }
+
+      .profile-links-contain {
+        .profile-links {
+          .profile-link {
+            .link {
+              display: flex;
+              align-items: center;
+              color: $semi-med-color;
+              margin-bottom: 1.5rem;
+              i {
+                padding-right: 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .profile-showcase {
+      width: 80%;
+      // min-height: 100vh;
+      background: $purple-dark-color;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+
+      .profile-section {
+        height: 100%;
+        padding: 1.5rem;
+
+        &.tickets-section {
+          .tickets-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .points-showcase {
+              display: flex;
+              align-items: center;
+              background: $secondary-color;
+              padding: 0.6rem;
+              border-radius: 20px;
+              color: $purple-dark-color;
+              i {
+                padding-right: 0.4rem;
+              }
+            }
+          }
+
+          .ticket-status-contain {
+            .status-item {
+              padding: 0.6rem;
+              background: lighten($purple-dark-color, 5%);
+              display: grid;
+              grid-template-columns: 0.3fr 1fr 0.4fr;
+              align-items: center;
+              justify-content: space-between;
+              border-radius: 6px;
+
+              .song-img {
+                height: 3rem;
+                width: 3rem;
+                border-radius: 4px;
+              }
+
+              .status-progress {
+                .progress-desc {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+
+                  .time-marker {
+                    display: flex;
+                    align-items: center;
+
+                    i {
+                      padding-right: 0.4rem;
+                    }
+                  }
+                }
+
+                .progress-contain {
+                  height: 3px;
+                  width: 100%;
+                  background: darken($purple-dark-color, 5%);
+                  border-radius: 6px;
+
+                  .progress-line {
+                    height: 100%;
+                    width: 20%;
+                    background: $secondary-color;
+                    border-radius: inherit;
+                  }
+                }
+              }
+
+              .points-contain {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                .claim-btn {
+                  margin-top: 0;
+                  display: flex;
+                  align-items: center;
+                  padding: 0.6rem 0.7rem;
+
+                  .lead-2 {
+                    padding-right: 0.4rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.server-section {
+          .servers-contain {
+            display: grid;
+            grid-gap: 1.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: center;
+            .server-item {
+              padding: 1rem;
+              background: lighten($purple-dark-color, 5%);
+              border-radius: 8px;
+
+              .server-showcase {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .server-logo {
+                  height: 4rem;
+                  width: 4rem;
+
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border: 2px solid $semi-med-color;
+                  border-radius: 50%;
+
+                  i {
+                    font-size: 2rem;
+                  }
+                }
+              }
+
+              .server-members {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .lead {
+                  font-size: 0.9rem;
+                }
+
+                .members-contain {
+                  display: flex;
+                  align-items: center;
+                  .members-profiles {
+                    display: flex;
+                    align-items: center;
+                    .profile {
+                      height: 2rem;
+                      width: 2rem;
+                      border-radius: 50%;
+                      border: 2px solid lighten($purple-dark-color, 5%);
+
+                      &:nth-child(2) {
+                        transform: translateX(-8px);
+                      }
+                    }
+                  }
+                  .members-count {
+                    font-size: 0.8rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 

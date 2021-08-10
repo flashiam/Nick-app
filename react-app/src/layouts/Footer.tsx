@@ -8,7 +8,7 @@ type Props = {
 
 const Footer = ({ userType }: Props) => {
   return (
-    <footer className="main-footer py-4">
+    <footer className="main-footer py-4 mt-2">
       <div className="container">
         <div className="footer-item footer-item-0">
           <div className="app-logo-contain">
