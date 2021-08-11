@@ -433,3 +433,99 @@ pip install psycopg2
 python manage.py migrate
 python manage.py makemigrations
 python manage.py migrate
+ls
+cd Nick-app
+ls
+cd ..
+ls
+cd nickback
+ls
+cd ..
+ls
+cd Nick-app
+ls
+rm -rf nickback
+ls
+cd ..
+ls
+git init
+git remote set-origin https://github.com/flashiam/Nick-app.git
+git remote set origin https://github.com/flashiam/Nick-app.git
+git remote add origin https://github.com/flashiam/Nick-app.git
+git checkout -b v0.2.0
+git commit -m "latest arch"
+git commit -m "latest arch" -a
+git add .
+git rm --cached Nick-app
+sudo git rm --cached Nick-app
+git rm --cached Nick-app -f
+ls
+git add .
+git push
+git push --set-upstream origin v0.2.0
+git branch
+git checkout v0.2.0
+git pull
+git branch --set-upstream-to=origin/<branch> v0.2.0
+git push
+git push --set-upstream origin v0.2.0
+git pull
+git pull remote origin
+git push
+git push --set-upstream origin v0.2.0
+git push -u origin v0.2.0
+git pull
+git pull remote v-0.1.1
+git
+git config --global credential.helper store
+git pull
+git pull remote v-0.1.1
+git config --global credential.helper cache
+git config --global user.name "Shivanshu Dubey"
+git config --global user.email "shivanshu.dubey12@gmail.com"
+git config --list
+
+git pull
+git pull origin v-0.1.1
+ls
+rm -rf main.svg node_modules package-lock.json requirement.txt react-app venv
+ls
+rm -rf main.py
+ls
+cd bots
+ls
+cd ..
+ls
+cd nickback
+ls
+cd ..
+ls
+rm -rf bots
+rm -rf discord_bot
+rm -rf scrobller
+ls
+cd Nick-app
+ls
+cd ..
+ls
+cd discordBot
+ls
+sudo nano commands.py
+sudo nano config.py
+cd ..
+ls
+cd Nick-app
+ls
+cd ..
+ls
+git checkout -b v0.2.0
+git branch
+git add .
+git commit -m "new structure" 
+ls
+git push
+git push --set-upstream origin v0.2.0
+ls
+git rm Nick-app
+ls
+ls -a
