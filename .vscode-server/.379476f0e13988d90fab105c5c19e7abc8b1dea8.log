@@ -1,0 +1,26 @@
+
+
+*
+* Visual Studio Code Server
+*
+* Reminder: You may only use this software with Visual Studio family products,
+* as described in the license https://aka.ms/vscode-remote/license
+*
+
+Extension host agent listening on 33403
+
+[18:47:50] Extension host agent started.
+[18:47:51] [127.0.0.1][70a6b835][ManagementConnection] New connection established.
+[18:47:52] [127.0.0.1][f902cee0][ExtensionHostConnection] New connection established.
+[18:47:52] [127.0.0.1][f902cee0][ExtensionHostConnection] <95956> Launched Extension Host Process.
+[18:48:01] [File Watcher (chokidar)] Inotify limit reached (ENOSPC)
+[21:43:06] [127.0.0.1][70a6b835][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+Error: Unexpected SIGPIPE
+    at process.<anonymous> (/home/ubuntu/.vscode-server/bin/379476f0e13988d90fab105c5c19e7abc8b1dea8/out/bootstrap.js:1:370)
+    at process.emit (events.js:315:20)
+[00:43:01] [127.0.0.1][f902cee0][ExtensionHostConnection] <95956> Extension Host Process exited with code: 0, signal: null.
+Last EH closed, waiting before shutting down
+[00:43:01] Last EH closed, waiting before shutting down
+[00:43:06] [127.0.0.1][70a6b835][ManagementConnection] The reconnection grace time of 3h has expired, so the connection will be disposed.
+Last EH closed, shutting down
+[00:48:01] Last EH closed, shutting down
