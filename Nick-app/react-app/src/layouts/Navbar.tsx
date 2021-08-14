@@ -25,13 +25,11 @@ type Props = {
 };
 
 const Navbar = ({
-  auth: { userDetails, userType, linkedAccounts, spotify },
+  auth: { userDetails, userType, spotify },
   userSignOut,
   integrateAccount,
   disintegrateAccount,
 }: Props) => {
-  const history = useHistory();
-  const [loginStatus, setStatus] = useState<boolean>(false);
   const [modalOpen, setModal] = useState<boolean>(false);
   const auth = Auth();
 
@@ -76,7 +74,7 @@ const Navbar = ({
       <nav className="navbar py-1 container">
         <Link to="/" className="logo-contain">
           <img src={musicLogo} alt="logo" className="logo-img" />
-          <h3 className="head-3 pl-0 semi-med">Musix</h3>
+          <h3 className="head-3 pl-0 semi-med">MUSIX</h3>
         </Link>
         <div className="right-nav-content">
           <ul className="nav-links">
@@ -124,7 +122,7 @@ const Navbar = ({
                   </div>
                   {userType === "general" ? (
                     <div className="points-contain user-stat">
-                      <i className="fa fa-diamond"></i>
+                      <i className="material-icons-outlined">monetization_on</i>
                       <p className="lead-3">
                         <strong>125</strong> pts.
                       </p>
@@ -140,9 +138,9 @@ const Navbar = ({
                 <div className="user-pop-up">
                   <ul className="options-contain">
                     <li className="option">
-                      <a href="#" className="semi-med">
+                      <Link to={`/${userType}/profile`} className="semi-med">
                         Profile
-                      </a>
+                      </Link>
                     </li>
                     <li className="option">
                       <a

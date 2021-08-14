@@ -41,7 +41,7 @@ const NavbarMobo = ({ auth: { userType, userDetails }, userSignOut }: any) => {
     <nav className="nav-mobo py-1 container">
       <div className="logo-contain">
         <img src={musicLogo} alt="logo" className="logo-img" />
-        <h3 className="head-3 pl-0">Musix</h3>
+        <h3 className="head-3 pl-0">MUSIX</h3>
       </div>
       <div className="nav-btn-contain">
         <input
@@ -96,7 +96,7 @@ const NavbarMobo = ({ auth: { userType, userDetails }, userSignOut }: any) => {
               </li>
               <li className="link">
                 <Link to="/general" className="light">
-                  Download
+                  Privacy policy
                 </Link>
               </li>
             </ul>

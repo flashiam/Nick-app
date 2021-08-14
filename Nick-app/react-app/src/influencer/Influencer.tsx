@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 
 import Modal from "../layouts/Modal";
+import BackBtn from "../layouts/BackBtn";
 
 import albumArt from "../img/recom_song_2.jpg";
 import spotifyLogo from "../img/Spotify_Logo_Green.png";
@@ -13,9 +14,11 @@ import havana from "../img/havana.png";
 import shape from "../img/shape.png";
 
 import Auth from "../Auth";
+import responsive from "../carouselConfig";
 import { integrateAccount } from "../actions/authActions";
 
 import { Song, PromotionDetails } from "../types";
+import Card from "../layouts/Card";
 
 type Props = {
   auth: {
@@ -30,19 +33,6 @@ const Influencer = ({
   integrateAccount,
 }: Props) => {
   const history = window.history;
-
-  // Carousel responsiveness
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-    },
-    mobile: {
-      breakpoint: { max: 768, min: 0 },
-      items: 2,
-      partialVisibilityGutter: 15,
-    },
-  };
 
   const [songOptions] = useState<Song[]>([
     {
@@ -127,11 +117,9 @@ const Influencer = ({
     },
   ]);
 
-  const modalBackdrop = useRef<HTMLDivElement>(null);
   const [modalOpen, setModal] = useState<boolean>(false);
   const [addSong, ctrlSong] = useState<boolean>(false);
   const [selectAll, setSelection] = useState<boolean>(false);
-  const [spotifyLink, setSpotifyLink] = useState<boolean>(false);
   const [selectedSongs, setSelectedSongs] = useState<(Song | null)[]>([]);
   const [songChecked, setChecked] = useState<boolean[]>(
     new Array(songOptions.length).fill(false)
@@ -238,12 +226,7 @@ const Influencer = ({
       <div className="top-header">
         <div className="landing-section">
           <div className="container">
-            <div className="back-btn semi-med">
-              <a href="#!" className="back-btn" onClick={() => history.go(-1)}>
-                <i className="material-icons semi-med">chevron_left</i>
-              </a>
-              Back
-            </div>
+            <BackBtn />
             <div className="typo-contain">
               <h1 className="head-1 typo pb-1">
                 Hey John , see all your recent activities on{" "}
@@ -266,25 +249,15 @@ const Influencer = ({
           <h2 className="head-2 pb-1">Highly promoted songs</h2>
         </div>
         <div className="albums-contain">
-          <div className="album-item">
-            <div className="item-img">
-              <img src={albumArt} alt="" className="album-img" />
-              <div className="item-stats">
-                <div className="stat-contain">
-                  <div className="stat listen-stat">Total listens</div>
-                  <div className="stat-count listen-count">1.2k</div>
-                </div>
-                <div className="stat-contain">
-                  <div className="stat listen-stat">Total listen time</div>
-                  <div className="stat-count listen-count">23:05:34</div>
-                </div>
-              </div>
-            </div>
-            <div className="item-desc">
-              <h4 className="head-4 song-name">Pain</h4>
-              <p className="lead-2 med promoted-on">11th July 2021</p>
-            </div>
-          </div>
+          <Card
+            songImg={albumArt}
+            songName="Pain"
+            releaseDate="11/07/21"
+            totalListens={200}
+            totalFollowers={100}
+            isPromoted={true}
+            user="influencer"
+          />
         </div>
       </section>
 
@@ -309,31 +282,23 @@ const Influencer = ({
                 </button>
               </div>
             ) : (
-              <Carousel responsive={responsive} swipeable draggable>
+              <Carousel
+                responsive={responsive}
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                swipeable
+                draggable
+              >
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                  <div key={num} className="album-item">
-                    <div className="item-img">
-                      <img src={albumArt} alt="" className="album-img" />
-                      <div className="item-stats">
-                        <div className="stat-contain">
-                          <div className="stat listen-stat">Total listens</div>
-                          <div className="stat-count listen-count">1.2k</div>
-                        </div>
-                        <div className="stat-contain">
-                          <div className="stat listen-stat">
-                            Total listen time
-                          </div>
-                          <div className="stat-count listen-count">
-                            23:05:34
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="item-desc">
-                      <h4 className="head-4 song-name">Pain</h4>
-                      <p className="lead-2 med promoted-on">11th July 2021</p>
-                    </div>
-                  </div>
+                  <Card
+                    key={num}
+                    songImg={havana}
+                    songName="Havana"
+                    releaseDate="23/12/21"
+                    totalListens={250}
+                    totalFollowers={599}
+                    isPromoted={true}
+                    user="influencer"
+                  />
                 ))}
               </Carousel>
             )}
@@ -346,29 +311,23 @@ const Influencer = ({
             <img src={appleMusic} alt="" className="platform-logo pb-0" />
           </div>
           <div className="albums-contain">
-            <Carousel responsive={responsive} swipeable draggable>
+            <Carousel
+              responsive={responsive}
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              swipeable
+              draggable
+            >
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                <div key={num} className="album-item mt-1">
-                  <div className="item-img">
-                    <img src={albumArt} alt="" className="album-img" />
-                    <div className="item-stats">
-                      <div className="stat-contain">
-                        <div className="stat listen-stat">Total listens</div>
-                        <div className="stat-count listen-count">1.2k</div>
-                      </div>
-                      <div className="stat-contain">
-                        <div className="stat listen-stat">
-                          Total listen time
-                        </div>
-                        <div className="stat-count listen-count">23:05:34</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item-desc">
-                    <h4 className="head-4 song-name">Pain</h4>
-                    <p className="lead-2 med promoted-on">11th July 2021</p>
-                  </div>
-                </div>
+                <Card
+                  key={num}
+                  songImg={attention}
+                  songName="Attention"
+                  releaseDate="11/07/21"
+                  totalListens={200}
+                  totalFollowers={100}
+                  isPromoted={true}
+                  user="influencer"
+                />
               ))}
             </Carousel>
           </div>
@@ -384,27 +343,23 @@ const Influencer = ({
           </Link>
         </div>
         <div className="songs-contain">
-          <Carousel responsive={responsive} swipeable draggable>
+          <Carousel
+            responsive={responsive}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            swipeable
+            draggable
+          >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-              <div key={num} className="album-item mt-1">
-                <div className="item-img">
-                  <img src={albumArt} alt="" className="album-img" />
-                  <div className="item-stats">
-                    <div className="stat-contain">
-                      <div className="stat listen-stat">Total listens</div>
-                      <div className="stat-count listen-count">1.2k</div>
-                    </div>
-                    <div className="stat-contain">
-                      <div className="stat listen-stat">Total listen time</div>
-                      <div className="stat-count listen-count">23:05:34</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="item-desc">
-                  <h4 className="head-4 song-name">Pain</h4>
-                  <p className="lead-2 med promoted-on">11th July 2021</p>
-                </div>
-              </div>
+              <Card
+                key={num}
+                songImg={shape}
+                songName="Shape of you"
+                releaseDate="11/07/21"
+                totalListens={999}
+                totalFollowers={800}
+                isPromoted={false}
+                user="influencer"
+              />
             ))}
           </Carousel>
         </div>

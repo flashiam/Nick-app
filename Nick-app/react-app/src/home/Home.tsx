@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Carousel from "react-multi-carousel";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import anime from "animejs";
@@ -11,6 +12,8 @@ import attention from "../img/attention.png";
 import artist1 from "../img/shawn-mendes.jpg";
 
 import { TopTen } from "../types";
+import responsive from "../carouselConfig";
+import Card from "../layouts/Card";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -972,37 +975,26 @@ const Home = ({ auth: { authToken } }: any) => {
             <h2>Trending songs of the day</h2>
           </div>
           <div className="trending-contain">
-            {[1, 2, 3, 4, 5].map(num => (
-              <div key={num} className="trending-song song-progress-item">
-                <div className="song-img-contain">
-                  <img src={attention} alt="" className="song-img" />
-                </div>
-                <div className="song-desc-contain">
-                  <div className="song-desc">
-                    <h4 className="head-4">Attention</h4>
-                    <p className="lead-2 med">Charlie Puth</p>
-                  </div>
-                  <div className="song-desc">
-                    <div className="song-stat">
-                      <span className="lead-2">No. of times played</span>
-                      <span className="stat-badge">
-                        <i className="fa fa-music semi-med" />
-                        <span className="stat-count">599</span>
-                      </span>
-                    </div>
-                    <div className="song-stat">
-                      <span className="lead-2">Total scrobbles</span>
-                      <span className="stat-badge">
-                        <i className="fa fa-save semi-med" />
-                        <span className="stat-count">599</span>
-                      </span>
-                    </div>
-                  </div>
-                  {/* Trend progress */}
-                  <div className="trend-progress bg-secondary"></div>
-                </div>
-              </div>
-            ))}
+            <Carousel
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              swipeable
+              draggable
+              responsive={responsive}
+            >
+              {[1, 2, 3, 4, 5].map(num => (
+                <Card
+                  key={num}
+                  songImg={shape}
+                  songName="Shape of you"
+                  releaseDate="11/07/21"
+                  totalListens={200}
+                  totalFollowers={100}
+                  listenLimit={20}
+                  points={150}
+                  user="general"
+                />
+              ))}
+            </Carousel>
           </div>
         </section>
         <section className="section artist-section py-1 mb-10">
@@ -1011,45 +1003,25 @@ const Home = ({ auth: { authToken } }: any) => {
             <h2>World's top artists</h2>
           </div>
           <div className="top-artists songs-contain">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-              <div key={num} className="music-item">
-                <div className="progress-contain">
-                  <div className="song-progress">
-                    <svg>
-                      <circle cx="70" cy="70" r="70"></circle>
-                      <circle
-                        cx="70"
-                        cy="70"
-                        r="70"
-                        style={{
-                          strokeDashoffset: `calc(440 - (440 * 80) / 100)`,
-                        }}
-                      ></circle>
-                    </svg>
-                    <div className="song-img">
-                      <img
-                        src={artist1}
-                        alt="song img"
-                        // className="song-img"
-                      />
-                      <div className="song-desc">
-                        <div className="likes stat">
-                          <i className="material-icons">favorite</i>
-                          <span className="fav-count count">999</span>
-                        </div>
-                        <div className="trend stat">
-                          <i className="material-icons">trending_up</i>
-                          <span className="trend-count count">540</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="song-desc">
-                  <h4 className="head-4">Shawn Mendes</h4>
-                </div>
-              </div>
-            ))}
+            <Carousel
+              responsive={responsive}
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              swipeable
+              draggable
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                <Card
+                  key={num}
+                  songImg={artist1}
+                  songName="Shawn Mendes"
+                  releaseDate="23/12/21"
+                  totalListens={250}
+                  totalFollowers={599}
+                  isPromoted={true}
+                  user="influencer"
+                />
+              ))}
+            </Carousel>
           </div>
         </section>
       </main>
