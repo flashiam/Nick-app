@@ -36,6 +36,9 @@ function App() {
           <InfluencerRoute exact path="/influencer/songs">
             <InfluencerList />
           </InfluencerRoute>
+          <InfluencerRoute exact path="/influencer/profile">
+            <GeneralProfile />
+          </InfluencerRoute>
           <GeneralRoute exact path="/general/artists">
             <GeneralList />
           </GeneralRoute>
