@@ -1,6 +1,11 @@
 @import "variables";
 
 @media screen and (max-width: 768px) {
+  html,
+  body {
+    padding-bottom: 20rem;
+  }
+
   .head-2 {
     font-size: 1.2rem;
   }
@@ -441,6 +446,74 @@
     }
   }
 
+  // User profile
+  .user-profile {
+    .container {
+      flex-direction: column;
+      .profile-control {
+        position: relative;
+        width: 100%;
+        margin-bottom: 0.6rem;
+      }
+
+      .profile-showcase {
+        width: 100%;
+
+        .profile-section {
+          &.tickets-section {
+            .ticket-status-contain {
+              .status-item {
+                .points-contain {
+                  .claim-btn {
+                    &.desktop-btn {
+                      display: none;
+                    }
+                    &.mobo-btn {
+                      display: flex;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.server-section {
+            .servers-contain {
+              grid-template-columns: repeat(2, 1fr);
+
+              .server-item {
+                .server-members {
+                  flex-direction: column;
+                  align-items: flex-start;
+                  justify-content: center;
+
+                  .lead {
+                    margin-bottom: 0.6rem;
+                  }
+                }
+              }
+            }
+          }
+
+          &.promoted-section {
+            .songs-contain {
+              grid-template-columns: 1fr;
+              // display: flex;
+            }
+          }
+
+          &.leaderboard-section {
+            .leaderboard-header {
+              .top-three-contain {
+                grid-gap: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   // Modal
   .modal {
     .modal-content {
@@ -490,6 +563,7 @@
 
   // Footer {
   .main-footer {
+    bottom: -20rem;
     .container {
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 1rem;

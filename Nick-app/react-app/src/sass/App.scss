@@ -1567,13 +1567,18 @@
 
 // User profile
 .user-profile {
-  min-height: 100vh;
+  // height: 200vh;
+  // position: relative;
 
   .container {
     display: flex;
-    height: 100%;
+    // min-height: 100%;
 
     .profile-control {
+      position: sticky;
+      z-index: 2;
+      top: 1rem;
+      height: 50%;
       width: 20%;
       .user-profile-contain {
         display: flex;
@@ -1611,13 +1616,25 @@
       .profile-links-contain {
         .profile-links {
           .profile-link {
-            .link {
+            .btn {
+              padding: 0;
+              font-size: 1rem;
               display: flex;
               align-items: center;
+
               color: $semi-med-color;
               margin-bottom: 1.5rem;
+              transition: none;
               i {
                 padding-right: 0.6rem;
+              }
+
+              &.active {
+                color: $secondary-color;
+
+                i {
+                  color: $secondary-color;
+                }
               }
             }
           }
@@ -1627,15 +1644,14 @@
 
     .profile-showcase {
       width: 80%;
-      // min-height: 100vh;
+      height: 100%;
       background: $purple-dark-color;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+      border-radius: 8px;
       overflow-y: auto;
       scroll-behavior: smooth;
 
       .profile-section {
-        height: 50%;
+        height: 100%;
         padding: 1.5rem;
 
         &.tickets-section {
@@ -1716,6 +1732,16 @@
 
                   .lead-2 {
                     padding-right: 0.4rem;
+                  }
+
+                  &.desktop-btn {
+                    display: flex;
+                  }
+
+                  &.mobo-btn {
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
                   }
                 }
               }
@@ -1806,11 +1832,84 @@
         }
 
         &.leaderboard-section {
-          .top-three-contain {
-            .top-user {
-              .user-profile-pic {
-                height: 3rem;
-                width: 3rem;
+          .leaderboard-header {
+            display: flex;
+            justify-content: center;
+            .top-three-contain {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              width: 50%;
+              justify-content: center;
+              align-items: center;
+              .top-user {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .user-position {
+                  i {
+                    color: $secondary-color;
+                  }
+                }
+                .user-profile-pic {
+                  height: 4.5rem;
+                  width: 4.5rem;
+                  border-radius: 50%;
+                  border: 2px solid $secondary-color;
+                }
+
+                .top-user-desc {
+                  margin-top: 0.6rem;
+                  text-align: center;
+
+                  .lead {
+                    font-size: 0.8rem;
+                    color: darken($semi-med-color, 25%);
+                  }
+                }
+                &.first-user {
+                  .user-profile-pic {
+                    height: 6rem;
+                    width: 6rem;
+                  }
+                }
+              }
+            }
+          }
+
+          .leaderboard-section {
+            .leaderboard-list {
+              .leaderboard-list-item {
+                margin-bottom: 0.6rem;
+                padding: 0.6rem;
+                border-radius: 6px;
+                display: flex;
+                // justify-content: space-between;
+                align-items: center;
+                background: lighten($purple-dark-color, 5%);
+
+                .item-row {
+                  margin-right: 5rem;
+                }
+                .user-profile {
+                  display: flex;
+                  align-items: center;
+                  .user-pic {
+                    height: 3rem;
+                    width: 3rem;
+                    border-radius: 50%;
+                    margin-right: 0.6rem;
+                  }
+                }
+                .earned-points {
+                  display: flex;
+                  align-items: center;
+
+                  i {
+                    padding-right: 0.6rem;
+                  }
+                }
               }
             }
           }
@@ -1822,6 +1921,11 @@
 
 // Footer
 .main-footer {
+  position: absolute;
+  bottom: -10rem;
+  left: 0;
+  right: 0;
+  margin-top: 6rem;
   // border-top: 1px solid rgba($secondary-color, 0.5);
   background: darken($primary-color, 2%);
   .container {

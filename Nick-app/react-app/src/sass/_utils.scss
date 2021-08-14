@@ -10,11 +10,14 @@
 
 html,
 body {
+  position: relative;
+  min-height: 100vh;
   background: $primary-color;
   color: $semi-med-color;
   font-family: $primary-font;
   line-height: 1.4;
   scroll-behavior: smooth;
+  padding-bottom: 10rem;
 }
 
 // Selection
