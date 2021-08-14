@@ -1571,343 +1571,345 @@
   // position: relative;
 
   .container {
-    display: flex;
-    // min-height: 100%;
+    .main-profile {
+      display: flex;
+      // min-height: 100%;
 
-    .profile-control {
-      position: sticky;
-      z-index: 2;
-      top: 1rem;
-      height: 50%;
-      width: 20%;
-      .user-profile-contain {
-        display: flex;
-
-        .profile-pic {
-          height: 4rem;
-          width: 4rem;
-          border: 2px solid $secondary-color;
-          border-radius: 50%;
+      .profile-control {
+        position: sticky;
+        z-index: 2;
+        top: 1rem;
+        height: 50%;
+        width: 20%;
+        .user-profile-contain {
           display: flex;
-          align-items: center;
-          justify-content: center;
 
-          i {
-            font-size: 4rem;
-          }
-        }
-
-        .user-desig {
-          .head-3 {
-            font-weight: 400;
-          }
-
-          .user-badge {
-            display: inline-block;
-            font-size: 0.8rem;
-            background: $purple-dark-color;
-            padding: 0.2rem 0.8rem;
-            border-radius: 6px;
-            margin-top: 0.4rem;
-          }
-        }
-      }
-
-      .profile-links-contain {
-        .profile-links {
-          .profile-link {
-            .btn {
-              padding: 0;
-              font-size: 1rem;
-              display: flex;
-              align-items: center;
-
-              color: $semi-med-color;
-              margin-bottom: 1.5rem;
-              transition: none;
-              i {
-                padding-right: 0.6rem;
-              }
-
-              &.active {
-                color: $secondary-color;
-
-                i {
-                  color: $secondary-color;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .profile-showcase {
-      width: 80%;
-      height: 100%;
-      background: $purple-dark-color;
-      border-radius: 8px;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-
-      .profile-section {
-        height: 100%;
-        padding: 1.5rem;
-
-        &.tickets-section {
-          .tickets-header {
+          .profile-pic {
+            height: 4rem;
+            width: 4rem;
+            border: 2px solid $secondary-color;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-
-            .points-showcase {
-              display: flex;
-              align-items: center;
-              background: $secondary-color;
-              padding: 0.6rem;
-              border-radius: 20px;
-              color: $purple-dark-color;
-              i {
-                padding-right: 0.4rem;
-              }
-            }
-          }
-
-          .ticket-status-contain {
-            .status-item {
-              padding: 0.6rem;
-              background: lighten($purple-dark-color, 5%);
-              display: grid;
-              grid-template-columns: 0.3fr 1fr 0.4fr;
-              align-items: center;
-              justify-content: space-between;
-              border-radius: 6px;
-
-              .song-img {
-                height: 3rem;
-                width: 3rem;
-                border-radius: 4px;
-              }
-
-              .status-progress {
-                .progress-desc {
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-
-                  .time-marker {
-                    display: flex;
-                    align-items: center;
-
-                    i {
-                      padding-right: 0.4rem;
-                    }
-                  }
-                }
-
-                .progress-contain {
-                  height: 3px;
-                  width: 100%;
-                  background: darken($purple-dark-color, 5%);
-                  border-radius: 6px;
-
-                  .progress-line {
-                    height: 100%;
-                    width: 20%;
-                    background: $secondary-color;
-                    border-radius: inherit;
-                  }
-                }
-              }
-
-              .points-contain {
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                .claim-btn {
-                  margin-top: 0;
-                  display: flex;
-                  align-items: center;
-                  padding: 0.6rem 0.7rem;
-
-                  .lead-2 {
-                    padding-right: 0.4rem;
-                  }
-
-                  &.desktop-btn {
-                    display: flex;
-                  }
-
-                  &.mobo-btn {
-                    display: none;
-                    justify-content: center;
-                    align-items: center;
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        &.server-section {
-          .servers-contain {
-            display: grid;
-            grid-gap: 1.5rem;
-            grid-template-columns: repeat(4, 1fr);
-            align-items: center;
-            .server-item {
-              padding: 1rem;
-              background: lighten($purple-dark-color, 5%);
-              border-radius: 8px;
-
-              .server-showcase {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-                .server-logo {
-                  height: 4rem;
-                  width: 4rem;
-
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  border: 2px solid $semi-med-color;
-                  border-radius: 50%;
-
-                  i {
-                    font-size: 2rem;
-                  }
-                }
-              }
-
-              .server-members {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
-                .lead {
-                  font-size: 0.9rem;
-                }
-
-                .members-contain {
-                  display: flex;
-                  align-items: center;
-                  .members-profiles {
-                    display: flex;
-                    align-items: center;
-                    .profile {
-                      height: 2rem;
-                      width: 2rem;
-                      border-radius: 50%;
-                      border: 2px solid lighten($purple-dark-color, 5%);
-
-                      &:nth-child(2) {
-                        transform: translateX(-8px);
-                      }
-                    }
-                  }
-                  .members-count {
-                    font-size: 0.8rem;
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        &.promoted-section {
-          .songs-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          }
-          .songs-contain {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 0.6rem;
-            justify-content: space-between;
-          }
-        }
-
-        &.leaderboard-section {
-          .leaderboard-header {
-            display: flex;
             justify-content: center;
-            .top-three-contain {
-              display: grid;
-              grid-template-columns: repeat(3, 1fr);
-              width: 50%;
-              justify-content: center;
-              align-items: center;
-              .top-user {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
 
-                .user-position {
+            i {
+              font-size: 4rem;
+            }
+          }
+
+          .user-desig {
+            .head-3 {
+              font-weight: 400;
+            }
+
+            .user-badge {
+              display: inline-block;
+              font-size: 0.8rem;
+              background: $purple-dark-color;
+              padding: 0.2rem 0.8rem;
+              border-radius: 6px;
+              margin-top: 0.4rem;
+            }
+          }
+        }
+
+        .profile-links-contain {
+          .profile-links {
+            .profile-link {
+              .btn {
+                padding: 0;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+
+                color: $semi-med-color;
+                margin-bottom: 1.5rem;
+                transition: none;
+                i {
+                  padding-right: 0.6rem;
+                }
+
+                &.active {
+                  color: $secondary-color;
+
                   i {
                     color: $secondary-color;
                   }
                 }
-                .user-profile-pic {
-                  height: 4.5rem;
-                  width: 4.5rem;
-                  border-radius: 50%;
-                  border: 2px solid $secondary-color;
+              }
+            }
+          }
+        }
+      }
+
+      .profile-showcase {
+        width: 80%;
+        height: 100%;
+        background: $purple-dark-color;
+        border-radius: 8px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+
+        .profile-section {
+          height: 100%;
+          padding: 1.5rem;
+
+          &.tickets-section {
+            .tickets-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              .points-showcase {
+                display: flex;
+                align-items: center;
+                background: $secondary-color;
+                padding: 0.6rem;
+                border-radius: 20px;
+                color: $purple-dark-color;
+                i {
+                  padding-right: 0.4rem;
+                }
+              }
+            }
+
+            .ticket-status-contain {
+              .status-item {
+                padding: 0.6rem;
+                background: lighten($purple-dark-color, 5%);
+                display: grid;
+                grid-template-columns: 0.3fr 1fr 0.4fr;
+                align-items: center;
+                justify-content: space-between;
+                border-radius: 6px;
+
+                .song-img {
+                  height: 3rem;
+                  width: 3rem;
+                  border-radius: 4px;
                 }
 
-                .top-user-desc {
-                  margin-top: 0.6rem;
-                  text-align: center;
+                .status-progress {
+                  .progress-desc {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
 
-                  .lead {
-                    font-size: 0.8rem;
-                    color: darken($semi-med-color, 25%);
+                    .time-marker {
+                      display: flex;
+                      align-items: center;
+
+                      i {
+                        padding-right: 0.4rem;
+                      }
+                    }
+                  }
+
+                  .progress-contain {
+                    height: 3px;
+                    width: 100%;
+                    background: darken($purple-dark-color, 5%);
+                    border-radius: 6px;
+
+                    .progress-line {
+                      height: 100%;
+                      width: 20%;
+                      background: $secondary-color;
+                      border-radius: inherit;
+                    }
                   }
                 }
-                &.first-user {
-                  .user-profile-pic {
-                    height: 6rem;
-                    width: 6rem;
+
+                .points-contain {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  .claim-btn {
+                    margin-top: 0;
+                    display: flex;
+                    align-items: center;
+                    padding: 0.6rem 0.7rem;
+
+                    .lead-2 {
+                      padding-right: 0.4rem;
+                    }
+
+                    &.desktop-btn {
+                      display: flex;
+                    }
+
+                    &.mobo-btn {
+                      display: none;
+                      justify-content: center;
+                      align-items: center;
+                    }
                   }
                 }
               }
             }
           }
 
-          .leaderboard-section {
-            .leaderboard-list {
-              .leaderboard-list-item {
-                margin-bottom: 0.6rem;
-                padding: 0.6rem;
-                border-radius: 6px;
-                display: flex;
-                // justify-content: space-between;
-                align-items: center;
+          &.server-section {
+            .servers-contain {
+              display: grid;
+              grid-gap: 1.5rem;
+              grid-template-columns: repeat(4, 1fr);
+              align-items: center;
+              .server-item {
+                padding: 1rem;
                 background: lighten($purple-dark-color, 5%);
+                border-radius: 8px;
 
-                .item-row {
-                  margin-right: 5rem;
-                }
-                .user-profile {
+                .server-showcase {
                   display: flex;
+                  flex-direction: column;
+                  justify-content: center;
                   align-items: center;
-                  .user-pic {
-                    height: 3rem;
-                    width: 3rem;
+
+                  .server-logo {
+                    height: 4rem;
+                    width: 4rem;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 2px solid $semi-med-color;
                     border-radius: 50%;
-                    margin-right: 0.6rem;
+
+                    i {
+                      font-size: 2rem;
+                    }
                   }
                 }
-                .earned-points {
+
+                .server-members {
                   display: flex;
                   align-items: center;
+                  justify-content: space-between;
 
-                  i {
-                    padding-right: 0.6rem;
+                  .lead {
+                    font-size: 0.9rem;
+                  }
+
+                  .members-contain {
+                    display: flex;
+                    align-items: center;
+                    .members-profiles {
+                      display: flex;
+                      align-items: center;
+                      .profile {
+                        height: 2rem;
+                        width: 2rem;
+                        border-radius: 50%;
+                        border: 2px solid lighten($purple-dark-color, 5%);
+
+                        &:nth-child(2) {
+                          transform: translateX(-8px);
+                        }
+                      }
+                    }
+                    .members-count {
+                      font-size: 0.8rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.promoted-section {
+            .songs-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+            .songs-contain {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-gap: 0.6rem;
+              justify-content: space-between;
+            }
+          }
+
+          &.leaderboard-section {
+            .leaderboard-header {
+              display: flex;
+              justify-content: center;
+              .top-three-contain {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                width: 50%;
+                justify-content: center;
+                align-items: center;
+                .top-user {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+
+                  .user-position {
+                    i {
+                      color: $secondary-color;
+                    }
+                  }
+                  .user-profile-pic {
+                    height: 4.5rem;
+                    width: 4.5rem;
+                    border-radius: 50%;
+                    border: 2px solid $secondary-color;
+                  }
+
+                  .top-user-desc {
+                    margin-top: 0.6rem;
+                    text-align: center;
+
+                    .lead {
+                      font-size: 0.8rem;
+                      color: darken($semi-med-color, 25%);
+                    }
+                  }
+                  &.first-user {
+                    .user-profile-pic {
+                      height: 6rem;
+                      width: 6rem;
+                    }
+                  }
+                }
+              }
+            }
+
+            .leaderboard-section {
+              .leaderboard-list {
+                .leaderboard-list-item {
+                  margin-bottom: 0.6rem;
+                  padding: 0.6rem;
+                  border-radius: 6px;
+                  display: flex;
+                  // justify-content: space-between;
+                  align-items: center;
+                  background: lighten($purple-dark-color, 5%);
+
+                  .item-row {
+                    margin-right: 5rem;
+                  }
+                  .user-profile {
+                    display: flex;
+                    align-items: center;
+                    .user-pic {
+                      height: 3rem;
+                      width: 3rem;
+                      border-radius: 50%;
+                      margin-right: 0.6rem;
+                    }
+                  }
+                  .earned-points {
+                    display: flex;
+                    align-items: center;
+
+                    i {
+                      padding-right: 0.6rem;
+                    }
                   }
                 }
               }

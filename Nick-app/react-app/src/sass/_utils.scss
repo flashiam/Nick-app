@@ -584,13 +584,13 @@ img {
   padding: 0;
   cursor: pointer;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
   i {
     transition: transform 0.3s ease;
   }
   &:hover {
-    color: $secondary-color;
     i {
-      color: $secondary-color;
       transform: translateX(-5px);
     }
   }
@@ -939,7 +939,7 @@ img {
   pointer-events: none;
   background: rgba(0, 0, 0, 0.1);
   transition: opacity 0.3s ease;
-  z-index: 3;
+  z-index: 5;
 
   .modal-content {
     position: absolute;

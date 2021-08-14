@@ -449,63 +449,66 @@
   // User profile
   .user-profile {
     .container {
-      flex-direction: column;
-      .profile-control {
-        position: relative;
-        width: 100%;
-        margin-bottom: 0.6rem;
-      }
+      .main-profile {
+        flex-direction: column;
 
-      .profile-showcase {
-        width: 100%;
+        .profile-control {
+          position: relative;
+          width: 100%;
+          margin-bottom: 0.6rem;
+        }
 
-        .profile-section {
-          &.tickets-section {
-            .ticket-status-contain {
-              .status-item {
-                .points-contain {
-                  .claim-btn {
-                    &.desktop-btn {
-                      display: none;
-                    }
-                    &.mobo-btn {
-                      display: flex;
+        .profile-showcase {
+          width: 100%;
+
+          .profile-section {
+            &.tickets-section {
+              .ticket-status-contain {
+                .status-item {
+                  .points-contain {
+                    .claim-btn {
+                      &.desktop-btn {
+                        display: none;
+                      }
+                      &.mobo-btn {
+                        display: flex;
+                      }
                     }
                   }
                 }
               }
             }
-          }
 
-          &.server-section {
-            .servers-contain {
-              grid-template-columns: repeat(2, 1fr);
+            &.server-section {
+              .servers-contain {
+                grid-template-columns: repeat(2, 1fr);
 
-              .server-item {
-                .server-members {
-                  flex-direction: column;
-                  align-items: flex-start;
-                  justify-content: center;
+                .server-item {
+                  .server-members {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
 
-                  .lead {
-                    margin-bottom: 0.6rem;
+                    .lead {
+                      margin-bottom: 0.6rem;
+                    }
                   }
                 }
               }
             }
-          }
 
-          &.promoted-section {
-            .songs-contain {
-              grid-template-columns: 1fr;
-              // display: flex;
+            &.promoted-section {
+              .songs-contain {
+                grid-template-columns: 1fr;
+                // display: flex;
+              }
             }
-          }
 
-          &.leaderboard-section {
-            .leaderboard-header {
-              .top-three-contain {
-                grid-gap: 1rem;
+            &.leaderboard-section {
+              .leaderboard-header {
+                .top-three-contain {
+                  grid-gap: 1rem;
+                }
               }
             }
           }

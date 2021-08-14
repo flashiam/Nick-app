@@ -1,10 +1,21 @@
 import { useState } from "react";
+import { connect } from "react-redux";
+import BackBtn from "../layouts/BackBtn";
 import Card from "../layouts/Card";
 import songImg from "../img/attention.png";
 import memberImg from "../img/charlie-puth.png";
 import memberImg2 from "../img/havana.png";
 
-const GeneralProfile = () => {
+type Props = {
+  auth: {
+    userDetails: any;
+    authToken: string;
+  };
+};
+
+const GeneralProfile = ({
+  auth: { userDetails, authToken, userType },
+}: any) => {
   const [options, setOptions] = useState<string>("tickets");
 
   // Component for tickets
@@ -187,84 +198,92 @@ const GeneralProfile = () => {
   return (
     <main className="user-profile">
       <div className="container">
-        <section className="profile-control">
-          <div className="user-profile-contain">
-            <div className="profile-pic">
-              <i className="material-icons">account_circle</i>
-              {/* {userDetails?.picture ? (
-                        <img
-                        src={userDetails?.picture}
-                        alt="user profile"
-                        className="user-pic"
-                        />
-                    ) : (
-                        <i className="material-icons">account_circle</i>
-                    )} */}
+        <div className="top-header">
+          <BackBtn />
+        </div>
+        <div className="main-profile">
+          <section className="profile-control">
+            <div className="user-profile-contain">
+              <div className="profile-pic">
+                {authToken ? (
+                  <img
+                    src={userDetails?.picture}
+                    alt="user profile"
+                    className="user-pic"
+                  />
+                ) : (
+                  <i className="material-icons">account_circle</i>
+                )}
+              </div>
+              <div className="user-desig ml-2">
+                <h3 className="head-3 username">{userDetails?.name}</h3>
+                <span className="user-badge">{userType || "Common"}</span>
+              </div>
             </div>
-            <div className="user-desig ml-2">
-              <h3 className="head-3 username">John Doe</h3>
-              <span className="user-badge">General</span>
+            <div className="profile-links-contain mt-5">
+              <h4 className="head-4">Menu</h4>
+              <ul className="profile-links mt-3">
+                <li className="profile-link">
+                  <button
+                    className={`btn btn-transparent ${
+                      options === "tickets" && "active"
+                    }`}
+                    onClick={() => setOptions("tickets")}
+                  >
+                    <i className="material-icons">monetization_on</i>
+                    Tickets
+                  </button>
+                </li>
+                <li className="profile-link">
+                  <button
+                    className={`btn btn-transparent ${
+                      options === "servers" && "active"
+                    }`}
+                    onClick={() => setOptions("servers")}
+                  >
+                    <i className="material-icons">dns</i>
+                    Servers
+                  </button>
+                </li>
+                <li className="profile-link">
+                  <button
+                    className={`btn btn-transparent ${
+                      options === "promoted-songs" && "active"
+                    }`}
+                    onClick={() => setOptions("promoted-songs")}
+                  >
+                    <i className="material-icons">library_music</i>
+                    Promoted Songs
+                  </button>
+                </li>
+                <li className="profile-link">
+                  <button
+                    className={`btn btn-transparent ${
+                      options === "leaderboards" && "active"
+                    }`}
+                    onClick={() => setOptions("leaderboards")}
+                  >
+                    <i className="material-icons">emoji_events</i>
+                    Leaderboards
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
-          <div className="profile-links-contain mt-5">
-            <h4 className="head-4">Menu</h4>
-            <ul className="profile-links mt-3">
-              <li className="profile-link">
-                <button
-                  className={`btn btn-transparent ${
-                    options === "tickets" && "active"
-                  }`}
-                  onClick={() => setOptions("tickets")}
-                >
-                  <i className="material-icons">monetization_on</i>
-                  Tickets
-                </button>
-              </li>
-              <li className="profile-link">
-                <button
-                  className={`btn btn-transparent ${
-                    options === "servers" && "active"
-                  }`}
-                  onClick={() => setOptions("servers")}
-                >
-                  <i className="material-icons">dns</i>
-                  Servers
-                </button>
-              </li>
-              <li className="profile-link">
-                <button
-                  className={`btn btn-transparent ${
-                    options === "promoted-songs" && "active"
-                  }`}
-                  onClick={() => setOptions("promoted-songs")}
-                >
-                  <i className="material-icons">library_music</i>
-                  Promoted Songs
-                </button>
-              </li>
-              <li className="profile-link">
-                <button
-                  className={`btn btn-transparent ${
-                    options === "leaderboards" && "active"
-                  }`}
-                  onClick={() => setOptions("leaderboards")}
-                >
-                  <i className="material-icons">emoji_events</i>
-                  Leaderboards
-                </button>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <section className="profile-showcase">
-          {options === "tickets" && <Tickets />}
-          {options === "servers" && <Servers />}
-          {options === "promoted-songs" && <PromotedSongs />}
-          {options === "leaderboards" && <Leaderboards />}
-        </section>
+          </section>
+          <section className="profile-showcase">
+            {options === "tickets" && <Tickets />}
+            {options === "servers" && <Servers />}
+            {options === "promoted-songs" && <PromotedSongs />}
+            {options === "leaderboards" && <Leaderboards />}
+          </section>
+        </div>
       </div>
     </main>
   );
 };
 
-export default GeneralProfile;
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, null)(GeneralProfile);
