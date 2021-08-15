@@ -184,7 +184,7 @@
       min-width: 10rem;
       top: 4rem;
       left: -1rem;
-      z-index: 2;
+      z-index: 4;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
       opacity: 0;
       pointer-events: none;
@@ -1904,6 +1904,106 @@
                     }
                   }
                   .earned-points {
+                    display: flex;
+                    align-items: center;
+
+                    i {
+                      padding-right: 0.6rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.all-songs-section {
+            .songs-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              .songs-tab {
+                .btn {
+                  &:nth-child(1) {
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                  }
+                  &:nth-child(2) {
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                  }
+                }
+                .btn-secondary {
+                  & {
+                    transition: none;
+
+                    &:hover {
+                      background: $secondary-color;
+                    }
+                  }
+                  &-stroked {
+                    transition: none;
+
+                    &:hover {
+                      background: transparent;
+                      border-color: $secondary-color;
+                      color: $semi-med-color;
+                    }
+                  }
+                }
+              }
+            }
+
+            .songs-mid {
+              display: flex;
+              justify-content: flex-end;
+            }
+
+            .songs-contain {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-gap: 0.6rem;
+            }
+          }
+
+          &.server-members-section {
+            .members-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+
+            .members-section {
+              .members-list-header {
+                display: grid;
+                grid-template-columns: 0.4fr 1fr 0.6fr 0.6fr;
+                grid-gap: 0.6rem;
+              }
+              .members-list {
+                .members-list-item {
+                  margin-bottom: 0.6rem;
+                  padding: 0.6rem;
+                  border-radius: 6px;
+                  display: grid;
+                  grid-template-columns: 0.4fr 1fr 0.6fr 0.6fr;
+                  grid-gap: 0.6rem;
+
+                  // justify-content: space-between;
+                  align-items: center;
+                  background: lighten($purple-dark-color, 5%);
+
+                  .user-profile {
+                    display: flex;
+                    align-items: center;
+                    .user-pic {
+                      height: 3rem;
+                      width: 3rem;
+                      border-radius: 50%;
+                      margin-right: 0.6rem;
+                    }
+                  }
+                  .earned-points,
+                  .total-listens {
                     display: flex;
                     align-items: center;
 

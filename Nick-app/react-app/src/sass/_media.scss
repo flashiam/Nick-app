@@ -511,6 +511,18 @@
                 }
               }
             }
+
+            &.all-songs-section {
+              .songs-contain {
+                grid-template-columns: 1fr;
+              }
+            }
+
+            &.server-members-section {
+              .members-section {
+                width: 130vw;
+              }
+            }
           }
         }
       }
